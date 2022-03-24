@@ -1,0 +1,17 @@
+# Created by trellis-cli v1.0.0
+# Documentation: https://roots.io/trellis/docs/wordpress-sites/
+
+wordpress_sites:
+  clients.clearcomkeys.build:
+    site_hosts:
+    - canonical: trellis.clients.clearcomkeys.build
+      redirects: []
+    local_path: ../site
+    admin_email: admin@trellis.clients.clearcomkeys.build
+    multisite:
+      enabled: false
+    ssl:
+      enabled: false
+      provider: self-signed
+    cache:
+      enabled: false

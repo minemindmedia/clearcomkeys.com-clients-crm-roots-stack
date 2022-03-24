@@ -1,0 +1,1 @@
+{{ $heading, $post->ID }}
