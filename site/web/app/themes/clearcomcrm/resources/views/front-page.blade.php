@@ -1,5 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-  @include('partials.content-front-page')
+
+  
+  @while(have_posts()) @php(the_post())
+    @include('partials.content-front-page')
+  @endwhile
+
+  
+  
 @endsection

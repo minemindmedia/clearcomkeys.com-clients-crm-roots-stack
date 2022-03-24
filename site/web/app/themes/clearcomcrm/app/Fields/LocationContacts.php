@@ -20,16 +20,28 @@ class LocationContacts extends Field
             ->setLocation('post_type', '==', 'contacts');
 
         $locationContacts
-            ->addText('test-shit', [
+            ->addSelect('dealer_store', [
+                'label' => 'Dealership or Store?',
+                'instructions' => 'Is this contact for a dealership or store?',
                 'required' => 1,
+                'conditional_logic' => [],
                 'wrapper' => [
-                'width' => '50%',
-                'class' => '',
-                'id' => '',
+                    'width' => '100%',
+                    'class' => '',
+                    'id' => '',
                 ],
+                'choices' => ['Dealership', 'Store'],
+                'default_value' => [],
+                'allow_null' => 0,
+                'multiple' => 0,
+                'ui' => 1,
+                'ajax' => 1,
+                'return_format' => 'value',
+                'placeholder' => 'Choose One',
+       
             ])
-            ->addSelect('contact_type', [
-                'label' => 'Contact Type',
+            ->addSelect('contact_type_dealership', [
+                'label' => 'Dealership Contact Type',
                 'instructions' => 'Please choose a contact type:',
                 'required' => 1,
                 'conditional_logic' => [],
@@ -38,7 +50,7 @@ class LocationContacts extends Field
                     'class' => '',
                     'id' => '',
                 ],
-                'choices' => ['Regional Manager', 'Operations Manager', 'Lead', 'Key Technician', 'Store Manager', 'Main Key Orderer'],
+                'choices' => ['Regional Manager', 'Operations Manager', 'Lead', 'Key Technician'],
                 'default_value' => [],
                 'allow_null' => 0,
                 'multiple' => 0,
@@ -47,6 +59,44 @@ class LocationContacts extends Field
                 'return_format' => 'value',
                 'placeholder' => 'Choose One',
                 'acfe_field_group_condition' => 1,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'dealer_store',
+                            'operator' => '==',
+                            'value' => 'Dealership'
+                        ),
+                    ),
+                ),  
+            ])
+            ->addSelect('contact_type_store', [
+                'label' => 'Store Contact Type',
+                'instructions' => 'Please choose a contact type:',
+                'required' => 1,
+                'conditional_logic' => [],
+                'wrapper' => [
+                    'width' => '100%',
+                    'class' => '',
+                    'id' => '',
+                ],
+                'choices' => ['Store Manager', 'Main Key Orderer'],
+                'default_value' => [],
+                'allow_null' => 0,
+                'multiple' => 0,
+                'ui' => 1,
+                'ajax' => 1,
+                'return_format' => 'value',
+                'placeholder' => 'Choose One',
+                'acfe_field_group_condition' => 1,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'dealer_store',
+                            'operator' => '==',
+                            'value' => 'Store'
+                        ),
+                    ),
+                ),  
             ])
             ->addSelect('key_technician', [
                 'label' => 'Technician Type',
@@ -122,7 +172,7 @@ class LocationContacts extends Field
                 'add_term' => 1,
                 'save_terms' => 0,
                 'load_terms' => 0,
-                'return_format' => 'id',
+                'return_format' => 'value',
                 'multiple' => 0,
             ])
 
@@ -157,7 +207,7 @@ class LocationContacts extends Field
                 'add_term' => 1,
                 'save_terms' => 0,
                 'load_terms' => 0,
-                'return_format' => 'id',
+                'return_format' => 'object',
                 'multiple' => 0,
             ])
 

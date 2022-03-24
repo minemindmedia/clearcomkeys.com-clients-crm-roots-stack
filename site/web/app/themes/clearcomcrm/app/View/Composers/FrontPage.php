@@ -1,8 +1,9 @@
 <?php
 
 namespace App\View\Composers;
-
 use Roots\Acorn\View\Composer;
+use Roots\Acorn\View\Composers\Concerns\AcfFields;
+
 
 class FrontPage extends Composer
 {
@@ -21,16 +22,9 @@ class FrontPage extends Composer
      * @return array
      */
 
-         public function with()
+    public static function title()
     {
-        return [
-            'heading' => $this->heading(),
-        ];
+        return get_post()->post_title;
     }
 
-
-    public function heading()
-    {
-        return the_field('test-shit') ?? false;
-    }
 }
