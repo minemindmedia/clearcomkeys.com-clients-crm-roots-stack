@@ -18,7 +18,7 @@ return [
             'menu_icon' => 'dashicons-book-alt',
             'supports' => ['revisions'],
             'show_in_rest' => true,
-            'has_archive' => false,
+            'has_archive' => true,
             'labels' => [
                 'singular' => 'Contact',
                 'plural' => 'Contacts',

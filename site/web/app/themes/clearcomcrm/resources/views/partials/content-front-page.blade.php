@@ -1,6 +1,5 @@
 <?php 
 
-// args
 $args = array(
 	'numberposts'	=> -1,
 	'post_type'		=> 'contacts'
@@ -26,7 +25,7 @@ $the_query = new WP_Query( $args );
 
 
 			</a>
-      <p class="text-xl block">
+      <p class="block text-xl">
         {{ the_field('contact_type') }}
         @if (get_field('contact_type') == 'Key Technician')
           : {{ the_field('key_technician') }}

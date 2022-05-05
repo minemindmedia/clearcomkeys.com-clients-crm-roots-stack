@@ -5,7 +5,7 @@ namespace App\Fields;
 use Log1x\AcfComposer\Field;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
-class LocationGroups extends Field
+class LocationDealerships extends Field
 {
     /**
      * The field group.
@@ -14,12 +14,12 @@ class LocationGroups extends Field
      */
     public function fields()
     {
-        $locationGroups = new FieldsBuilder('dealership_details');
+        $locationDealerships = new FieldsBuilder('dealership_details');
 
-        $locationGroups
+        $locationDealerships
             ->setLocation('taxonomy', '==', 'dealership');
 
-        $locationGroups 
+        $locationDealerships 
             ->addGroup('physical_address', [
                 'wrapper' => [
                 'width' => '100%',
@@ -106,6 +106,6 @@ class LocationGroups extends Field
                 ])
             ->endGroup();
 
-        return $locationGroups->build();
+        return $locationDealerships->build();
     }
 }

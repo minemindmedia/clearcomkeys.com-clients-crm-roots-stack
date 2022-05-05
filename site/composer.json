@@ -52,7 +52,7 @@
     "roots/wordpress": "5.9.2",
     "roots/wp-config": "1.0.0",
     "roots/wp-password-bcrypt": "1.1.0",
-    "advanced-custom-fields/advanced-custom-fields-pro": "5.11.4",
+    "advanced-custom-fields/advanced-custom-fields-pro": "5.12.2",
     "satispress/acf-extended-pro": "^0.8.8.7",
     "satispress/advanced-forms-pro": "1.6.6",
     "admin-columns/admin-columns-pro": "*",

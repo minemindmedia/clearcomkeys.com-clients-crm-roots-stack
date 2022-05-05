@@ -31,7 +31,7 @@ class LocationContacts extends Field
                     'id' => '',
                 ],
                 'choices' => ['Dealership', 'Store'],
-                'default_value' => [],
+                'default_value' => ['Choose one'],
                 'allow_null' => 0,
                 'multiple' => 0,
                 'ui' => 1,
@@ -51,7 +51,7 @@ class LocationContacts extends Field
                     'id' => '',
                 ],
                 'choices' => ['Regional Manager', 'Operations Manager', 'Lead', 'Key Technician'],
-                'default_value' => [],
+                'default_value' => ['Choose one'],
                 'allow_null' => 0,
                 'multiple' => 0,
                 'ui' => 1,
@@ -131,36 +131,6 @@ class LocationContacts extends Field
                 'label' => 'Dealership Location',
                 'instructions' => 'Choose a <b>DEALERSHIP LOCATION</b> for this user. If the location doesn\'t exist, then you must <a href="/wp/wp-admin/edit-tags.php?taxonomy=dealership&post_type=contacts" target="_blank">add one</a> first.',
                 'required' => 1,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'contact_type',
-                            'operator' => '==',
-                            'value' => 'Regional Manager'
-                        ),
-                    ),
-                    array(
-                        array(
-                            'field' => 'contact_type',
-                            'operator' => '==',
-                            'value' => 'Operations Manager',
-                        ),
-                    ),
-                    array(
-                        array(
-                            'field' => 'contact_type',
-                            'operator' => '==',
-                            'value' => 'Lead',
-                        ),
-                    ),
-                    array(
-                        array(
-                            'field' => 'contact_type',
-                            'operator' => '==',
-                            'value' => 'Key Technician',
-                        ),
-                    ),
-                ),  
                 'wrapper' => [
                     'width' => '',
                     'class' => '',
@@ -175,27 +145,13 @@ class LocationContacts extends Field
                 'return_format' => 'value',
                 'multiple' => 0,
             ])
+                ->conditional('dealer_store', '==', 'Dealership')
+                    ->and('contact_type_dealership', '!=', '')
 
             ->addTaxonomy('store_location', [
                 'label' => 'Store Location',
                 'instructions' => 'Choose a <b>STORE LOCATION</b> for this user. If the location doesn\'t exist, then you must <a href="/wp/wp-admin/edit-tags.php?taxonomy=store&post_type=contacts" target="_blank">add one</a> first.',
                 'required' => 1,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'contact_type',
-                            'operator' => '==',
-                            'value' => 'Store Manager'
-                        ),
-                    ),
-                    array(
-                        array(
-                            'field' => 'contact_type',
-                            'operator' => '==',
-                            'value' => 'Main Key Orderer',
-                        ),
-                    ),
-                ),  
                 'wrapper' => [
                     'width' => '',
                     'class' => '',
@@ -210,26 +166,12 @@ class LocationContacts extends Field
                 'return_format' => 'object',
                 'multiple' => 0,
             ])
+                ->conditional('dealer_store', '==', 'Store')
+                    ->and('contact_type_store', '!=', '')
 
             ->addGroup('contact_details', [
                 'label' => 'Contact Details',
                 'instructions' => '',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'dealership_location',
-                            'operator' => '!=',
-                            'value' => ''
-                        ),
-                    ),
-                    array(
-                        array(
-                            'field' => 'store_location',
-                            'operator' => '!=',
-                            'value' => ''
-                        ),
-                    ),
-                ),  
                 'wrapper' => [
                 'width' => '',
                 'class' => '',
@@ -238,6 +180,9 @@ class LocationContacts extends Field
                 'layout' => 'block',
                 'sub_fields' => [],
             ])
+                ->conditional('dealership_location', '!=', '')
+                    ->or('store_location', '!=', '')
+
                 ->addText('first_name', [
                     'required' => 1,
                     'wrapper' => [
@@ -308,6 +253,7 @@ class LocationContacts extends Field
             ])
             ->conditional('field_location_contacts_contact_details_email', '!=', '')
                 ->and('field_location_contacts_contact_type', '!=', 'Regional Manager')
+
                 ->addText('login', [
                     'instructions' => 'Enter the users website login.',
                     'required' => 1,
@@ -384,4 +330,3 @@ class LocationContacts extends Field
         
     }
 }
-
