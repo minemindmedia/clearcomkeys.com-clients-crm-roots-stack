@@ -1,5 +1,5 @@
 import {domReady} from '@roots/sage/client';
-
+import TableFilter from 'tablefilter';
 /**
  * app.main
  */
@@ -9,7 +9,6 @@ const main = async (err) => {
     console.error(err);
   }
 
-  // application code
 };
 
 /**
@@ -19,3 +18,9 @@ const main = async (err) => {
  */
 domReady(main);
 import.meta.webpackHot?.accept(main);
+
+var tf = new TableFilter(document.querySelector('.my-table'), {
+    base_path: 'path/to/my/scripts/tablefilter/'
+});
+tf.init();
+

@@ -139,7 +139,7 @@ class LocationContacts extends Field
                 'taxonomy' => 'dealership',
                 'field_type' => 'select',
                 'allow_null' => 0,
-                'add_term' => 1,
+                'add_term' => 0,
                 'save_terms' => 0,
                 'load_terms' => 0,
                 'return_format' => 'value',
@@ -163,7 +163,7 @@ class LocationContacts extends Field
                 'add_term' => 1,
                 'save_terms' => 0,
                 'load_terms' => 0,
-                'return_format' => 'object',
+                'return_format' => 'value',
                 'multiple' => 0,
             ])
                 ->conditional('dealer_store', '==', 'Store')
@@ -305,7 +305,7 @@ class LocationContacts extends Field
                     'button_label' => 'Add Training Date',
                     'sub_fields' => [],
                 ])
-                    ->addDateTimePicker('date_time_picker_field', [
+                    ->addDateTimePicker('training_date', [
                         'label' => 'Training Date',
                         'instructions' => '',
                         'required' => 0,
