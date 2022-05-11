@@ -20,6 +20,14 @@ class LocationDealerships extends Field
             ->setLocation('taxonomy', '==', 'dealership');
 
         $locationDealerships 
+            ->addText('dealership_name', [
+                'label' => 'Dealership Name',
+                'wrapper' => [
+                'width' => '100%',
+                'class' => '',
+                'id' => '',
+                ],
+            ])
             ->addGroup('physical_address', [
                 'wrapper' => [
                 'width' => '100%',

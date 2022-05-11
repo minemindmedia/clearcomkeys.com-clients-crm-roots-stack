@@ -88,33 +88,45 @@ add_theme_support('sage');
 //Disable Gutenburg
 add_filter('use_block_editor_for_post', '__return_false', 10);
 
-//Create new title based on ACF Fields
-function update_contacts_title($post_id) {
-    if ( get_post_type( $post_id ) == 'contacts' ) {
+//
+add_action('acf/save_post', 'my_save_post', 20);
+function my_save_post($post_id){
 
-        if( have_rows('contact_details') ):
-            while( have_rows('contact_details') ): the_row(); 
+  if( get_post_type($post_id) == 'contacts' ) {
 
-                $first_name = get_sub_field('first_name', $post_id);
-                $last_name = get_sub_field('last_name', $post_id);
-                $title = $last_name . ', ' . $first_name;
-                $slug = $last_name . '-' . $first_name;
+    // Get the data from a field
+     if( have_rows('contact_details') ):
+        while( have_rows('contact_details') ): the_row(); 
 
-            endwhile;
-        endif;
+            $first_name = get_sub_field('first_name', $post_id);
+            $last_name = get_sub_field('last_name', $post_id);
+            $title = $last_name . ', ' . $first_name;
+            $slug = $last_name . '-' . $first_name;
 
-            $postdata = array(
-                'ID'          => $post_id,
-                'post_title'  => $title,
-                'post_type'   => 'contacts',
-                'post_name'   => $slug
-            );
+        endwhile;
+    endif;
 
-            wp_update_post( $postdata );
-            
-            }
-    }
-add_filter('acf/save_post', 'update_contacts_title', 10, 3);
+    // Set the post data
+    $postdata = array(
+        'ID'          => $post_id,
+        'post_title'  => $title,
+        'post_type'   => 'contacts',
+        'post_name'   => $slug
+    );
+
+    // Remove the hook to avoid infinite loop. Please make sure that it has
+    // the same priority (20)
+    remove_action('acf/save_post', 'my_save_post', 20);
+
+    // Update the post
+    wp_update_post( $postdata );
+
+    // Add the hook back
+    add_action('acf/save_post', 'my_save_post', 20);
+
+  }
+
+}
 
 //Add meta box with Contact URL
 function contacts_metabox_permalink() {
@@ -129,4 +141,3 @@ function contacts_metabox_permalink_callback( $post ) {
     echo the_permalink();
     echo '</a>';
 }
-

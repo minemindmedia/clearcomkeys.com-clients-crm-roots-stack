@@ -1,17 +1,23 @@
+{{--
+  Template Name: Dealerships
+--}}
+
+
 @extends('layouts.app')
 
 @section('content')
   
 
   @php
-      $args = array(
-        'post_type' => 'contacts',
-        'posts_per_page' => -1,
-        'orderby' => 'meta_value',
-        'order' => 'DESC'
-      );
-
-      $query = new WP_query ( $args );
+      $term_query = new WP_Term_Query( array( 
+          'taxonomy' => 'dealership', // <-- Custom Taxonomy name..
+          'orderby'                => 'name',
+          'order'                  => 'ASC',
+          'child_of'               => 0,
+          'parent' => 0,
+          'fields'                 => 'all',
+          'hide_empty'             => false,
+          ) );
   @endphp
 
 
@@ -28,11 +34,11 @@
   <div class="px-4 sm:px-6 lg:px-8" id="userTable">
   <div class="sm:flex sm:items-center">
     <div class="sm:flex-auto">
-      <h1 class="text-xl font-semibold text-gray-900">User Contacts</h1>
+      <h1 class="text-xl font-semibold text-gray-900">Dealerships</h1>
       <p class="mt-2 text-sm text-gray-700">Filter by any column in the search input below. Click view / edit to view more information about the user and make any changes.</p>
     </div>
     <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-      @include('components.modal-new-contact')
+      @include('components.modal-new-dealership')
     </div>
   </div>
   <div class="sm:flex sm:items-center">
@@ -40,7 +46,7 @@
     type="text"
     id="searchInput"
     onkeyup="myFunction()"
-    placeholder="Search for names, locations, titles, email, phone, or login."
+    placeholder="Search for dealership."
     title="Type in a name"
     class="w-full p-4 mt-8 mb-8 border border-indigo-600"
     autofocus
@@ -53,15 +59,8 @@
           <table class="min-w-full divide-y divide-gray-300">
             <thead class="bg-gray-50">
               <tr>
-                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Last Name</th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">First Name</th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Location</th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Title</th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Email</th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Phone</th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Login</th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Password</th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Forum Access?</th>
+                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Dealership Name</th>
+              
                 <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
                   <span class="sr-only">Edit</span>
                 </th>
@@ -70,10 +69,20 @@
             <tbody class="bg-white divide-y divide-gray-200">
               
                
-                    @while($query->have_posts()) @php($query->the_post())
-      @includeFirst(['partials.content-' . get_post_type(), 'partials.content'])
-    @endwhile
               
+              @if ( ! empty( $term_query->terms ) )
+                
+                @foreach ( $term_query ->terms as $term )
+
+                  @include('partials.content-dealerships')
+                  
+                @endforeach
+
+                @else
+                
+                <p>No dealerships found</p>/
+            
+              @endif
 
               
             </tbody>

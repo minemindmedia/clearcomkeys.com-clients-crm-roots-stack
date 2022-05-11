@@ -3,22 +3,23 @@
     $details = get_field('additional_details');
 @endphp
 
-<tr>
+<tr class="hover:bg-gray-200">
   
-      
-    <td class="p-4 text-left">
+    <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 whitespace-nowrap sm:pl-6">
+      @if( $contact['last_name'] )
+        <a href="{{ get_permalink() }}">
+          {{ $contact['last_name'] }}
+        </a>
+      @endif
+    </td>
+    
+    <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 whitespace-nowrap sm:pl-6">
       @if( $contact['first_name'] )
         {{ $contact['first_name'] }}
       @endif
     </td>
 
-    <td class="p-4 text-left">
-      @if( $contact['last_name'] )
-        {{ $contact['last_name'] }}
-      @endif
-    </td>
-
-    <td class="p-4 text-left">
+    <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 whitespace-nowrap sm:pl-6">
       @if( get_field('dealer_store') == 'Dealership' )
         Dealership = <?php the_field('dealership_location'); ?>
       @elseif( get_field('dealer_store') == 'Store' )
@@ -34,32 +35,32 @@
       @endif
     </td>
 
-    <td class="p-4 text-left">
+    <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 whitespace-nowrap sm:pl-6">
       @if( $contact['email'] )
         {{ $contact['email'] }}
       @endif
     </td>
 
-    <td class="p-4 text-left">
+    <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 whitespace-nowrap sm:pl-6">
       @if( $contact['phone'] )
         {{ $contact['phone'] }}
       @endif
     </td>
 
-    <td class="p-4 text-left">
+    <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 whitespace-nowrap sm:pl-6">
       @if( $details )
         {{ $details['login'] }}
       @endif
     </td>
 
-    <td class="p-4 text-left">
+    <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 whitespace-nowrap sm:pl-6">
       @if( $details )
         {{ $details['password'] }}
       @endif
     </td>
 
 
-    <td class="float-right p-4">
+    <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 whitespace-nowrap sm:pl-6">
       @if( $details )
         @if( $details['forum_access'])
           Yes
@@ -67,6 +68,9 @@
           No
         @endif
       @endif
+    </td>
+    <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 whitespace-nowrap sm:pl-6">
+      <a href="{{ the_permalink() }}" class="text-indigo-600 hover:text-indigo-900">View / Edit</a>
     </td>
 
   

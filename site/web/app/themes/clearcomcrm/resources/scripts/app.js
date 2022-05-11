@@ -1,5 +1,6 @@
 import {domReady} from '@roots/sage/client';
 import TableFilter from 'tablefilter';
+import Alpine from 'alpinejs';
 /**
  * app.main
  */
@@ -8,6 +9,11 @@ const main = async (err) => {
     // handle hmr errors
     console.error(err);
   }
+
+    // Initialize AlpineJS & Extensions
+  window.Alpine = Alpine
+  Alpine.start()
+  acf.do_action('append', $('#editcontact'));
 
 };
 
