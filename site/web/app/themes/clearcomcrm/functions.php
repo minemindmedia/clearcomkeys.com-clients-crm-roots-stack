@@ -128,6 +128,18 @@ function my_save_post($post_id){
 
 }
 
+add_action('acfe/save_term/taxonomy=dealership', 'my_acfe_save_category', 10, 2);
+    function my_acfe_save_category($post_id, $object){
+        
+        // Retrieve the user input from "my_field" field
+        get_field('dealership_name');
+
+        // Retrieve "my_field" field value from DB
+        get_field('dealership_name', $post_id);
+    
+
+    }
+
 //Add meta box with Contact URL
 function contacts_metabox_permalink() {
     add_meta_box( 'prfx_meta', ( 'View Contact' ), 'contacts_metabox_permalink_callback', 'contacts', 'normal', 'high' );

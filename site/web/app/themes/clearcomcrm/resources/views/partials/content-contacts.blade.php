@@ -35,40 +35,7 @@
       @endif
     </td>
 
-    <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 whitespace-nowrap sm:pl-6">
-      @if( $contact['email'] )
-        {{ $contact['email'] }}
-      @endif
-    </td>
-
-    <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 whitespace-nowrap sm:pl-6">
-      @if( $contact['phone'] )
-        {{ $contact['phone'] }}
-      @endif
-    </td>
-
-    <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 whitespace-nowrap sm:pl-6">
-      @if( $details )
-        {{ $details['login'] }}
-      @endif
-    </td>
-
-    <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 whitespace-nowrap sm:pl-6">
-      @if( $details )
-        {{ $details['password'] }}
-      @endif
-    </td>
-
-
-    <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 whitespace-nowrap sm:pl-6">
-      @if( $details )
-        @if( $details['forum_access'])
-          Yes
-        @else
-          No
-        @endif
-      @endif
-    </td>
+    
     <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 whitespace-nowrap sm:pl-6">
       <a href="{{ the_permalink() }}" class="text-indigo-600 hover:text-indigo-900">View / Edit</a>
     </td>
