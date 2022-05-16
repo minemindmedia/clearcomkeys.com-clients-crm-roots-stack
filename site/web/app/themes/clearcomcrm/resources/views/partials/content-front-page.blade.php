@@ -35,7 +35,7 @@ $the_query = new WP_Query( $args );
         
       </p>
       <p>
-        {{ the_field('dealership_location') }}
+        {{ the_field('recon_center_location') }}
       </p>
 		</li>
 	<?php endwhile; ?>

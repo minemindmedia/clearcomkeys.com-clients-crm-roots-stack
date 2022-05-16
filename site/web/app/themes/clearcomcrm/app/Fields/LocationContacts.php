@@ -15,22 +15,23 @@ class LocationContacts extends Field
     public function fields()
     {
         $locationContacts = new FieldsBuilder('location_contacts');
+        $todaysDate = date("F j, Y, g:i a");
 
         $locationContacts
             ->setLocation('post_type', '==', 'contacts');
 
         $locationContacts
-            ->addSelect('dealer_store', [
-                'label' => 'Dealership or Store?',
-                'instructions' => 'Is this contact for a dealership or store?',
+            ->addSelect('recon_center_store', [
+                'label' => 'Recon Center or Store?',
+                'instructions' => 'Is this contact for a recon center or store?',
                 'required' => 1,
                 'conditional_logic' => [],
                 'wrapper' => [
-                    'width' => '100%',
+                    'width' => '50%',
                     'class' => '',
                     'id' => '',
                 ],
-                'choices' => ['Dealership', 'Store'],
+                'choices' => ['Recon Center', 'Store'],
                 'default_value' => ['Choose one'],
                 'allow_null' => 0,
                 'multiple' => 0,
@@ -40,13 +41,13 @@ class LocationContacts extends Field
                 'placeholder' => 'Choose One',
        
             ])
-            ->addSelect('contact_type_dealership', [
-                'label' => 'Dealership Contact Type',
+            ->addSelect('contact_type_recon_center', [
+                'label' => 'Recon Center Contact Type',
                 'instructions' => 'Please choose a contact type:',
                 'required' => 1,
                 'conditional_logic' => [],
                 'wrapper' => [
-                    'width' => '100%',
+                    'width' => '50%',
                     'class' => '',
                     'id' => '',
                 ],
@@ -62,9 +63,9 @@ class LocationContacts extends Field
                 'conditional_logic' => array(
                     array(
                         array(
-                            'field' => 'dealer_store',
+                            'field' => 'recon_center_store',
                             'operator' => '==',
-                            'value' => 'Dealership'
+                            'value' => 'Recon Center'
                         ),
                     ),
                 ),  
@@ -91,7 +92,7 @@ class LocationContacts extends Field
                 'conditional_logic' => array(
                     array(
                         array(
-                            'field' => 'dealer_store',
+                            'field' => 'recon_center_store',
                             'operator' => '==',
                             'value' => 'Store'
                         ),
@@ -127,16 +128,16 @@ class LocationContacts extends Field
                 ),  
             ])
             
-            ->addTaxonomy('dealership_location', [
-                'label' => 'Dealership Location',
-                'instructions' => 'Choose a <b>DEALERSHIP LOCATION</b> for this user. If the location doesn\'t exist, then you must <a href="/wp/wp-admin/edit-tags.php?taxonomy=dealership&post_type=contacts" target="_blank">add one</a> first.',
+            ->addTaxonomy('recon_center_location', [
+                'label' => 'Recon Center Location Location',
+                'instructions' => 'Choose a <b>RECON CENTER LOCATION</b> for this user. If the location doesn\'t exist, then you must <a href="/wp/wp-admin/edit-tags.php?taxonomy=recon_center&post_type=contacts" target="_blank">add one</a> first.',
                 'required' => 1,
                 'wrapper' => [
                     'width' => '',
                     'class' => '',
                     'id' => '',
                 ],
-                'taxonomy' => 'dealership',
+                'taxonomy' => 'recon-center',
                 'field_type' => 'checkbox',
                 'allow_null' => 0,
                 'add_term' => 0,
@@ -145,8 +146,8 @@ class LocationContacts extends Field
                 'return_format' => 'label',
                 'multiple' => 0,
             ])
-                ->conditional('dealer_store', '==', 'Dealership')
-                    ->and('contact_type_dealership', '!=', '')
+                ->conditional('recon_center_store', '==', 'Recon Center')
+                    ->and('contact_type_recon_center', '!=', '')
 
             ->addTaxonomy('store_location', [
                 'label' => 'Store Location',
@@ -166,7 +167,7 @@ class LocationContacts extends Field
                 'return_format' => 'value',
                 'multiple' => 0,
             ])
-                ->conditional('dealer_store', '==', 'Store')
+                ->conditional('recon_center_store', '==', 'Store')
                     ->and('contact_type_store', '!=', '')
 
             ->addGroup('contact_details', [
@@ -180,7 +181,7 @@ class LocationContacts extends Field
                 'layout' => 'block',
                 'sub_fields' => [],
             ])
-                ->conditional('dealership_location', '!=', '')
+                ->conditional('recon_center_location', '!=', '')
                     ->or('store_location', '!=', '')
 
                 ->addText('first_name', [
@@ -222,25 +223,10 @@ class LocationContacts extends Field
                     'acfe_field_group_condition' => 1,
                     ],
                 ])
-                ->addTextarea('notes', [
-                    'label' => 'Additonal Notes',
-                    'instructions' => 'Add any notes to reference for this customer below.',
-                    'required' => 0,
-                    'wrapper' => [
-                        'width' => '',
-                        'class' => '',
-                        'id' => '',
-                    ],
-                    'default_value' => '',
-                    'placeholder' => '',
-                    'maxlength' => '',
-                    'rows' => '',
-                    'new_lines' => '', // Possible values are 'wpautop', 'br', or ''.
-                ])
             ->endGroup()
 
-            ->addGroup('additional_details', [
-                'label' => 'Additional Details',
+            ->addGroup('access_details', [
+                'label' => 'Access Details',
                 'instructions' => '',
                 'required' => 0,
                 'wrapper' => [
@@ -289,7 +275,9 @@ class LocationContacts extends Field
                     'ui_on_text' => 'Yes',
                     'ui_off_text' => 'No',
                 ])
-                ->addRepeater('training_dates', [
+            ->endGroup()
+
+            ->addRepeater('training_dates', [
                     'label' => 'Training Dates',
                     'instructions' => 'To add a training date, click the blue "Add Training Date" button below.',
                     'required' => 0,
@@ -305,7 +293,7 @@ class LocationContacts extends Field
                     'button_label' => 'Add Training Date',
                     'sub_fields' => [],
                 ])
-                    ->addDateTimePicker('training_date', [
+                    ->addDatePicker('training_date', [
                         'label' => 'Training Date',
                         'instructions' => '',
                         'required' => 0,
@@ -315,13 +303,59 @@ class LocationContacts extends Field
                             'class' => '',
                             'id' => '',
                         ],
-                        'display_format' => 'F j, Y g:i a',
-                        'return_format' => 'Y-m-d H:i:s',
+                        'display_format' => 'F j, Y',
+                        'return_format' => 'Y-m-d',
                     ])
                 ->endRepeater()
-                
-                
-            ->endGroup();
+
+            ->addRepeater('notes', [
+                    'label' => 'Notes',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => [],
+                    'wrapper' => [
+                    'width' => '100%',
+                    'class' => '',
+                    'id' => '',
+                    ],
+                    'min' => 0,
+                    'max' => 0,
+                    'layout' => 'row',
+                    'button_label' => 'Add Note',
+                    'sub_fields' => [],
+                ])
+                    ->addText('note', [
+                        'label' => 'Add Note',
+                        'instructions' => '',
+                        'required' => 0,
+                        'wrapper' => [
+                            'width' => '50%',
+                            'class' => '',
+                            'id' => '',
+                        ],
+                        'default_value' => '',
+                        'placeholder' => '',
+                        'maxlength' => '',
+                        'rows' => '',
+                        'new_lines' => '', // Possible values are 'wpautop', 'br', or ''.
+                    ])
+                    ->addField('note_date', 'acfe_hidden', [
+                        'label' => 'Date',
+                        'instructions' => '',
+                        'readonly' => 1,
+                        'required' => 1,
+                        'wrapper' => [
+                            'width' => '50%',
+                            'class' => '',
+                            'id' => '',
+                        ],
+                        'default_value' => $todaysDate,
+                        'placeholder' => '',
+                        'maxlength' => '',
+                        'rows' => '',
+                        'new_lines' => '', // Possible values are 'wpautop', 'br', or ''.
+                    ])
+                ->endRepeater();
             
             
 

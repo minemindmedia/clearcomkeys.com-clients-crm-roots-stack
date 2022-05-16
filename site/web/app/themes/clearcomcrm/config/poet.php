@@ -37,7 +37,7 @@ return [
     */
 
     'taxonomy' => [
-        'dealership' => [
+        'recon-center' => [
             'links' => ['contacts'],
             'meta_box' => 'radio',
         ],

@@ -45,7 +45,8 @@
                     'post_id'       => 'new_post',
                     'new_post'      => array(
                         'post_type'     => 'contacts',
-                        'post_status'   => 'publish'
+                        'post_status'   => 'publish',
+                        'post_title'    => true
                     ),
                     'return' => '%post_url%',
                     'submit_value'  => 'Add new contact'

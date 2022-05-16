@@ -128,38 +128,7 @@ function my_save_post($post_id){
 
 }
 
-add_action('acfe/save_term/taxonomy=dealership', 'my_acfe_save_category', 10, 2);
-    function my_acfe_save_category($post_id, $object){
-        
-        if( get_post_type($post_id) == 'contacts' ) {
 
-            $dealership_name = get_field('dealership_name', $post_id);
-            $last_name = get_sub_field('last_name', $post_id);
-            $title = $dealership_name;
-            $slug = $dealership_name;
-    
-        
-    
-        // Set the post data
-        $postdata = array(
-            'ID'          => $post_id,
-            'post_type'   => 'contacts',
-            'term_name'  => $title,
-            'term_slug'   => $title
-        );
-    
-        remove_action('acf/save_post', 'save_dealership_name', 20);
-    
-        // Update the post
-        wp_update_post( $postdata );
-    
-        // Add the hook back
-        add_action('acf/save_post', 'save_dealership_name', 20);
-    
-      }
-    
-
-    }
 
 //Add meta box with Contact URL
 function contacts_metabox_permalink() {
@@ -174,3 +143,4 @@ function contacts_metabox_permalink_callback( $post ) {
     echo the_permalink();
     echo '</a>';
 }
+

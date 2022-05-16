@@ -20,9 +20,9 @@ class LocationStores extends Field
             ->setLocation('taxonomy', '==', 'store');
 
         $locationStores 
-            ->addTaxonomy('choose_dealership', [
-                'label' => 'Dealership',
-                'instructions' => 'Choose the dealership location this parts store is associated with.',
+            ->addTaxonomy('choose_recon_center', [
+                'label' => 'Recon Center',
+                'instructions' => 'Choose the recon center location this parts store is associated with.',
                 'required' => 0,
                 'conditional_logic' => [],
                 'wrapper' => [
@@ -30,7 +30,7 @@ class LocationStores extends Field
                     'class' => '',
                     'id' => '',
                 ],
-                'taxonomy' => 'dealership',
+                'taxonomy' => 'recon-center',
                 'field_type' => 'select',
                 'allow_null' => 0,
                 'add_term' => 1,

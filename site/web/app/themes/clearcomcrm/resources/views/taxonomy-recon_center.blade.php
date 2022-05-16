@@ -3,8 +3,8 @@
 @section('content')
   
   
-<h1 class="text-xl font-bold mb-8">
-	Dealership: {{ single_cat_title() }}
+<h1 class="mb-8 text-xl font-bold">
+	Recon Center: {{ single_cat_title() }}
 </h1>
 
 
@@ -57,9 +57,9 @@
    
 
     <td>
-      @if( get_field('dealer_store') == 'Dealership' )
-        <?php the_field('contact_type_dealership') ?>
-        @elseif( get_field('dealer_store') == 'Store' )
+      @if( get_field('recon_store') == 'Recon Center' )
+        <?php the_field('contact_type_recon_center') ?>
+        @elseif( get_field('recon_store') == 'Store' )
         <?php the_field('contact_type_store') ?>
       @endif
     </td>
