@@ -4,7 +4,7 @@
   
   
 <h1 class="text-xl font-bold mb-8">
-	Dealership: {{ single_cat_title() }}
+	Store: {{ single_cat_title() }}
 </h1>
 
 
@@ -25,12 +25,11 @@
     <tbody class="bg-white divide-y divide-gray-200">
       
        
-      <?php
-      if(have_posts()) :
-         while(have_posts()) :
-            the_post();
-   ?>
-     
+        <?php
+        if(have_posts()) :
+           while(have_posts()) :
+              the_post();
+     ?>
        
 
        @php
@@ -74,6 +73,7 @@
 
 
 
+
 <?php
       endwhile;
    else :
@@ -84,10 +84,15 @@
 <?php
    endif;
 ?>
+      
 
       
     </tbody>
   </table>
+
+
+
+    
 
 
 

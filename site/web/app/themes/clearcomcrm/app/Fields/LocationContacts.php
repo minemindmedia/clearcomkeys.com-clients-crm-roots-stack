@@ -137,12 +137,12 @@ class LocationContacts extends Field
                     'id' => '',
                 ],
                 'taxonomy' => 'dealership',
-                'field_type' => 'select',
+                'field_type' => 'checkbox',
                 'allow_null' => 0,
                 'add_term' => 0,
                 'save_terms' => 0,
                 'load_terms' => 0,
-                'return_format' => 'value',
+                'return_format' => 'label',
                 'multiple' => 0,
             ])
                 ->conditional('dealer_store', '==', 'Dealership')

@@ -4,7 +4,7 @@
 wordpress_sites:
   clients.clearcomkeys.build:
     site_hosts:
-    - canonical: clients.clearcomkeys.build
+    - canonical: staging.clients.clearcomkeys.build
     local_path: ../site
     branch: staging
     repo: git@github.com:minemindmedia/clearcomkeys.com-clients-crm-roots-stack.git

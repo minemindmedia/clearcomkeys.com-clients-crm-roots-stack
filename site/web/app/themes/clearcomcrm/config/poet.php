@@ -39,12 +39,11 @@ return [
     'taxonomy' => [
         'dealership' => [
             'links' => ['contacts'],
-            'meta_box' => false,
+            'meta_box' => 'radio',
         ],
         'store' => [
             'links' => ['contacts'],
-            'meta_box' => false,
-            'slug' => false,
+            'meta_box' => 'radio',
         ],
     ],
 
