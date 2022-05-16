@@ -40,6 +40,7 @@ return [
         'recon-center' => [
             'links' => ['contacts'],
             'meta_box' => 'radio',
+            'hierarchical' => true
         ],
         'store' => [
             'links' => ['contacts'],

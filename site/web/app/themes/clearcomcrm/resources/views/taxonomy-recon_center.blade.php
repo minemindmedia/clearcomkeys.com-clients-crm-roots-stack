@@ -25,12 +25,11 @@
     <tbody class="bg-white divide-y divide-gray-200">
       
        
-      <?php
-      if(have_posts()) :
-         while(have_posts()) :
-            the_post();
-   ?>
-     
+        <?php
+        if(have_posts()) :
+           while(have_posts()) :
+              the_post();
+     ?>
        
 
        @php
@@ -57,9 +56,9 @@
    
 
     <td>
-      @if( get_field('recon_store') == 'Recon Center' )
+      @if( get_field('recon_center_store') == 'Recon Center' )
         <?php the_field('contact_type_recon_center') ?>
-        @elseif( get_field('recon_store') == 'Store' )
+        @elseif( get_field('recon_center_store') == 'Store' )
         <?php the_field('contact_type_store') ?>
       @endif
     </td>
@@ -74,6 +73,7 @@
 
 
 
+
 <?php
       endwhile;
    else :
@@ -84,10 +84,15 @@
 <?php
    endif;
 ?>
+      
 
       
     </tbody>
   </table>
+
+
+
+    
 
 
 

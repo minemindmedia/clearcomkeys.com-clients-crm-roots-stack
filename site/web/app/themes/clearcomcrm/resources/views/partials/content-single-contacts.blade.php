@@ -28,8 +28,8 @@
               </a>
             @endif
           </h1>
-          <p class="text-sm font-medium text-gray-500">Added on <time><?php echo get_the_date('F j, Y, g:i a'); ?></time></p>
-          <p class="text-sm font-medium text-gray-500">Last modified on <time><?php echo get_the_modified_date('F j, Y, g:i a'); ?></time></p>
+          <p class="text-sm font-medium text-gray-500">Added on <time><?php echo get_the_date('F j, Y, g:i a'); ?></time> by {{ get_the_author() }}.</p>
+          <p class="text-sm font-medium text-gray-500">Last modified on <time><?php echo get_the_modified_date('F j, Y, g:i a'); ?></time> by {{ get_the_modified_author() }}.</p>
         </div>
       </div>
       <div class="flex flex-col-reverse mt-6 space-y-4 space-y-reverse justify-stretch sm:flex-row-reverse sm:justify-end sm:space-x-reverse sm:space-y-0 sm:space-x-3 md:mt-0 md:flex-row md:space-x-3">
@@ -208,6 +208,8 @@
       
         </div>
       </section>
+
+      
     </div>
   </main>
 </div>
