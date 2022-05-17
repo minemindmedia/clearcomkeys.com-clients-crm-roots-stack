@@ -2,94 +2,56 @@
 
 @section('content')
 
-  @php
-      $args = array(
-        'post_type' => 'contacts',
-        'posts_per_page' => -1,
-        'orderby' => 'meta_value',
-        'order' => 'DESC'
-      );
+@php
+  $args = array(
+    'post_type' => 'contacts',
+    'posts_per_page' => -1,
+    'orderby' => 'meta_value',
+    'order' => 'DESC'
+  );
 
-      $query = new WP_query ( $args );
-  @endphp
+  $query = new WP_query ( $args );
+@endphp
 
-  
-<div class="flex min-h-full">
-  
-
-  
-  <div class="flex flex-col flex-1 w-0 mx-auto">
-    <div class="sticky top-0 z-10 flex flex-shrink-0 h-16 bg-white border-b border-gray-200">
-      <div class="flex justify-between flex-1 px-4">
-        <div class="flex flex-1">
-          <form class="flex w-full lg:ml-0" action="#" method="GET">
-            <label for="search-field" class="sr-only">Search</label>
-            <div class="relative w-full text-gray-400 focus-within:text-gray-600">
-              <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none">
-                <!-- Heroicon name: solid/search -->
-                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
-                </svg>
-              </div>
-              <input
-                type="text"
-                id="searchInput"
-                onkeyup="myFunction()"
-                placeholder="Search..."
-                title="Type in a name"
-                class="block w-full h-full py-2 pl-8 pr-3 text-gray-900 placeholder-gray-500 border-transparent focus:outline-none focus:placeholder-gray-400 focus:ring-0 focus:border-transparent sm:text-sm"
-                autofocus
-              >
-            </div>
-          </form>
-        </div>
-        <div class="flex items-center ml-4 lg:ml-6">
-          @include('components.modal-new-contact')
+  <div class="px-4 sm:px-6 lg:px-8">
+    <div class="sm:flex sm:items-center">
+      <div class="sm:flex-auto">
+        <h1 class="text-xl font-semibold text-gray-900">Users</h1>
+        <p class="mt-2 text-sm text-gray-700">A list of all the users in your account including their name, title, email and role.</p>
+      </div>
+      <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+        @include('components.modal-new-contact')
+      </div>
+    </div>
+    <div class="flex flex-col mt-8">
+      <div class="-mx-4 -my-2 sm:-mx-6 lg:-mx-8">
+        <div class="inline-block min-w-full py-2 align-middle">
+          <div class="shadow-sm ring-1 ring-black ring-opacity-5">
+            <table class="min-w-full border-separate" style="border-spacing: 0" id="userTable">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th scope="col" class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter sm:pl-6 lg:pl-8">Last Name</th>
+                  <th scope="col" class="sticky top-0 z-10 hidden border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter sm:table-cell">First Name</th>
+                  <th scope="col" class="sticky top-0 z-10 hidden border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter lg:table-cell">Location</th>
+                  <th scope="col" class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter">Title</th>
+                  <th scope="col" class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 py-3.5 pr-4 pl-3 backdrop-blur backdrop-filter sm:pr-6 lg:pr-8">
+                    <span class="sr-only">Edit</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="bg-white">
+                @while($query->have_posts()) @php($query->the_post())
+                  @includeFirst(['partials.content-' . get_post_type(), 'partials.content'])
+                @endwhile
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
-
-    <main>
-      <div class="py-8 xl:py-10">
-        <div class="">
-
-          <div class="flex flex-col">
-            <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-              <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-                <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-                  <table class="min-w-full divide-y divide-gray-300" id="userTable">
-                    <thead class="bg-gray-50">
-                      <tr>
-                        <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Last Name</th>
-                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">First Name</th>
-                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Location</th>
-                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Title</th>
-                        <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
-                          <span class="sr-only">Edit</span>
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
-                      
-                      @while($query->have_posts()) @php($query->the_post())
-                        @includeFirst(['partials.content-' . get_post_type(), 'partials.content'])
-                      @endwhile
-                      
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-                  
-        </div>
-      </div>
-    </main>
   </div>
-</div>
 
-
-  <script>
+    <script>
       function myFunction() {
   var input, filter, table, tr, td, cell, i, j;
   filter = document.getElementById("searchInput").value.toLowerCase();
@@ -108,4 +70,5 @@
   }
 }
   </script>
+
 @endsection

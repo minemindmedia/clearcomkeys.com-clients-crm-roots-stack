@@ -1,16 +1,11 @@
-<a class="sr-only focus:not-sr-only" href="#main">
-  {{ __('Skip to content') }}
-</a>
-
+<div>
 @include('sections.header')
 
-  <main id="main" class="container p-4 mx-auto bg-gray-100 border border-gray-200">
-    @yield('content')
+  <main class="relative -mt-32">
+    <div class="max-w-screen-xl px-4 pb-6 mx-auto sm:px-6 lg:pb-16 lg:px-8">
+      <div class="pt-8 overflow-hidden bg-gray-200 rounded-lg shadow">
+        @yield('content')
+      </div>
+    </div>
   </main>
-
-  @hasSection('sidebar')
-    <aside class="sidebar">
-      @yield('sidebar')
-    </aside>
-  @endif
-
+</div>
