@@ -27,6 +27,7 @@
       
         <div class="inline-block min-w-full py-2 align-middle">
           <div class="shadow-sm ring-1 ring-black ring-opacity-5">
+            @if( $query->have_posts() )
             <table class="min-w-full border-separate" style="border-spacing: 0" id="filterTable">
               <thead class="bg-gray-50">
                 <tr>
@@ -45,6 +46,25 @@
                 @endwhile
               </tbody>
             </table>
+
+            @else 
+
+                        <!-- This example requires Tailwind CSS v2.0+ -->
+            <div class="p-12 text-center">
+              <svg class="w-12 h-12 mx-auto text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+              </svg>
+              <h3 class="mt-2 text-sm font-medium text-gray-900">No contacts</h3>
+              <p class="mt-1 text-sm text-gray-500">Get started by adding a recon center or store before adding a contact.</p>
+              <div class="mt-6">
+                <div class="flex justify-center space-x-4">
+                  @include('components.modal-new-recon-center')
+                @include('components.modal-new-store')
+                </div>
+              </div>
+            </div>
+
+            @endif
           </div>
         </div>
       
