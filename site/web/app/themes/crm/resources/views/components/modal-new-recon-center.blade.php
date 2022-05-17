@@ -1,4 +1,4 @@
-<div x-data="{ open: false }" class="flex justify-center" id="editreconcenter">
+<div x-data="{ open: false }" class="z-[9999999999999] flex justify-center" id="editreconcenter">
     
     <span x-on:click="open = true">
         <button type="button" class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">
