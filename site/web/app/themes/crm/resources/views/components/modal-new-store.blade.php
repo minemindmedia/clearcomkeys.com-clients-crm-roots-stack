@@ -1,8 +1,8 @@
-<div x-data="{ open: false }" class="relative z-50" id="editcontact">
+<div x-data="{ open: false }" class="flex justify-center" id="editreconcenter">
     
     <span x-on:click="open = true">
         <button type="button" class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">
-            Add contact
+            Add store
         </button>
     </span>
     
@@ -32,7 +32,7 @@
             >
                 <div class="flex">
                   <div class="flex-1">
-                    <h2 class="text-3xl font-bold" :id="$id('modal-title')">Add Contact</h2>
+                    <h2 class="text-3xl font-bold" :id="$id('modal-title')">Add Store</h2>
                   </div>
                   <div>
                     <button type="button" x-on:click="open = false" class="bg-white border border-gray-200 px-5 py-2.5 rounded-md">
@@ -44,12 +44,11 @@
                 <?php acf_form(array(
                     'post_id'       => 'new_post',
                     'new_post'      => array(
-                        'post_type'     => 'contacts',
                         'post_status'   => 'publish',
-                        'post_title'    => true
+                        'taxonomy' => 'store',
                     ),
                     'return' => '%post_url%',
-                    'submit_value'  => 'Add new contact'
+                    'submit_value'  => 'Add new store'
                 )); ?>
               
             </div>

@@ -1,9 +1,11 @@
 module.exports = {
-  content: ['./index.php', './app/**/*.php', './resources/**/*.{php,vue,js}'],
+  content: ['./app/**/*.php', './resources/**/*.{php,vue,js}'],
   theme: {
     extend: {
       colors: {},
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 };

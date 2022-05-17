@@ -12,7 +12,6 @@
     @include('partials.page-header-recon-center')
     @include('search')
   </div>
-  
 </div>
 
   
