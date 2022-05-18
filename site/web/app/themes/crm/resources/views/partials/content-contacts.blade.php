@@ -1,6 +1,8 @@
 @php
     $contact = get_field('contact_details');
     $details = get_field('additional_details');
+    $reconlocation = get_field('recon_center_location');
+    $storelocation = get_field('store_location');
 @endphp
 
 <tr class="hover:bg-gray-200">
@@ -21,9 +23,13 @@
 
     <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 whitespace-nowrap sm:pl-6">
       @if( get_field('recon_center_store') == 'Recon Center' )
-        Dealership = <?php the_field('recon_center_location'); ?>
+          @if( $reconlocation )
+              {!! $reconlocation->name !!}
+          @endif
       @elseif( get_field('recon_center_store') == 'Store' )
-        Store = <?php the_field('store_location'); ?>
+          @if( $storelocation )
+              {!! $storelocation->name !!}
+          @endif
       @endif
     </td>
 

@@ -1,6 +1,8 @@
 @php
     $contact = get_field('contact_details');
     $details = get_field('access_details');
+    $reconlocation = get_field('recon_center_location');
+    $storelocation = get_field('store_location');
 @endphp
 
 <div class="min-h-full">
@@ -52,9 +54,13 @@
                   <dt class="text-sm font-medium text-gray-500">Location</dt>
                   <dd class="mt-1 text-sm text-gray-900">
                       @if( get_field('recon_center_store') == 'Recon Center' )
-                        Recon Center = <?php the_field('recon_center_location'); ?>
+                          @if( $reconlocation )
+                              {!! $reconlocation->name !!}
+                          @endif
                       @elseif( get_field('recon_center_store') == 'Store' )
-                        Store = <?php the_field('store_location'); ?>
+                          @if( $storelocation )
+                              {!! $storelocation->name !!}
+                          @endif
                       @endif
                   </dd>
                 </div>

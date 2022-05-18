@@ -138,12 +138,12 @@ class LocationContacts extends Field
                     'id' => '',
                 ],
                 'taxonomy' => 'recon-center',
-                'field_type' => 'dropdown',
+                'field_type' => 'select',
                 'allow_null' => 0,
                 'add_term' => 0,
                 'save_terms' => 0,
                 'load_terms' => 0,
-                'return_format' => 'label',
+                'return_format' => 'object',
                 'multiple' => 0,
             ])
                 ->conditional('recon_center_store', '==', 'Recon Center')
