@@ -14,9 +14,9 @@
 
                 <a href="/contacts" class="px-3 py-2 text-sm font-medium text-white rounded-md hover:bg-sky-800">Contacts</a>
 
-                <a href="/recon-centers" class="px-3 py-2 text-sm font-medium text-white rounded-md hover:bg-sky-800">Recon Centers</a>
+                <a href="/recon-centers" class="px-3 py-2 text-sm font-medium text-white rounded-md hover:bg-sky-800">Locations</a>
 
-                <a href="/stores" class="px-3 py-2 text-sm font-medium text-white rounded-md hover:bg-sky-800">Stores</a>
+                <a href="/stores" class="px-3 py-2 text-sm font-medium text-white rounded-md hover:bg-sky-800">Company</a>
               </div>
             </div>
           </div>

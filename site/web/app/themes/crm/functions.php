@@ -162,3 +162,12 @@ function prefix_category( $title ) {
     return $title;
 }
 add_filter( 'get_the_archive_title', 'prefix_category' );
+
+
+add_action('acfe/save_term/taxonomy=location', 'my_acfe_save_category', 10, 2);
+function my_acfe_save_category($post_id, $object){
+    
+    // Retrieve the user input from "my_field" field
+    get_field('location');
+
+}

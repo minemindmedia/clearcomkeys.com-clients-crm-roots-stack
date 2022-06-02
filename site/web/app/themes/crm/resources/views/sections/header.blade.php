@@ -4,7 +4,7 @@
         <div class="relative flex items-center justify-between h-16 lg:border-b lg:border-indigo-400 lg:border-opacity-25">
           <div class="flex items-center px-2 lg:px-0">
             <div class="flex-shrink-0">
-              <img class="block w-8 h-8" src="https://tailwindui.com/img/logos/workflow-mark-indigo-300.svg" alt="Workflow">
+             <img class="block w-auto h-8" src="@asset("images/cclogo-white.png")" alt="ClearCom Technologies">
             </div>
             <div class="hidden lg:block lg:ml-10">
               <div class="flex space-x-4">
@@ -13,9 +13,9 @@
 
                 <a href="/contacts" class="px-3 py-2 text-sm font-medium text-white rounded-md hover:bg-indigo-500 hover:bg-opacity-75"> Contacts </a>
 
-                <a href="/recon-centers" class="px-3 py-2 text-sm font-medium text-white rounded-md hover:bg-indigo-500 hover:bg-opacity-75"> Recon Centers </a>
+                <a href="/locations" class="px-3 py-2 text-sm font-medium text-white rounded-md hover:bg-indigo-500 hover:bg-opacity-75"> Locations </a>
 
-                <a href="/stores" class="px-3 py-2 text-sm font-medium text-white rounded-md hover:bg-indigo-500 hover:bg-opacity-75"> Stores </a>
+                <a href="/companies" class="px-3 py-2 text-sm font-medium text-white rounded-md hover:bg-indigo-500 hover:bg-opacity-75"> Companies </a>
 
               </div>
             </div>

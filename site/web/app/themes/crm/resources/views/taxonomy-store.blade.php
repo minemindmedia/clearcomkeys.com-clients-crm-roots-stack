@@ -2,13 +2,23 @@
 
 @section('content')
 
+@php
+    $queried_object = get_queried_object(); 
+    $taxonomy = $queried_object->taxonomy;
+    $term_id = $queried_object->term_id;  
+    $storename = get_field('store_name', $queried_object);
+    $center = get_field('choose_recon_center', $queried_object);
+@endphp
 
 
-<?php if( have_rows('physical_address') ): ?>
-    <?php while( have_rows('physical_address') ): the_row(); 
+
+
+
+<?php if( have_rows('shipping_address', $queried_object) ): ?>
+    <?php while( have_rows('shipping_address', $queried_object) ): the_row(); 
 
         // Get sub field values.
-        $company = get_sub_field('company');
+        
         $address = get_sub_field('street_address');
         $city = get_sub_field('city');
         $state = get_sub_field('state');
@@ -18,11 +28,11 @@
 
         ?>
 
-<!-- This example requires Tailwind CSS v2.0+ -->
+
 <div class="lg:flex lg:items-center lg:justify-between">
   <div class="flex-1 min-w-0">
     <h2 class="mt-2 text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
-      <?php the_field('recon_center_name'); ?>
+      {{ $storename }}
     </h2>
     <div class="flex flex-col mt-1 sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
       <div class="flex items-center mt-2 text-sm text-gray-500">
@@ -31,7 +41,11 @@
           <path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd" />
           <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
         </svg>
-        {{ $company }}
+        @if( $center )
+          <h2>RECON CENTER: 
+            <a href="<?php echo esc_html( get_term_link( $center ) ); ?>">
+            <?php echo esc_html( $center->name ); ?></a></h2>
+        @endif
       </div>
       <div class="flex items-center mt-2 text-sm text-gray-500">
         <!-- Heroicon name: solid/location-marker -->
@@ -58,13 +72,7 @@
   <div class="flex mt-5 lg:mt-0 lg:ml-4">
 
     <span class="sm:ml-3">
-      <button type="button" class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-        <!-- Heroicon name: solid/check -->
-        <svg class="w-5 h-5 mr-2 -ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-        </svg>
-        Edit
-      </button>
+      @include('components.modal-edit-recon-center')
     </span>
 
     
@@ -79,7 +87,7 @@
 
   <?php
   if(have_posts()) : ?>
-  <table class="min-w-full divide-y divide-gray-300">
+  <table class="min-w-full mt-8 divide-y divide-gray-300" id="filterTable">
     <thead class="bg-gray-50">
       <tr>
         <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Last Name</th>

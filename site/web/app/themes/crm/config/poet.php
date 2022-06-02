@@ -37,13 +37,21 @@ return [
     */
 
     'taxonomy' => [
-        'recon-center' => [
+        'location' => [
             'links' => ['contacts'],
             'meta_box' => 'radio',
+            'labels' => [
+                'singular' => 'Location',
+                'plural' => 'Locations',
+            ],
         ],
-        'store' => [
+        'company' => [
             'links' => ['contacts'],
             'meta_box' => 'radio',
+            'labels' => [
+                'singular' => 'Company',
+                'plural' => 'Companies',
+            ],
         ],
     ],
 

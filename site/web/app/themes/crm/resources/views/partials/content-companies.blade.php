@@ -4,7 +4,7 @@
   
     <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 whitespace-nowrap sm:pl-6">
        <p>
-          <a href="{{ get_term_link( $term->term_id, 'store') }}">{{ $term->name }}</a>
+          <a href="{{ get_term_link( $term->term_id, 'compa ny') }}">{{ $term->name }}</a>
           </p>
     </td>
     

@@ -37,13 +37,13 @@ return [
     */
 
     'taxonomy' => [
-        'recon-center' => [
-            'links' => ['contacts'],
+        'location' => [
+            'links' => ['locations'],
             'meta_box' => 'radio',
             'hierarchical' => true
         ],
-        'store' => [
-            'links' => ['contacts'],
+        'company' => [
+            'links' => ['company'],
             'meta_box' => 'radio',
         ],
     ],

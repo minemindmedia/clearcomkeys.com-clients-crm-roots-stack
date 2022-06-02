@@ -43,6 +43,7 @@
               
                 <?php acf_form(array(
                     'post_id'       => 'new_post',
+                    'id' => 'new-contact',
                     'new_post'      => array(
                         'post_type'     => 'contacts',
                         'post_status'   => 'publish',

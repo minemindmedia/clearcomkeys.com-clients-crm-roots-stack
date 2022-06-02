@@ -27,7 +27,7 @@ class LocationContacts extends Field
                 'required' => 1,
                 'conditional_logic' => [],
                 'wrapper' => [
-                    'width' => '50%',
+                    'width' => '',
                     'class' => '',
                     'id' => '',
                 ],
@@ -47,7 +47,7 @@ class LocationContacts extends Field
                 'required' => 1,
                 'conditional_logic' => [],
                 'wrapper' => [
-                    'width' => '50%',
+                    'width' => '',
                     'class' => '',
                     'id' => '',
                 ],
@@ -76,7 +76,7 @@ class LocationContacts extends Field
                 'required' => 1,
                 'conditional_logic' => [],
                 'wrapper' => [
-                    'width' => '100%',
+                    'width' => '',
                     'class' => '',
                     'id' => '',
                 ],
@@ -105,7 +105,7 @@ class LocationContacts extends Field
                 'required' => 1,
                 'conditional_logic' => [],
                 'wrapper' => [
-                    'width' => '100%',
+                    'width' => '',
                     'class' => '',
                     'id' => '',
                 ],
@@ -131,7 +131,7 @@ class LocationContacts extends Field
             ->addTaxonomy('recon_center_location', [
                 'label' => 'Recon Center Location',
                 'instructions' => 'Choose a <b>RECON CENTER LOCATION</b> for this user. If the location doesn\'t exist, then you must <a href="/wp/wp-admin/edit-tags.php?taxonomy=recon_center&post_type=contacts" target="_blank">add one</a> first.',
-                'required' => 1,
+                'required' => 0,
                 'wrapper' => [
                     'width' => '',
                     'class' => '',
@@ -139,9 +139,9 @@ class LocationContacts extends Field
                 ],
                 'taxonomy' => 'recon-center',
                 'field_type' => 'select',
-                'allow_null' => 0,
+                'allow_null' => 1,
                 'add_term' => 0,
-                'save_terms' => 0,
+                'save_terms' => 1,
                 'load_terms' => 0,
                 'return_format' => 'object',
                 'multiple' => 0,
@@ -152,7 +152,7 @@ class LocationContacts extends Field
             ->addTaxonomy('store_location', [
                 'label' => 'Store Location',
                 'instructions' => 'Choose a <b>STORE LOCATION</b> for this user. If the location doesn\'t exist, then you must <a href="/wp/wp-admin/edit-tags.php?taxonomy=store&post_type=contacts" target="_blank">add one</a> first.',
-                'required' => 1,
+                'required' => 0,
                 'wrapper' => [
                     'width' => '',
                     'class' => '',
@@ -187,7 +187,7 @@ class LocationContacts extends Field
                 ->addText('first_name', [
                     'required' => 1,
                     'wrapper' => [
-                    'width' => '50%',
+                    'width' => '',
                     'class' => '',
                     'id' => '',
                     ],
@@ -195,7 +195,7 @@ class LocationContacts extends Field
                 ->addText('last_name', [
                     'required' => 1,
                     'wrapper' => [
-                    'width' => '50%',
+                    'width' => '',
                     'class' => '',
                     'id' => '',
                     ],
@@ -209,7 +209,7 @@ class LocationContacts extends Field
                             'ca'
                         ),
                     'wrapper' => [
-                    'width' => '50%',
+                    'width' => '',
                     'class' => '',
                     'id' => '',
                     ],
@@ -217,7 +217,7 @@ class LocationContacts extends Field
                 ->addText('email', [
                     'required' => 1,
                     'wrapper' => [
-                    'width' => '50%',
+                    'width' => '',
                     'class' => '',
                     'id' => '',
                     'acfe_field_group_condition' => 1,
@@ -244,7 +244,7 @@ class LocationContacts extends Field
                     'instructions' => 'Enter the users website login.',
                     'required' => 1,
                     'wrapper' => [
-                    'width' => '33.3%',
+                    'width' => '',
                     'class' => '',
                     'id' => '',
                     ],
@@ -254,7 +254,7 @@ class LocationContacts extends Field
                     'required' => 1,
                     'type' => 'text',
                     'wrapper' => [
-                    'width' => '33.3%',
+                    'width' => '',
                     'class' => '',
                     'id' => '',
                     ],
@@ -265,7 +265,7 @@ class LocationContacts extends Field
                     'required' => 0,
                     'conditional_logic' => [],
                     'wrapper' => [
-                        'width' => '33.3%',
+                        'width' => '',
                         'class' => '',
                         'id' => '',
                     ],
@@ -283,7 +283,7 @@ class LocationContacts extends Field
                     'required' => 0,
                     'conditional_logic' => [],
                     'wrapper' => [
-                    'width' => '100%',
+                    'width' => '',
                     'class' => '',
                     'id' => '',
                     ],
@@ -306,7 +306,8 @@ class LocationContacts extends Field
                         'display_format' => 'F j, Y',
                         'return_format' => 'Y-m-d',
                     ])
-                ->endRepeater()
+            ->endRepeater()
+                
 
             ->addRepeater('notes', [
                     'label' => 'Notes',
@@ -314,7 +315,7 @@ class LocationContacts extends Field
                     'required' => 0,
                     'conditional_logic' => [],
                     'wrapper' => [
-                    'width' => '100%',
+                    'width' => '',
                     'class' => '',
                     'id' => '',
                     ],
@@ -329,7 +330,7 @@ class LocationContacts extends Field
                         'instructions' => '',
                         'required' => 0,
                         'wrapper' => [
-                            'width' => '50%',
+                            'width' => '',
                             'class' => '',
                             'id' => '',
                         ],
@@ -345,7 +346,7 @@ class LocationContacts extends Field
                         'readonly' => 1,
                         'required' => 1,
                         'wrapper' => [
-                            'width' => '50%',
+                            'width' => '',
                             'class' => '',
                             'id' => '',
                         ],

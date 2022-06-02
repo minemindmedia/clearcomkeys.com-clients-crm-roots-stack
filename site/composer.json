@@ -56,7 +56,8 @@
     "satispress/acf-extended-pro": "^0.8.8.7",
     "satispress/advanced-forms-pro": "1.6.6",
     "admin-columns/admin-columns-pro": "*",
-    "admin-columns/ac-addon-acf": "*"
+    "admin-columns/ac-addon-acf": "*",
+    "roots/acorn": "^2.0"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.6.2",

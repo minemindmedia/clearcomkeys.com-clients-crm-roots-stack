@@ -20,6 +20,14 @@ class LocationStores extends Field
             ->setLocation('taxonomy', '==', 'store');
 
         $locationStores 
+            ->addText('store_name', [
+                'label' => 'Store Name',
+                'wrapper' => [
+                'width' => '100%',
+                'class' => '',
+                'id' => '',
+                ],
+            ])
             ->addTaxonomy('choose_recon_center', [
                 'label' => 'Recon Center',
                 'instructions' => 'Choose the recon center location this parts store is associated with.',
@@ -32,11 +40,11 @@ class LocationStores extends Field
                 ],
                 'taxonomy' => 'recon-center',
                 'field_type' => 'select',
-                'allow_null' => 0,
-                'add_term' => 1,
-                'save_terms' => 0,
+                'allow_null' => 1,
+                'add_term' => 0,
+                'save_terms' => 1,
                 'load_terms' => 0,
-                'return_format' => 'id',
+                'return_format' => 'object',
                 'multiple' => 0,
             ])
             ->addGroup('shipping_address', [

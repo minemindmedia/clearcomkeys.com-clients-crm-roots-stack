@@ -59,7 +59,7 @@
                           @endif
                       @elseif( get_field('recon_center_store') == 'Store' )
                           @if( $storelocation )
-                              {!! $storelocation->name !!}
+                              AutoZone Las Vegas***
                           @endif
                       @endif
                   </dd>
