@@ -14,32 +14,62 @@ class Contacts extends Field
      */
     public function fields()
     {
-        $contacts = new FieldsBuilder('location_contacts');
+        $contacts = new FieldsBuilder('contacts');
         $todaysDate = date("F j, Y, g:i a");
 
         $contacts
             ->setLocation('post_type', '==', 'contacts');
 
         $contacts
-            ->addTaxonomy('company', [
-                'label' => 'Companny',
-                'instructions' => 'Choose a <b>company</b> for this user. If the company doesn\'t exist, add one first or choose uncategorized.',
+            ->addSelect('existing_new', [
+                'label' => 'New Location or Existing?',
+                'instructions' => 'Create a new location or choose an existing one.',
+                'required' => 0,
+                'conditional_logic' => [],
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+                'choices' => ['Choose one', 'Existing', 'New'],
+                'default_value' => ['Choose one'],
+                'allow_null' => 0,
+                'multiple' => 0,
+                'ui' => 0,
+                'ajax' => 0,
+                'return_format' => 'value',
+                'placeholder' => '',
+            ])
+            ->addTaxonomy('location', [
+                'label' => 'Location',
+                'instructions' => 'Choose an existing location for this contact.',
                 'required' => 0,
                 'wrapper' => [
                     'width' => '',
                     'class' => '',
                     'id' => '',
                 ],
-                'taxonomy' => 'company',
+                'taxonomy' => 'location',
                 'field_type' => 'select',
                 'allow_null' => 1,
-                'add_term' => 0,
+                'add_term' => 1,
                 'save_terms' => 1,
-                'load_terms' => 0,
+                'load_terms' => 1,
                 'return_format' => 'object',
                 'multiple' => 0,
             ])
-
+            ->conditional('existing_new', '==', 'Existing')
+            ->addText('new_location', [
+                'label' => 'New Location Name',
+                'instructions' => 'Enter the new location name for this contact',
+                'required' => 0,
+                'wrapper' => [
+                'width' => '',
+                'class' => '',
+                'id' => '',
+                ],
+            ])
+            ->conditional('existing_new', '==', 'New')
             ->addGroup('contact_details', [
                 'label' => 'Contact Details',
                 'instructions' => '',
@@ -51,11 +81,11 @@ class Contacts extends Field
                 'layout' => 'block',
                 'sub_fields' => [],
             ])
-                ->conditional('recon_center_location', '!=', '')
-                    ->or('store_location', '!=', '')
+            ->conditional('location', '!=', '')
+                ->or('new_location', '!=', '')
 
                 ->addText('first_name', [
-                    'required' => 1,
+                    'required' => 0,
                     'wrapper' => [
                     'width' => '',
                     'class' => '',
@@ -63,7 +93,7 @@ class Contacts extends Field
                     ],
                 ])
                 ->addText('last_name', [
-                    'required' => 1,
+                    'required' => 0,
                     'wrapper' => [
                     'width' => '',
                     'class' => '',
@@ -71,7 +101,7 @@ class Contacts extends Field
                     ],
                 ])
                 ->addField('phone', 'acfe_phone_number', [
-                    'required' => 1,
+                    'required' => 0,
                     'label' => 'Phone Number',
                     'default_country' => 'us',
                         'countries' => array(
@@ -90,11 +120,28 @@ class Contacts extends Field
                     'width' => '',
                     'class' => '',
                     'id' => '',
-                    'acfe_field_group_condition' => 1,
                     ],
                 ])
             ->endGroup()
 
+            ->addTrueFalse('add_access_details', [
+                'label' => 'Add Access Details?',
+                'instructions' => 'Would you like to add their website access information?',
+                'required' => 0,
+                'conditional_logic' => [],
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+                'message' => '',
+                'default_value' => 0,
+                'ui' => 1,
+                'ui_on_text' => 'Yes',
+                'ui_off_text' => 'No',
+            ])
+            ->conditional('location', '!=', '')
+                ->or('new_location', '!=', '')
             ->addGroup('access_details', [
                 'label' => 'Access Details',
                 'instructions' => '',
@@ -107,12 +154,10 @@ class Contacts extends Field
                 'layout' => 'block',
                 'sub_fields' => [],
             ])
-            ->conditional('field_location_contacts_contact_details_email', '!=', '')
-                ->and('field_location_contacts_contact_type', '!=', 'Regional Manager')
-
+            ->conditional('add_access_details', '==', 1)
                 ->addText('login', [
                     'instructions' => 'Enter the users website login.',
-                    'required' => 1,
+                    'required' => 0,
                     'wrapper' => [
                     'width' => '',
                     'class' => '',
@@ -121,7 +166,7 @@ class Contacts extends Field
                 ])
                 ->addText('password', [
                     'instructions' => 'Enter the users website password.',
-                    'required' => 1,
+                    'required' => 0,
                     'type' => 'text',
                     'wrapper' => [
                     'width' => '',
@@ -147,9 +192,27 @@ class Contacts extends Field
                 ])
             ->endGroup()
 
+            ->addTrueFalse('add_training_dates', [
+                'label' => 'Add Training Dates?',
+                'instructions' => 'Would you like to add any training dates for this contact?',
+                'required' => 0,
+                'conditional_logic' => [],
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+                'message' => '',
+                'default_value' => 0,
+                'ui' => 1,
+                'ui_on_text' => 'Yes',
+                'ui_off_text' => 'No',
+            ])
+            ->conditional('location', '!=', '')
+                ->or('new_location', '!=', '')
             ->addRepeater('training_dates', [
                     'label' => 'Training Dates',
-                    'instructions' => 'To add a training date, click the blue "Add Training Date" button below.',
+                    'instructions' => 'To add training dates, click the button.',
                     'required' => 0,
                     'conditional_logic' => [],
                     'wrapper' => [
@@ -163,6 +226,7 @@ class Contacts extends Field
                     'button_label' => 'Add Training Date',
                     'sub_fields' => [],
                 ])
+                ->conditional('add_training_dates', '==', 1)
                     ->addDatePicker('training_date', [
                         'label' => 'Training Date',
                         'instructions' => '',
@@ -178,7 +242,24 @@ class Contacts extends Field
                     ])
             ->endRepeater()
                 
-
+            ->addTrueFalse('add_notes', [
+                'label' => 'Add Notes?',
+                'instructions' => 'Would you like to add any notes for this contact?',
+                'required' => 0,
+                'conditional_logic' => [],
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+                'message' => '',
+                'default_value' => 0,
+                'ui' => 1,
+                'ui_on_text' => 'Yes',
+                'ui_off_text' => 'No',
+            ])
+            ->conditional('location', '!=', '')
+                ->or('new_location', '!=', '')
             ->addRepeater('notes', [
                     'label' => 'Notes',
                     'instructions' => '',
@@ -195,6 +276,7 @@ class Contacts extends Field
                     'button_label' => 'Add Note',
                     'sub_fields' => [],
                 ])
+                ->conditional('add_notes', '==', 1)
                     ->addText('note', [
                         'label' => 'Add Note',
                         'instructions' => '',
