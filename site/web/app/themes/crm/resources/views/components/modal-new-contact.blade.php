@@ -41,17 +41,7 @@
                   </div>
                 </div>
               
-                <?php acf_form(array(
-                    'post_id'       => 'new_post',
-                    'id' => 'new-contact',
-                    'new_post'      => array(
-                        'post_type'     => 'contacts',
-                        'post_status'   => 'publish',
-                        'post_title'    => true
-                    ),
-                    'return' => '%post_url%',
-                    'submit_value'  => 'Add new contact'
-                )); ?>
+                <?php acfe_form('contacts'); ?>
               
             </div>
         </div>

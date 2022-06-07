@@ -101,7 +101,7 @@
                                 </a>
                               @endforeach
                           @else 
-                            <p>No company has been selected.</p>
+                            <p>No company assigned.</p>
                           @endif
                         @endif
                       @endwhile

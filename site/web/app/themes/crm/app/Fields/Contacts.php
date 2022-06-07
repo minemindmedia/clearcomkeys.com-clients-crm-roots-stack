@@ -27,7 +27,7 @@ class Contacts extends Field
                 'required' => 0,
                 'conditional_logic' => [],
                 'wrapper' => [
-                'width' => '100%',
+                'width' => '',
                 'class' => '',
                 'id' => '',
                 ],
@@ -40,7 +40,7 @@ class Contacts extends Field
                     'required' => 0,
                     'conditional_logic' => [],
                     'wrapper' => [
-                        'width' => '50%',
+                        'width' => '',
                         'class' => '',
                         'id' => '',
                     ],
@@ -56,7 +56,7 @@ class Contacts extends Field
                     'required' => 0,
                     'conditional_logic' => [],
                     'wrapper' => [
-                        'width' => '50%',
+                        'width' => '',
                         'class' => '',
                         'id' => '',
                     ],
@@ -73,12 +73,12 @@ class Contacts extends Field
                 ->conditional('assign_location', '==', 1)
             ->endGroup()
             ->addGroup('company_relationship', [
-                'label' => 'company',
+                'label' => 'Company',
                 'instructions' => '',
                 'required' => 0,
                 'conditional_logic' => [],
                 'wrapper' => [
-                'width' => '100%',
+                'width' => '',
                 'class' => '',
                 'id' => '',
                 ],
@@ -91,7 +91,7 @@ class Contacts extends Field
                     'required' => 0,
                     'conditional_logic' => [],
                     'wrapper' => [
-                        'width' => '50%',
+                        'width' => '',
                         'class' => '',
                         'id' => '',
                     ],
@@ -107,7 +107,7 @@ class Contacts extends Field
                     'required' => 0,
                     'conditional_logic' => [],
                     'wrapper' => [
-                        'width' => '50%',
+                        'width' => '',
                         'class' => '',
                         'id' => '',
                     ],
@@ -293,7 +293,7 @@ class Contacts extends Field
                         'required' => 0,
                         'conditional_logic' => [],
                         'wrapper' => [
-                            'width' => '50%',
+                            'width' => '',
                             'class' => '',
                             'id' => '',
                         ],
@@ -306,7 +306,7 @@ class Contacts extends Field
                         'required' => 0,
                         'conditional_logic' => [],
                         'wrapper' => [
-                            'width' => '50%',
+                            'width' => '',
                             'class' => '',
                             'id' => '',
                         ],
