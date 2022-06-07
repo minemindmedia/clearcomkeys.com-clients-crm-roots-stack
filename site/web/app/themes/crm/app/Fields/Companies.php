@@ -17,7 +17,7 @@ class Companies extends Field
         $companies = new FieldsBuilder('companies');
 
         $companies
-            ->setLocation('taxonomy', '==', 'company');
+            ->setLocation('post_type', '==', 'companies');
 
         $companies 
             ->addText('company', [
@@ -28,9 +28,9 @@ class Companies extends Field
                 'id' => '',
                 ],
             ])
-            ->addTaxonomy('choose_location', [
+            ->addRelationship('location', [
                 'label' => 'Location',
-                'instructions' => 'Choose the location this company is associated with.',
+                'instructions' => 'Choose a location for this company',
                 'required' => 0,
                 'conditional_logic' => [],
                 'wrapper' => [
@@ -38,14 +38,15 @@ class Companies extends Field
                     'class' => '',
                     'id' => '',
                 ],
-                'taxonomy' => 'location',
-                'field_type' => 'select',
-                'allow_null' => 1,
-                'add_term' => 0,
-                'save_terms' => 1,
-                'load_terms' => 0,
+                'post_type' => ['locations'],
+                'taxonomy' => [],
+                'filters' => [
+                    0 => 'search',
+                ],
+                'elements' => '',
+                'min' => '0',
+                'max' => '1',
                 'return_format' => 'object',
-                'multiple' => 0,
             ])
             ->addGroup('shipping_address', [
                 'wrapper' => [
@@ -87,7 +88,7 @@ class Companies extends Field
                     ],
                 ])
                 ->addField('phone', 'acfe_phone_number', [
-                    'required' => 1,
+                    'required' => 0,
                     'label' => 'Phone Number',
                     'default_country' => 'us',
                         'countries' => array(
@@ -156,7 +157,7 @@ class Companies extends Field
                     ],
                 ])
                 ->addField('phone', 'acfe_phone_number', [
-                    'required' => 1,
+                    'required' => 0,
                     'label' => 'Phone Number',
                     'default_country' => 'us',
                         'countries' => array(

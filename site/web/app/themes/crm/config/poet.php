@@ -16,12 +16,34 @@ return [
         'contacts' => [
             'enter_title_here' => 'Enter contact title',
             'menu_icon' => 'dashicons-book-alt',
-            'supports' => ['title', 'editor', 'author', 'revisions', 'thumbnail'],
+            'supports' => ['author', 'revisions'],
             'show_in_rest' => true,
             'has_archive' => true,
             'labels' => [
                 'singular' => 'Contact',
                 'plural' => 'Contacts',
+            ],
+        ],
+        'Locations' => [
+            'enter_title_here' => 'Enter location name',
+            'menu_icon' => 'dashicons-book-alt',
+            'supports' => ['author', 'revisions'],
+            'show_in_rest' => true,
+            'has_archive' => true,
+            'labels' => [
+                'singular' => 'Location',
+                'plural' => 'Locations',
+            ],
+        ],
+        'Companies' => [
+            'enter_title_here' => 'Enter company tinamele',
+            'menu_icon' => 'dashicons-book-alt',
+            'supports' => ['author', 'revisions'],
+            'show_in_rest' => true,
+            'has_archive' => true,
+            'labels' => [
+                'singular' => 'Company',
+                'plural' => 'Companies',
             ],
         ],
     ],
@@ -36,24 +58,6 @@ return [
     |
     */
 
-    'taxonomy' => [
-        'location' => [
-            'links' => ['contacts'],
-            'meta_box' => 'radio',
-            'labels' => [
-                'singular' => 'Location',
-                'plural' => 'Locations',
-            ],
-        ],
-        'company' => [
-            'links' => ['contacts'],
-            'meta_box' => 'radio',
-            'labels' => [
-                'singular' => 'Company',
-                'plural' => 'Companies',
-            ],
-        ],
-    ],
 
     /*
     |--------------------------------------------------------------------------

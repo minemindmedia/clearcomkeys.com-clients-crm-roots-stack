@@ -17,18 +17,18 @@
         class="fixed inset-0 z-10 overflow-y-auto"
     >
         
-        <div x-show="open" x-transition.opacity class="fixed inset-0 bg-black bg-opacity-50"></div>
+        <div x-show="open" x-transition.opacity class="absolute top-0 bottom-0 left-0 right-0 bg-black bg-opacity-50"></div>
 
         
         <div
             x-show="open" x-transition
             x-on:click="open = false"
-            class="relative flex items-center justify-center min-h-screen p-4"
+            class="absolute top-0 bottom-0 left-0 right-0 items-center justify-center w-screen h-screen"
         >
             <div
                 x-on:click.stop
                 x-trap.noscroll.inert="open"
-                class="relative w-full max-w-[75%] p-12 overflow-y-auto bg-white shadow-lg rounded-xl"
+                class="relative w-screen h-screen p-12 overflow-y-auto bg-white"
             >
                 <div class="flex">
                   <div class="flex-1">
@@ -41,7 +41,17 @@
                   </div>
                 </div>
               
-                <?php acfe_form('contacts'); ?>
+                <?php acf_form(array(
+                    'post_id'       => 'new_post',
+                    'id' => 'new-contact',
+                    'new_post'      => array(
+                        'post_type'     => 'contacts',
+                        'post_status'   => 'publish',
+                        'post_title'    => true
+                    ),
+                    'return' => '%post_url%',
+                    'submit_value'  => 'Add new contact'
+                )); ?>
               
             </div>
         </div>

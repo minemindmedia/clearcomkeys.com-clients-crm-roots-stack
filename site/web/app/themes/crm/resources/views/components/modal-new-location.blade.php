@@ -41,7 +41,18 @@
                   </div>
                 </div>
               
-                <?php acfe_form('locations'); ?>
+                              
+                <?php acf_form(array(
+                    'post_id'       => 'new_post',
+                    'id' => 'new-location',
+                    'new_post'      => array(
+                        'post_type'     => 'locations',
+                        'post_status'   => 'publish',
+                        'post_title'    => true
+                    ),
+                    'return' => '%post_url%',
+                    'submit_value'  => 'Add new location'
+                )); ?>
               
             </div>
         </div>

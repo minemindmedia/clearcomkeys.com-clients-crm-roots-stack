@@ -21,55 +21,108 @@ class Contacts extends Field
             ->setLocation('post_type', '==', 'contacts');
 
         $contacts
-            ->addSelect('existing_new', [
-                'label' => 'New Location or Existing?',
-                'instructions' => 'Create a new location or choose an existing one.',
+            ->addGroup('location_relationship', [
+                'label' => 'Location',
+                'instructions' => '',
                 'required' => 0,
                 'conditional_logic' => [],
                 'wrapper' => [
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                ],
-                'choices' => ['Choose one', 'Existing', 'New'],
-                'default_value' => ['Choose one'],
-                'allow_null' => 0,
-                'multiple' => 0,
-                'ui' => 0,
-                'ajax' => 0,
-                'return_format' => 'value',
-                'placeholder' => '',
-            ])
-            ->addTaxonomy('location', [
-                'label' => 'Location',
-                'instructions' => 'Choose an existing location for this contact.',
-                'required' => 0,
-                'wrapper' => [
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                ],
-                'taxonomy' => 'location',
-                'field_type' => 'select',
-                'allow_null' => 1,
-                'add_term' => 1,
-                'save_terms' => 1,
-                'load_terms' => 1,
-                'return_format' => 'object',
-                'multiple' => 0,
-            ])
-            ->conditional('existing_new', '==', 'Existing')
-            ->addText('new_location', [
-                'label' => 'New Location Name',
-                'instructions' => 'Enter the new location name for this contact',
-                'required' => 0,
-                'wrapper' => [
-                'width' => '',
+                'width' => '100%',
                 'class' => '',
                 'id' => '',
                 ],
+                'layout' => 'block',
+                'sub_fields' => [],
             ])
-            ->conditional('existing_new', '==', 'New')
+                ->addTrueFalse('assign_location', [
+                    'label' => 'Assign Location?',
+                    'instructions' => 'Would you like to assign a location to this contact?',
+                    'required' => 0,
+                    'conditional_logic' => [],
+                    'wrapper' => [
+                        'width' => '50%',
+                        'class' => '',
+                        'id' => '',
+                    ],
+                    'message' => '',
+                    'default_value' => 0,
+                    'ui' => 1,
+                    'ui_on_text' => '',
+                    'ui_off_text' => '',
+                ])
+                ->addRelationship('location', [
+                    'label' => 'Location',
+                    'instructions' => 'Choose a location for this contact.',
+                    'required' => 0,
+                    'conditional_logic' => [],
+                    'wrapper' => [
+                        'width' => '50%',
+                        'class' => '',
+                        'id' => '',
+                    ],
+                    'post_type' => ['locations'],
+                    'taxonomy' => [],
+                    'filters' => [
+                        0 => 'search',
+                    ],
+                    'elements' => '',
+                    'min' => '0',
+                    'max' => '1',
+                    'return_format' => 'object',
+                ])
+                ->conditional('assign_location', '==', 1)
+            ->endGroup()
+            ->addGroup('company_relationship', [
+                'label' => 'company',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => [],
+                'wrapper' => [
+                'width' => '100%',
+                'class' => '',
+                'id' => '',
+                ],
+                'layout' => 'block',
+                'sub_fields' => [],
+            ])
+                ->addTrueFalse('assign_company', [
+                    'label' => 'Assign Company?',
+                    'instructions' => 'Would you like to assign a company to this contact?',
+                    'required' => 0,
+                    'conditional_logic' => [],
+                    'wrapper' => [
+                        'width' => '50%',
+                        'class' => '',
+                        'id' => '',
+                    ],
+                    'message' => '',
+                    'default_value' => 0,
+                    'ui' => 1,
+                    'ui_on_text' => '',
+                    'ui_off_text' => '',
+                ])
+                ->addRelationship('company', [
+                    'label' => 'Company',
+                    'instructions' => 'Choose a company for this contact.',
+                    'required' => 0,
+                    'conditional_logic' => [],
+                    'wrapper' => [
+                        'width' => '50%',
+                        'class' => '',
+                        'id' => '',
+                    ],
+                    'post_type' => ['companies'],
+                    'taxonomy' => [],
+                    'filters' => [
+                        0 => 'search',
+                    ],
+                    'elements' => '',
+                    'min' => '0',
+                    'max' => '1',
+                    'return_format' => 'object',
+                ])
+                ->conditional('assign_company', '==', 1)
+            ->endGroup()
             ->addGroup('contact_details', [
                 'label' => 'Contact Details',
                 'instructions' => '',
@@ -78,13 +131,12 @@ class Contacts extends Field
                 'class' => '',
                 'id' => '',
                 ],
-                'layout' => 'block',
+                'layout' => 'table',
                 'sub_fields' => [],
             ])
-            ->conditional('location', '!=', '')
-                ->or('new_location', '!=', '')
 
                 ->addText('first_name', [
+                    'label' => 'First Name',
                     'required' => 0,
                     'wrapper' => [
                     'width' => '',
@@ -93,6 +145,7 @@ class Contacts extends Field
                     ],
                 ])
                 ->addText('last_name', [
+                    'label' => 'Last Name',
                     'required' => 0,
                     'wrapper' => [
                     'width' => '',
@@ -115,7 +168,17 @@ class Contacts extends Field
                     ],
                 ])
                 ->addText('email', [
-                    'required' => 1,
+                    'label' => 'Email Address',
+                    'required' => 0,
+                    'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                    ],
+                ])
+                ->addText('position_title', [
+                    'label' => 'Position/Title',
+                    'required' => 0,
                     'wrapper' => [
                     'width' => '',
                     'class' => '',
@@ -140,8 +203,7 @@ class Contacts extends Field
                 'ui_on_text' => 'Yes',
                 'ui_off_text' => 'No',
             ])
-            ->conditional('location', '!=', '')
-                ->or('new_location', '!=', '')
+            
             ->addGroup('access_details', [
                 'label' => 'Access Details',
                 'instructions' => '',
@@ -208,8 +270,6 @@ class Contacts extends Field
                 'ui_on_text' => 'Yes',
                 'ui_off_text' => 'No',
             ])
-            ->conditional('location', '!=', '')
-                ->or('new_location', '!=', '')
             ->addRepeater('training_dates', [
                     'label' => 'Training Dates',
                     'instructions' => 'To add training dates, click the button.',
@@ -222,7 +282,7 @@ class Contacts extends Field
                     ],
                     'min' => 0,
                     'max' => 0,
-                    'layout' => 'row',
+                    'layout' => 'table',
                     'button_label' => 'Add Training Date',
                     'sub_fields' => [],
                 ])
@@ -233,12 +293,36 @@ class Contacts extends Field
                         'required' => 0,
                         'conditional_logic' => [],
                         'wrapper' => [
-                            'width' => '',
+                            'width' => '50%',
                             'class' => '',
                             'id' => '',
                         ],
                         'display_format' => 'F j, Y',
                         'return_format' => 'Y-m-d',
+                    ])
+                    ->addTimePicker('training_time', [
+                        'label' => 'Training Time',
+                        'instructions' => '',
+                        'required' => 0,
+                        'conditional_logic' => [],
+                        'wrapper' => [
+                            'width' => '50%',
+                            'class' => '',
+                            'id' => '',
+                        ],
+                        'display_format' => 'g:i a',
+                        'return_format' => 'g:i a',
+                        'default_value' => '',
+                    ])
+                    ->addText('training_note', [
+                        'instructions' => 'Enter a note for this training date.',
+                        'required' => 0,
+                        'type' => 'text',
+                        'wrapper' => [
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                        ],
                     ])
             ->endRepeater()
                 

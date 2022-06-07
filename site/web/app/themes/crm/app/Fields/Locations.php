@@ -17,7 +17,7 @@ class Locations extends Field
         $locations = new FieldsBuilder('locations');
 
         $locations
-            ->setLocation('taxonomy', '==', 'location');
+            ->setLocation('post_type', '==', 'locations');
 
         $locations
             ->addText('location', [

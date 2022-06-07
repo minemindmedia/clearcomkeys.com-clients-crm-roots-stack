@@ -88,9 +88,9 @@ add_theme_support('sage');
 //Disable Gutenburg
 add_filter('use_block_editor_for_post', '__return_false', 10);
 
-//
-add_action('acf/save_post', 'my_save_post', 20);
-function my_save_post($post_id){
+// Save Contacts Title from ACF Fields
+add_action('acf/save_post', 'save_contacts_title', 20);
+function save_contacts_title($post_id){
 
   if( get_post_type($post_id) == 'contacts' ) {
 
@@ -116,13 +116,75 @@ function my_save_post($post_id){
 
     // Remove the hook to avoid infinite loop. Please make sure that it has
     // the same priority (20)
-    remove_action('acf/save_post', 'my_save_post', 20);
+    remove_action('acf/save_post', 'save_contacts_title', 20);
 
     // Update the post
     wp_update_post( $postdata );
 
     // Add the hook back
-    add_action('acf/save_post', 'my_save_post', 20);
+    add_action('acf/save_post', 'save_contacts_title', 20);
+
+  }
+
+}
+
+// Save Comany Title from ACF Fields
+add_action('acf/save_post', 'save_company_title', 20);
+function save_company_title($post_id){
+
+  if( get_post_type($post_id) == 'companies' ) {
+
+            $company_name = get_field('company', $post_id);
+            $title = $company_name;
+
+    // Set the post data
+    $postdata = array(
+        'ID'          => $post_id,
+        'post_title'  => $title,
+        'post_type'   => 'companies',
+        'post_name'   => $title
+    );
+
+    // Remove the hook to avoid infinite loop. Please make sure that it has
+    // the same priority (20)
+    remove_action('acf/save_post', 'save_company_title', 20);
+
+    // Update the post
+    wp_update_post( $postdata );
+
+    // Add the hook back
+    add_action('acf/save_post', 'save_company_title', 20);
+
+  }
+
+}
+
+// Save Location Title from ACF Fields
+add_action('acf/save_post', 'save_location_title', 20);
+function save_location_title($post_id){
+
+  if( get_post_type($post_id) == 'locations' ) {
+
+            $location_name = get_field('location', $post_id);
+            $title = $location_name;
+
+    // Set the post data
+    $postdata = array(
+        'ID'          => $post_id,
+        'post_title'  => $title,
+        'post_type'   => 'locations',
+        'post_name'   => $title
+    );
+
+    // Remove the hook to avoid infinite loop. Please make sure that it has
+    // the same priority (20)
+    remove_action('acf/save_post', 'save_location_title', 20);
+
+    // Update the post
+    wp_update_post( $postdata );
+
+    // Add the hook back
+    add_action('acf/save_post', 'save_location_title', 20);
 
   }
 

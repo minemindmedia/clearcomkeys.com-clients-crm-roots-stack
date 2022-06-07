@@ -1,8 +1,6 @@
 @php
     $contact = get_field('contact_details');
     $details = get_field('access_details');
-    $reconlocation = get_field('recon_center_location');
-    $storelocation = get_field('store_location');
 @endphp
 
 <div class="min-h-full">
@@ -41,7 +39,7 @@
 
     <div class="grid max-w-3xl grid-cols-1 gap-6 mx-auto mt-8 sm:px-6 lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-3">
       <div class="space-y-6 lg:col-start-1 lg:col-span-2">
-        <!-- Description list-->
+        
         <section aria-labelledby="applicant-information-title">
           <div class="bg-white shadow sm:rounded-lg">
             <div class="px-4 py-5 sm:px-6">
@@ -53,24 +51,68 @@
                 <div class="sm:col-span-1">
                   <dt class="text-sm font-medium text-gray-500">Location</dt>
                   <dd class="mt-1 text-sm text-gray-900">
-                      @if( get_field('recon_center_store') == 'Recon Center' )
-                          @if( $reconlocation )
-                              {!! $reconlocation->name !!}
+                    @if( have_rows('location_relationship') )
+                      @while( have_rows('location_relationship') )
+                        @php the_row();
+                          $assign = get_sub_field('assign_location');
+                        @endphp
+                        @if ( $assign == 1 )
+                          @php
+                            $location = get_sub_field('location');
+                          @endphp
+                          @if( $location )
+                              @foreach( $location as $l )
+                                @php
+                                  $permalink = get_permalink( $l->ID );
+                                  $title = get_the_title( $l->ID );
+                                @endphp
+                                <a href="{{ $permalink }}">
+                                  {{ $title }}
+                                </a>
+                              @endforeach
+                          @else 
+                            <p>No location has been selected.</p>
                           @endif
-                      @elseif( get_field('recon_center_store') == 'Store' )
-                          @if( $storelocation )
-                              AutoZone Las Vegas***
+                        @endif
+                      @endwhile
+                    @endif
+                  </dd>
+                </div>
+                <div class="sm:col-span-1">
+                  <dt class="text-sm font-medium text-gray-500">Company</dt>
+                  <dd class="mt-1 text-sm text-gray-900">
+                    @if( have_rows('company_relationship') )
+                      @while( have_rows('company_relationship') )
+                        @php the_row();
+                          $assign = get_sub_field('assign_company');
+                        @endphp
+                        @if ( $assign == 1 )
+                          @php
+                            $company = get_sub_field('company');
+                          @endphp
+                          @if( $company )
+                              @foreach( $company as $c )
+                                @php
+                                  $permalink = get_permalink( $c->ID );
+                                  $title = get_the_title( $c->ID );
+                                @endphp
+                                <a href="{{ $permalink }}">
+                                  {{ $title }}
+                                </a>
+                              @endforeach
+                          @else 
+                            <p>No company has been selected.</p>
                           @endif
-                      @endif
+                        @endif
+                      @endwhile
+                    @endif
                   </dd>
                 </div>
                 <div class="sm:col-span-1">
                   <dt class="text-sm font-medium text-gray-500">Title</dt>
                   <dd class="mt-1 text-sm text-gray-900">
-                    @if( get_field('recon_center_store') == 'Recon Center' )
-                      <?php the_field('contact_type_recon_center') ?>
-                      @elseif( get_field('recon_center_store') == 'Store' )
-                      <?php the_field('contact_type_store') ?>
+                    @if( $contact['position_title'] )
+                      {{ $contact['position_title'] }}
                     @endif
                   </dd>
                 </div>
@@ -128,50 +170,7 @@
           </div>
         </section>
 
-        <!-- Comments-->
-        <section aria-labelledby="notes-title">
-          <div class="bg-white shadow sm:rounded-lg sm:overflow-hidden">
-            <div class="divide-y divide-gray-200">
-              <div class="px-4 py-5 sm:px-6">
-                <h2 id="notes-title" class="text-lg font-medium text-gray-900">Notes</h2>
-              </div>
-              <div class="px-4 py-6 sm:px-6">
-
-                @if( have_rows('notes') )
-                  <div class="flow-root mt-6">
-                    <ul role="list" class="space-y-8">
-                        
-                        @while( have_rows('notes') )
-                          
-                          @php
-                            the_row();
-                            $note = get_sub_field('note');
-                            $date = get_sub_field('note_date');
-                          @endphp
-                          <li>
-                        <div class="flex space-x-3">
-                          <div>
-                            <div class="mt-1 text-sm text-gray-700">
-                              <p>{{ $note }}
-                            </div>
-                            <div class="mt-2 space-x-2 text-sm">
-                              <span class="font-medium text-gray-500">
-                                {{ $date }}
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                        @endwhile
-                    </ul>
-                  </div>
-                @endif
-
-              </div>
-            </div>
-            
-          </div>
-        </section>
+        
       </div>
 
       <section aria-labelledby="timeline-title" class="lg:col-start-3 lg:col-span-1">
@@ -187,6 +186,8 @@
                       @php
                         the_row();
                         $date = get_sub_field('training_date');
+                        $time = get_sub_field('training_time');
+                        $note = get_sub_field('training_note');
                         $date2 = date("F dS Y", strtotime($date));
                       @endphp
                       <li>
@@ -202,10 +203,15 @@
                           <div>
                             <p class="text-sm text-gray-500">{{ $date2 }}</p>
                           </div>
-                        
+                          <div>
+                            <p class="text-sm text-gray-500">{{ $time }}</p>
+                          </div>
                         </div>
+                        
                       </div>
+                      <p class="mt-2 text-sm text-gray-500">{{ $note }}</p>
                     </div>
+                    
                   </li>
                     @endwhile
                 </ul>
