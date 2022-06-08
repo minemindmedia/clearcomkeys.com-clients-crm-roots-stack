@@ -30,8 +30,20 @@
       "only": ["wpackagist-plugin/*", "wpackagist-theme/*"]
     },
     {
-      "type": "composer",
-      "url": "https://pivvenit.github.io/acf-composer-bridge/composer/v3/wordpress-muplugin/"
+      "type": "package",
+      "package": {
+        "name": "advanced-custom-fields/advanced-custom-fields-pro",
+        "version": "5.12.2",
+        "type": "wordpress-plugin",
+        "dist": {
+          "type": "zip",
+          "url": "https://connect.advancedcustomfields.com/index.php?a=download&p=pro&k={%PLUGIN_ACF_KEY}&t={%VERSION}"
+        },
+        "require": {
+          "composer/installers": "^1.4",
+          "ffraenz/private-composer-installer": "^5.0"
+        }
+      }
     },
     {
       "type": "composer",
@@ -68,7 +80,8 @@
     "preferred-install": "dist",
     "allow-plugins": {
       "composer/installers": true,
-      "roots/wordpress-core-installer": true
+      "roots/wordpress-core-installer": true,
+      "ffraenz/private-composer-installer": true
     }
   },
   "minimum-stability": "dev",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "97166b816623b695fc3e08742cfd0600",
+    "content-hash": "e337d55d6800a5b34561f7656a5e10f3",
     "packages": [
         {
             "name": "admin-columns/ac-addon-acf",
@@ -35,34 +35,13 @@
             "version": "5.12.2",
             "dist": {
                 "type": "zip",
-                "url": "https://connect.advancedcustomfields.com/v2/plugins/download?p=pro&t=5.12.2"
+                "url": "https://connect.advancedcustomfields.com/index.php?a=download&p=pro&k={%PLUGIN_ACF_KEY}&t={%VERSION}"
             },
             "require": {
-                "composer/installers": "^1.0 || ^2.0",
-                "pivvenit/acf-pro-installer": "^2.4.0 || ^3.0"
+                "composer/installers": "^1.4",
+                "ffraenz/private-composer-installer": "^5.0"
             },
-            "type": "wordpress-muplugin",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Elliot Condon",
-                    "homepage": "http://www.elliotcondon.com",
-                    "role": "Maintainer"
-                },
-                {
-                    "name": "PivvenIT",
-                    "homepage": "https://pivvenit.nl",
-                    "role": "Composer Repository maintainer"
-                }
-            ],
-            "description": "Advanced Custom Fields PRO",
-            "homepage": "https://www.advancedcustomfields.com/",
-            "support": {
-                "docs": "https://www.advancedcustomfields.com/resources/",
-                "forum": "https://support.advancedcustomfields.com/topics/"
-            }
+            "type": "wordpress-plugin"
         },
         {
             "name": "brick/math",
@@ -365,6 +344,73 @@
                 }
             ],
             "time": "2021-10-22T20:16:43+00:00"
+        },
+        {
+            "name": "ffraenz/private-composer-installer",
+            "version": "v5.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ffraenz/private-composer-installer.git",
+                "reference": "8655e3da4e8f99203f13ccca33b9ab953ad30a31"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ffraenz/private-composer-installer/zipball/8655e3da4e8f99203f13ccca33b9ab953ad30a31",
+                "reference": "8655e3da4e8f99203f13ccca33b9ab953ad30a31",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0 || ^2.0",
+                "php": "^7.1 || ^8.0",
+                "vlucas/phpdotenv": "^4.1 || ^5.2"
+            },
+            "require-dev": {
+                "composer/composer": "^1.0 || ^2.0",
+                "laminas/laminas-coding-standard": "^2.0",
+                "symfony/phpunit-bridge": "^5.1",
+                "symfony/process": "^4.4 || ^5.1"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "FFraenz\\PrivateComposerInstaller\\Plugin",
+                "plugin-modifies-downloads": true
+            },
+            "autoload": {
+                "psr-4": {
+                    "FFraenz\\PrivateComposerInstaller\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fränz Friederes",
+                    "email": "fraenz@frieder.es",
+                    "homepage": "https://fraenz.frieder.es"
+                }
+            ],
+            "description": "A composer install helper for private packages",
+            "keywords": [
+                "composer",
+                "env",
+                "plugin",
+                "private",
+                "wordpress",
+                "wp"
+            ],
+            "support": {
+                "issues": "https://github.com/ffraenz/private-composer-installer/issues",
+                "source": "https://github.com/ffraenz/private-composer-installer/tree/v5.0.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/ffraenz",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-10-30T09:35:33+00:00"
         },
         {
             "name": "graham-campbell/result-type",
@@ -1774,74 +1820,6 @@
                 }
             ],
             "time": "2021-12-04T23:24:31+00:00"
-        },
-        {
-            "name": "pivvenit/acf-pro-installer",
-            "version": "3.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/pivvenit/acf-pro-installer.git",
-                "reference": "46bd8033458c2605640dff7fbda2af979eab69b9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/pivvenit/acf-pro-installer/zipball/46bd8033458c2605640dff7fbda2af979eab69b9",
-                "reference": "46bd8033458c2605640dff7fbda2af979eab69b9",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^1.1||^2.0",
-                "ext-json": "*",
-                "php": "^7.3||^8.0",
-                "vlucas/phpdotenv": "^2.0 || ^3.0 || ^4.0 || ^5.0"
-            },
-            "replace": {
-                "philippbaschke/acf-pro-installer": "1.0.2"
-            },
-            "require-dev": {
-                "composer/composer": "^1.0|| ^2.0",
-                "php-parallel-lint/php-parallel-lint": "^1.2.0",
-                "phpstan/phpstan": "^1.1.2",
-                "phpunit/phpunit": "^9.0",
-                "rregeer/phpunit-coverage-check": "^0.3.1",
-                "squizlabs/php_codesniffer": "^3.4",
-                "symfony/process": "^5.1"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "class": "PivvenIT\\Composer\\Installers\\ACFPro\\ACFProInstallerPlugin",
-                "plugin-modifies-downloads": true
-            },
-            "autoload": {
-                "psr-4": {
-                    "PivvenIT\\Composer\\Installers\\ACFPro\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PivvenIT",
-                    "homepage": "https://pivvenit.nl"
-                }
-            ],
-            "description": "A modern maintained install helper for Advanced Custom Fields PRO",
-            "keywords": [
-                "acf",
-                "composer",
-                "env",
-                "plugin",
-                "pro",
-                "wordpress",
-                "wp"
-            ],
-            "support": {
-                "issues": "https://github.com/pivvenit/acf-pro-installer/issues",
-                "source": "https://github.com/pivvenit/acf-pro-installer/tree/3.1.0"
-            },
-            "time": "2022-05-19T18:03:37+00:00"
         },
         {
             "name": "psr/container",
