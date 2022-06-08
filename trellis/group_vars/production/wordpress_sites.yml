@@ -2,13 +2,13 @@
 # Documentation: https://roots.io/trellis/docs/wordpress-sites/
 
 wordpress_sites:
-  clients.clearcomkeys.build:
+  customers.clearcomkeys.build:
     site_hosts:
-    - canonical: clients.clearcomkeys.build
+    - canonical: customers.clearcomkeys.build
       redirects: []
     local_path: ../site
     branch: master
-    repo: git@github.com:example/example.com.git
+    repo: git@github.com:minemindmedia/clearcomkeys.com-clients-crm-roots-stack.git
     repo_subtree_path: site
     multisite:
       enabled: false
