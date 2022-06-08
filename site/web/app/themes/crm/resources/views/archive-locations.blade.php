@@ -29,10 +29,10 @@
           <div class="shadow-sm ring-1 ring-black ring-opacity-5">
             @if( $query->have_posts() )
             <table class="min-w-full border-separate" style="border-spacing: 0" id="filterTable">
-              <thead class="bg-gray-50">
-                <tr>
-                  <th scope="col" class="sticky top-0 border-b border-gray-300 bg-gray-50 bg-opacity-75 py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter sm:pl-6 lg:pl-8">Location</th>
-                  <th scope="col" class="sticky top-0 border-b border-gray-300 bg-gray-50 bg-opacity-75 py-3.5 pr-4 pl-3 backdrop-blur backdrop-filter sm:pr-6 lg:pr-8">
+              <thead class="bg-gray-50m">
+                <tr class="flex w-full">
+                  <th scope="col" class="flex-1 border-b border-gray-300 bg-gray-50 bg-opacity-75 py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter sm:pl-6 lg:pl-8">Location</th>
+                  <th scope="col" class="border-b border-gray-300 bg-gray-50 bg-opacity-75 py-3.5 pr-4 pl-3 backdrop-blur backdrop-filter sm:pr-6 lg:pr-8">
                     <span class="sr-only">Edit</span>
                   </th>
                 </tr>

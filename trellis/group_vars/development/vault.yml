@@ -3,7 +3,7 @@
 
 vault_mysql_root_password: R2g0o4RBShfDNwijMovA8RqzgGlgs1G5nMpYW54iKl0YFQ1hcfayThewtRpi9Exi
 vault_wordpress_sites:
-  clients.clearcomkeys.build:
+  customers.clearcomkeys.build:
     admin_password: hnbsUlATPQjDhYqwFepe0mWJFS3SgvyexEN9UJKgiMOVFA2qc9fnH9roag8SKAxa
     env:
       db_password: RuPsAQmuHTTZ89NfJKxvruPtCP7hDpyWtDxfbNObLlSuwMbangBLNfGv2zdSgIFJ

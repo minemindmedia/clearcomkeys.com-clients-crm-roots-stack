@@ -2,9 +2,9 @@
 # Documentation: https://roots.io/trellis/docs/wordpress-sites/
 
 wordpress_sites:
-  clients.clearcomkeys.build:
+  customers.clearcomkeys.build:
     site_hosts:
-    - canonical: staging.clients.clearcomkeys.build
+    - canonical: staging.customers.clearcomkeys.build
     local_path: ../site
     branch: staging
     repo: git@github.com:minemindmedia/clearcomkeys.com-clients-crm-roots-stack.git

@@ -2,12 +2,12 @@
 # Documentation: https://roots.io/trellis/docs/wordpress-sites/
 
 wordpress_sites:
-  clients.clearcomkeys.build:
+  customers.clearcomkeys.build:
     site_hosts:
-    - canonical: trellis.clients.clearcomkeys.build
+    - canonical: trellis.customers.clearcomkeys.build
       redirects: []
     local_path: ../site
-    admin_email: admin@trellis.clients.clearcomkeys.build
+    admin_email: admin@trellis.customers.clearcomkeys.build
     multisite:
       enabled: false
     ssl:
