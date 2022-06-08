@@ -50,7 +50,6 @@
                         'post_status'   => 'publish',
                         'post_title'    => true
                     ),
-                    'return' => '%post_url%',
                     'submit_value'  => 'Add new location'
                 )); ?>
               
