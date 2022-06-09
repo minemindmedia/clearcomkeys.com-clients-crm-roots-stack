@@ -2,8 +2,8 @@ path: web/wp
 server:
   docroot: web
 @development:
-  ssh: vagrant@trellis.customers.clearcomkeys.build/srv/www/customers.clearcomkeys.com/current
+  ssh: vagrant@trellis.customers.clearcomkeys.build/srv/www/customers.clearcomkeys.build/current
 @staging:
-  ssh: web@staging.customers.clearcomkeys.com/srv/www/customers.clearcomkeys.com/current
+  ssh: web@staging.customers.clearcomkeys.com/srv/www/customers.clearcomkeys.build/current
 @production:
-  ssh: web@custoemrs.clearcomkeys.com/srv/www/customers.clearcomkeys.com/current
+  ssh: web@custoemrs.clearcomkeys.com/srv/www/customers.clearcomkeys.build/current
