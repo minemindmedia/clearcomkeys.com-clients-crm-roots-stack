@@ -27,9 +27,13 @@
     endwhile;
   endif;
 
+
+
+
 @endphp
 
 <div class="flex flex-wrap space-x-4">
+  
 
 <div class="flex-1 overflow-hidden bg-white shadow sm:rounded-lg">
   <div class="px-4 py-5 sm:px-6">
@@ -89,7 +93,45 @@
     </dl>
   </div>
 </div>
-
+@include('components.modal-edit-company')
 </div>
+
+
+
+<div class="flex-1 mt-4 overflow-hidden bg-white shadow sm:rounded-lg">
+  <div class="px-4 py-5 sm:px-6">
+    <h3 class="text-lg font-medium leading-6 text-gray-900">Notes</h3>
+    <p class="max-w-2xl mt-1 text-sm text-gray-500">
+     
+    </p>
+  </div>
+  <div class="border-t border-gray-200">
+
+
+
+
+    @if( have_rows('company_notes') )
+    @while( have_rows('company_notes') )
+    @php
+      the_row();
+      $note = get_sub_field('note');
+      $date = get_sub_field('note_date');
+    @endphp
+
+        <div class="px-4 py-5 bg-gray-50 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">{{ $note }}</dt>
+        <dt class="text-sm font-medium text-gray-500">{{ $date }}</dt>
+        
+      </div>
+
+    @endwhile
+  @endif
+
+
+  </div>
+</div>
+
+
+
 
 

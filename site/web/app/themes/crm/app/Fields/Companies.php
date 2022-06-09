@@ -15,6 +15,7 @@ class Companies extends Field
     public function fields()
     {
         $companies = new FieldsBuilder('companies');
+        $todaysDate = date("F j, Y, g:i a");
 
         $companies
             ->setLocation('post_type', '==', 'companies');
@@ -184,7 +185,48 @@ class Companies extends Field
                     'id' => '',
                     ],
                 ])
-            ->endGroup();
+            ->endGroup()
+            ->addRepeater('company_notes', [
+                    'label' => 'Notes',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => [],
+                    'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                    ],
+                    'min' => 0,
+                    'max' => 0,
+                    'layout' => 'row',
+                    'button_label' => 'Add Note',
+                    'sub_fields' => [],
+                ])
+                ->addText('note', [
+                    'label' => 'Note',
+                    'wrapper' => [
+                    'width' => '25%',
+                    'class' => '',
+                    'id' => '',
+                    ],
+                ])
+                ->addField('note_date', 'acfe_hidden', [
+                    'label' => 'Date',
+                    'instructions' => '',
+                    'readonly' => 1,
+                    'required' => 1,
+                    'wrapper' => [
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ],
+                    'default_value' => $todaysDate,
+                    'placeholder' => '',
+                    'maxlength' => '',
+                    'rows' => '',
+                    'new_lines' => '', // Possible values are 'wpautop', 'br', or ''.
+                ])
+                ->endRepeater();
 
         return $companies->build();
     }
