@@ -1,4 +1,4 @@
-<?php acf_form_head(); ?>
+
 <!doctype html>
 <html <?php language_attributes(); ?>>
   <head>
@@ -15,7 +15,7 @@
       <?php echo view(app('sage.view'), app('sage.data'))->render(); ?>
     </div>
 
-    <?php acf_enqueue_uploader(); ?>
+    
     <?php do_action('get_footer'); ?>
     <?php wp_footer(); ?>
   </body>
