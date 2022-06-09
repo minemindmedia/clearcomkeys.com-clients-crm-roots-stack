@@ -8,7 +8,7 @@ DEVDIR="web/app/uploads/"
 DEVSITE="https://trellis.customers.clearcomkeys.build"
 
 PRODDIR="web@customers.clearcomkeys.com:/srv/www/customers.clearcomkeys.com/shared/uploads/"
-PRODSITE="https://customers.clearcomkeys.com.com"
+PRODSITE="https://customers.clearcomkeys.com"
 
 STAGDIR="web@staging.customers.clearcomkeys.com:/srv/www/customers.clearcomkeys.com/shared/uploads/"
 STAGSITE="https://staging.customers.clearcomkeys.com"
