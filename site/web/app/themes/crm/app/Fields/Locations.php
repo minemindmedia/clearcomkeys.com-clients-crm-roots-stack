@@ -17,7 +17,7 @@ class Locations extends Field
         $locations = new FieldsBuilder('locations');
 
         $locations
-            ->setLocation('post_type', '==', 'location');
+            ->setLocation('post_type', '==', 'locations');
 
         $locations
             ->addText('location', [

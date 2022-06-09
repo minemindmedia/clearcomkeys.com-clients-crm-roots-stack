@@ -1,8 +1,10 @@
+@include('components.modal-edit-company')
+
 <div class="entry-content">
 	
 						<?php 
 
-						$locations = get_sub_field('location');
+						$locations = get_sub_field('locations');
 
 						?>
 						<?php if( $locations ): ?>
