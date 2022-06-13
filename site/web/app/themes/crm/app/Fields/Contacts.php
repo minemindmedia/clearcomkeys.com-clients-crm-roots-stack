@@ -101,14 +101,23 @@ class Contacts extends Field
                     'id' => '',
                     ],
                 ])
-                ->addText('position_title', [
-                    'label' => 'Position/Title',
+                ->addRadio('position_title', [
+                    'label' => 'Position / Title',
+                    'instructions' => '',
                     'required' => 0,
+                    'conditional_logic' => [],
                     'wrapper' => [
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
                     ],
+                    'choices' => ['Store Manager', 'Key Tech'],
+                    'allow_null' => 0,
+                    'other_choice' => 1,
+                    'save_other_choice' => 1,
+                    'default_value' => '',
+                    'layout' => 'horizontal',
+                    'return_format' => 'value',
                 ])
             ->endGroup()
             ->addGroup('location_relationship', [

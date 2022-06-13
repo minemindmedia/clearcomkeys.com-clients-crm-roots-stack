@@ -170,7 +170,7 @@
                             $password = get_sub_field('password');
                           @endphp
                           <div class="sm:col-span-1">
-                            <dt class="text-sm font-medium text-gray-500">Forum Access</dt>
+                            <dt class="text-lg font-medium leading-6 text-gray-900">Forum Access</dt>
                           </div>
                           <div class="sm:col-span-1">
                             <dt class="text-sm font-medium text-gray-500">Login</dt>
