@@ -101,7 +101,7 @@ class Contacts extends Field
                     'id' => '',
                     ],
                 ])
-                ->addRadio('position_title', [
+                ->addSelect('position_title', [
                     'label' => 'Position / Title',
                     'instructions' => '',
                     'required' => 0,
@@ -112,12 +112,13 @@ class Contacts extends Field
                         'id' => '',
                     ],
                     'choices' => ['Store Manager', 'Key Tech'],
-                    'allow_null' => 0,
-                    'other_choice' => 1,
-                    'save_other_choice' => 1,
-                    'default_value' => '',
-                    'layout' => 'horizontal',
+                    'default_value' => [],
+                    'allow_null' => 1,
+                    'multiple' => 0,
+                    'ui' => 1,
+                    'ajax' => 1,
                     'return_format' => 'value',
+                    'placeholder' => '',
                 ])
             ->endGroup()
             ->addGroup('location_relationship', [

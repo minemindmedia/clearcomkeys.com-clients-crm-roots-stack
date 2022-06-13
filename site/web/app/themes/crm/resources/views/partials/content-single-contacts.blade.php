@@ -19,14 +19,7 @@
         </div>
         <div>
           <h1 class="text-2xl font-bold text-gray-900">
-            @if( $contact['first_name'] )
-              {{ $contact['first_name'] }}
-            @endif
-            @if( $contact['last_name'] )
-              <a href="{{ get_permalink() }}">
-                {{ $contact['last_name'] }}
-              </a>
-            @endif
+           
           </h1>
           <p class="text-sm font-medium text-gray-500">Added on <time><?php echo get_the_date('F j, Y, g:i a'); ?></time> by {{ get_the_author() }}.</p>
           <p class="text-sm font-medium text-gray-500">Last modified on <time><?php echo get_the_modified_date('F j, Y, g:i a'); ?></time> by {{ get_the_modified_author() }}.</p>
@@ -147,8 +140,6 @@
                           @endwhile
                         </ul>
                         @endif
-
-                        {{ $phone }}
                       @endwhile
                     @endif
                   </dd>
