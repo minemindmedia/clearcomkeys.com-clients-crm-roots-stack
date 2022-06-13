@@ -215,9 +215,25 @@ class Contacts extends Field
             ->endGroup()
             
 
-            ->addTrueFalse('add_access_details', [
-                'label' => 'Add Access Details?',
-                'instructions' => 'Would you like to add their website access information?',
+            
+            
+            ->addGroup('access_details', [
+                'label' => 'Forum Access',
+                'instructions' => '',
+                'required' => 0,
+                'wrapper' => [
+                'width' => '',
+                'class' => '',
+                'id' => '',
+                ],
+                'layout' => 'block',
+                'sub_fields' => [],
+            ])
+            
+
+            ->addTrueFalse('forum_access', [
+                'label' => 'Add Forum Access?',
+                'instructions' => 'Would you like to add their forum access information?',
                 'required' => 0,
                 'conditional_logic' => [],
                 'wrapper' => [
@@ -231,20 +247,7 @@ class Contacts extends Field
                 'ui_on_text' => 'Yes',
                 'ui_off_text' => 'No',
             ])
-            
-            ->addGroup('access_details', [
-                'label' => 'Access Details',
-                'instructions' => '',
-                'required' => 0,
-                'wrapper' => [
-                'width' => '',
-                'class' => '',
-                'id' => '',
-                ],
-                'layout' => 'block',
-                'sub_fields' => [],
-            ])
-            ->conditional('add_access_details', '==', 1)
+
                 ->addText('login', [
                     'instructions' => 'Enter the users website login.',
                     'required' => 0,
@@ -264,22 +267,7 @@ class Contacts extends Field
                     'id' => '',
                     ],
                 ])
-                ->addTrueFalse('forum_access', [
-                    'label' => 'Forum Access?',
-                    'instructions' => 'Has this user been granted forum access?',
-                    'required' => 0,
-                    'conditional_logic' => [],
-                    'wrapper' => [
-                        'width' => '',
-                        'class' => '',
-                        'id' => '',
-                    ],
-                    'message' => '',
-                    'default_value' => 0,
-                    'ui' => 1,
-                    'ui_on_text' => 'Yes',
-                    'ui_off_text' => 'No',
-                ])
+                ->conditional('forum_access', '==', 1)
             ->endGroup()
 
             ->addTrueFalse('add_training_dates', [

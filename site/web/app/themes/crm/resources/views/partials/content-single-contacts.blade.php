@@ -1,6 +1,6 @@
 @php
     $contact = get_field('contact_details');
-    $details = get_field('access_details');
+    $details = get_field('forum_access');
 @endphp
 
 <div class="min-h-full">
@@ -157,34 +157,40 @@
             </div>
             <div class="px-4 py-5 border-t border-gray-200 sm:px-6">
               <dl class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-3">
-                <div class="sm:col-span-1">
-                  <dt class="text-sm font-medium text-gray-500">Login</dt>
-                  <dd class="mt-1 text-sm text-gray-900">
-                      @if( $details )
-                        {{ $details['login'] }}
-                      @endif
-                  </dd>
-                </div>
-                <div class="sm:col-span-1">
-                  <dt class="text-sm font-medium text-gray-500">Password</dt>
-                  <dd class="mt-1 text-sm text-gray-900">
-                    @if( $details )
-                      {{ $details['password'] }}
+                
+
+                    @if( have_rows('access_details') )
+                      @while( have_rows('access_details') )
+                        @php the_row();
+                          $access = get_sub_field('forum_access');
+                        @endphp
+                        @if ( $access == 1 )
+                          @php
+                            $login = get_sub_field('login');
+                            $password = get_sub_field('password');
+                          @endphp
+                          <div class="sm:col-span-1">
+                            <dt class="text-sm font-medium text-gray-500">Forum Access</dt>
+                          </div>
+                          <div class="sm:col-span-1">
+                            <dt class="text-sm font-medium text-gray-500">Login</dt>
+                            <dd class="mt-1 text-sm text-gray-900">
+                                {{ $login }}
+                            </dd>
+                          </div>
+                          <div class="sm:col-span-1">
+                            <dt class="text-sm font-medium text-gray-500">Password</dt>
+                            <dd class="mt-1 text-sm text-gray-900">
+                              {{ $password }}
+                            </dd>
+                          </div>
+                        @endif
+                      @endwhile
                     @endif
-                  </dd>
-                </div>
-                <div class="sm:col-span-1">
-                  <dt class="text-sm font-medium text-gray-500">Forum access?</dt>
-                  <dd class="mt-1 text-sm text-gray-900">
-                    @if( $details )
-                      @if( $details['forum_access'])
-                        Yes
-                      @else
-                        No
-                      @endif
-                    @endif
-                  </dd>
-                </div>
+
+                    
+                  
+                
                 
               </dl>
             </div>
