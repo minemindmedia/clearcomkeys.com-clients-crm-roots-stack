@@ -1,0 +1,47 @@
+{
+  "chunks": {
+    "byName": {
+      "app": 143,
+      "editor": 189,
+      "runtime": 666,
+      "vendor/app": 329
+    },
+    "bySource": {
+      "0 app": 666,
+      "0 editor": 666,
+      "1 app": 329,
+      "1 editor": 189,
+      "2 app": 143
+    },
+    "usedIds": [
+      143,
+      189,
+      329,
+      666
+    ]
+  },
+  "modules": {
+    "byIdentifier": {
+      "./node_modules/@roots/sage/lib/cjs/client/domReady.js": 329,
+      "./node_modules/@roots/sage/lib/cjs/client/index.js": 194,
+      "./node_modules/alpinejs/dist/module.esm.js": 306,
+      "./node_modules/babel-loader/lib/index.js??ruleSet[1].rules[1].oneOf[0].use[0]!./resources/scripts/app.js": 683,
+      "./node_modules/babel-loader/lib/index.js??ruleSet[1].rules[1].oneOf[0].use[0]!./resources/scripts/editor.js|d6421ec9472236a33a8da65f3762c43d": 982,
+      "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[1].use[2]!./resources/styles/app.css": 402,
+      "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[1].use[2]!./resources/styles/editor.css": 821,
+      "./node_modules/tablefilter/dist/tablefilter/tablefilter.js": 436,
+      "./node_modules/tablefilter/index.js": 269
+    },
+    "usedIds": [
+      194,
+      269,
+      306,
+      329,
+      402,
+      436,
+      683,
+      821,
+      982
+    ]
+  }
+}

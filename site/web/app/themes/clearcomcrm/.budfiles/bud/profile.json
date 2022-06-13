@@ -1,0 +1,1009 @@
+{
+  "version": null,
+  "config": {
+    "development": {},
+    "production": {},
+    "base": {
+      ".editorconfig": {
+        "name": ".editorconfig",
+        "path": "/Users/minemindmedia/Development/trellis.clients.clearcom.build/site/web/app/themes/clearcomcrm/.editorconfig",
+        "module": {}
+      },
+      "bud.config.js": {
+        "name": "bud.config.js",
+        "path": "/Users/minemindmedia/Development/trellis.clients.clearcom.build/site/web/app/themes/clearcomcrm/bud.config.js"
+      },
+      "tailwind.config.js": {
+        "name": "tailwind.config.js",
+        "path": "/Users/minemindmedia/Development/trellis.clients.clearcom.build/site/web/app/themes/clearcomcrm/tailwind.config.js",
+        "module": {
+          "content": [
+            "./app/**/*.php",
+            "./resources/**/*.{php,vue,js}"
+          ],
+          "theme": {
+            "extend": {
+              "colors": {}
+            }
+          },
+          "plugins": [
+            null
+          ],
+          "default": {
+            "content": [
+              "./app/**/*.php",
+              "./resources/**/*.{php,vue,js}"
+            ],
+            "theme": {
+              "extend": {
+                "colors": {}
+              }
+            },
+            "plugins": [
+              null
+            ]
+          }
+        }
+      },
+      "package.json": {
+        "name": "package.json",
+        "path": "/Users/minemindmedia/Development/trellis.clients.clearcom.build/site/web/app/themes/clearcomcrm/package.json",
+        "module": {
+          "name": "sage",
+          "private": true,
+          "browserslist": [
+            "extends @wordpress/browserslist-config"
+          ],
+          "engines": {
+            "node": ">=16.0.0"
+          },
+          "scripts": {
+            "dev": "bud dev",
+            "build": "bud build",
+            "translate": "npm run translate:pot && npm run translate:js",
+            "translate:pot": "wp i18n make-pot . ./resources/lang/sage.pot --ignore-domain --include=\"app,resources\"",
+            "translate:js": "wp i18n make-json ./resources/lang --pretty-print"
+          },
+          "devDependencies": {
+            "@roots/bud": "5.7.3",
+            "@roots/bud-tailwindcss": "5.6.2",
+            "@roots/sage": "5.6.2",
+            "@tailwindcss/forms": "^0.5.1"
+          },
+          "dependencies": {
+            "alpinejs": "^3.10.2",
+            "tablefilter": "^0.7.2"
+          }
+        }
+      },
+      "composer.json": {
+        "name": "composer.json",
+        "path": "/Users/minemindmedia/Development/trellis.clients.clearcom.build/site/web/app/themes/clearcomcrm/composer.json",
+        "module": {
+          "name": "roots/sage",
+          "type": "wordpress-theme",
+          "license": "MIT",
+          "description": "WordPress starter theme with a modern development workflow",
+          "homepage": "https://roots.io/sage/",
+          "authors": [
+            {
+              "name": "Ben Word",
+              "email": "ben@benword.com",
+              "homepage": "https://github.com/retlehs"
+            },
+            {
+              "name": "Scott Walkinshaw",
+              "email": "scott.walkinshaw@gmail.com",
+              "homepage": "https://github.com/swalkinshaw"
+            },
+            {
+              "name": "QWp6t",
+              "email": "hi@qwp6t.me",
+              "homepage": "https://github.com/qwp6t"
+            },
+            {
+              "name": "Brandon Nifong",
+              "email": "brandon@tendency.me",
+              "homepage": "https://github.com/log1x"
+            }
+          ],
+          "keywords": [
+            "wordpress"
+          ],
+          "support": {
+            "issues": "https://github.com/roots/sage/issues",
+            "forum": "https://discourse.roots.io/"
+          },
+          "autoload": {
+            "psr-4": {
+              "App\\": "app/"
+            }
+          },
+          "require": {
+            "php": "^7.4|^8.0",
+            "log1x/acf-composer": "^2.0",
+            "log1x/acf-encrypted-password": "^1.0",
+            "log1x/navi": "^2.0",
+            "log1x/poet": "^2.0",
+            "roots/acorn": "^2.0.3"
+          },
+          "require-dev": {
+            "squizlabs/php_codesniffer": "^3.6"
+          },
+          "suggest": {
+            "log1x/sage-directives": "A collection of useful Blade directives for WordPress and Sage (^1.0).",
+            "log1x/sage-svg": "A useful SVG directive for inlining SVG's within Blade views (^1.0)."
+          },
+          "config": {
+            "optimize-autoloader": true,
+            "preferred-install": "dist",
+            "sort-packages": true
+          },
+          "minimum-stability": "dev",
+          "prefer-stable": true,
+          "scripts": {
+            "lint": [
+              "phpcs --extensions=php --standard=PSR12 app"
+            ]
+          },
+          "extra": {
+            "acorn": {
+              "providers": [
+                "App\\Providers\\ThemeServiceProvider"
+              ],
+              "post-autoload-dump": [
+                "Roots\\Acorn\\ComposerScripts::postAutoloadDump"
+              ]
+            }
+          }
+        }
+      },
+      "jsconfig.json": {
+        "name": "jsconfig.json",
+        "path": "/Users/minemindmedia/Development/trellis.clients.clearcom.build/site/web/app/themes/clearcomcrm/jsconfig.json",
+        "module": {
+          "compilerOptions": {
+            "allowSyntheticDefaultImports": true,
+            "jsx": "preserve",
+            "lib": [
+              "dom",
+              "dom.iterable",
+              "esnext"
+            ],
+            "module": "commonjs",
+            "moduleResolution": "node",
+            "paths": {
+              "@scripts/*": [
+                "./resources/scripts/*"
+              ],
+              "@styles/*": [
+                "./resources/styles/*"
+              ]
+            }
+          },
+          "exclude": [
+            "./public",
+            "./node_modules"
+          ]
+        }
+      },
+      "theme.json": {
+        "name": "theme.json",
+        "path": "/Users/minemindmedia/Development/trellis.clients.clearcom.build/site/web/app/themes/clearcomcrm/theme.json",
+        "module": {
+          "$schema": "https://schemas.wp.org/trunk/theme.json",
+          "version": 2,
+          "settings": {
+            "color": {
+              "palette": [
+                {
+                  "slug": "primary",
+                  "color": "#525ddc",
+                  "name": "Primary"
+                }
+              ],
+              "custom": false,
+              "customGradient": false,
+              "defaultPalette": false,
+              "defaultGradients": false
+            },
+            "custom": {
+              "spacing": {},
+              "typography": {
+                "font-size": {},
+                "line-height": {}
+              }
+            },
+            "spacing": {
+              "padding": true,
+              "units": [
+                "px",
+                "%",
+                "em",
+                "rem",
+                "vw",
+                "vh"
+              ]
+            },
+            "typography": {
+              "customFontSize": false
+            }
+          }
+        }
+      }
+    }
+  },
+  "manifest": {
+    "name": "sage",
+    "private": true,
+    "browserslist": [
+      "extends @wordpress/browserslist-config"
+    ],
+    "engines": {
+      "node": ">=16.0.0"
+    },
+    "scripts": {
+      "dev": "bud dev",
+      "build": "bud build",
+      "translate": "npm run translate:pot && npm run translate:js",
+      "translate:pot": "wp i18n make-pot . ./resources/lang/sage.pot --ignore-domain --include=\"app,resources\"",
+      "translate:js": "wp i18n make-json ./resources/lang --pretty-print"
+    },
+    "devDependencies": {
+      "@roots/bud": "5.7.3",
+      "@roots/bud-tailwindcss": "5.6.2",
+      "@roots/sage": "5.6.2",
+      "@tailwindcss/forms": "^0.5.1"
+    },
+    "dependencies": {
+      "alpinejs": "^3.10.2",
+      "tablefilter": "^0.7.2"
+    }
+  },
+  "installed": {
+    "@roots/bud": "5.7.3",
+    "@roots/bud-tailwindcss": "5.6.2",
+    "@roots/sage": "5.6.2",
+    "@tailwindcss/forms": "^0.5.1",
+    "alpinejs": "^3.10.2",
+    "tablefilter": "^0.7.2"
+  },
+  "context": {
+    "name": "bud",
+    "cwd": "/Users/minemindmedia/Development/trellis.clients.clearcom.build/site/web/app/themes/clearcomcrm",
+    "projectDir": "/Users/minemindmedia/Development/trellis.clients.clearcom.build/site/web/app/themes/clearcomcrm",
+    "manifest": {
+      "name": "sage",
+      "private": true,
+      "browserslist": [
+        "extends @wordpress/browserslist-config"
+      ],
+      "engines": {
+        "node": ">=16.0.0"
+      },
+      "scripts": {
+        "dev": "bud dev",
+        "build": "bud build",
+        "translate": "npm run translate:pot && npm run translate:js",
+        "translate:pot": "wp i18n make-pot . ./resources/lang/sage.pot --ignore-domain --include=\"app,resources\"",
+        "translate:js": "wp i18n make-json ./resources/lang --pretty-print"
+      },
+      "devDependencies": {
+        "@roots/bud": "5.7.3",
+        "@roots/bud-tailwindcss": "5.6.2",
+        "@roots/sage": "5.6.2",
+        "@tailwindcss/forms": "^0.5.1"
+      },
+      "dependencies": {
+        "alpinejs": "^3.10.2",
+        "tablefilter": "^0.7.2"
+      }
+    },
+    "disk": {
+      "projectDir": "/Users/minemindmedia/Development/trellis.clients.clearcom.build/site/web/app/themes/clearcomcrm",
+      "config": {
+        "package.json": "/Users/minemindmedia/Development/trellis.clients.clearcom.build/site/web/app/themes/clearcomcrm/package.json",
+        ".editorconfig": "/Users/minemindmedia/Development/trellis.clients.clearcom.build/site/web/app/themes/clearcomcrm/.editorconfig",
+        "bud.config.js": "/Users/minemindmedia/Development/trellis.clients.clearcom.build/site/web/app/themes/clearcomcrm/bud.config.js",
+        "composer.json": "/Users/minemindmedia/Development/trellis.clients.clearcom.build/site/web/app/themes/clearcomcrm/composer.json",
+        "jsconfig.json": "/Users/minemindmedia/Development/trellis.clients.clearcom.build/site/web/app/themes/clearcomcrm/jsconfig.json",
+        "tailwind.config.js": "/Users/minemindmedia/Development/trellis.clients.clearcom.build/site/web/app/themes/clearcomcrm/tailwind.config.js",
+        "theme.json": "/Users/minemindmedia/Development/trellis.clients.clearcom.build/site/web/app/themes/clearcomcrm/theme.json"
+      }
+    },
+    "application": {
+      "dir": "/Users/minemindmedia/Development/trellis.clients.clearcom.build/site/web/app/themes/clearcomcrm/node_modules/@roots/bud",
+      "name": "@roots/bud",
+      "version": "5.7.3",
+      "description": "Frontend build tools combining the best parts of Symfony Encore and Laravel Mix",
+      "homepage": "https://roots.io/bud",
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/roots/bud.git",
+        "directory": "sources/@roots/bud"
+      },
+      "contributors": [
+        {
+          "name": "kellymears",
+          "url": "https://github.com/kellymears"
+        },
+        {
+          "name": "QWp6t",
+          "url": "https://github.com/QWp6t"
+        },
+        {
+          "name": "clayrisser",
+          "url": "https://github.com/clayrisser"
+        }
+      ],
+      "license": "MIT",
+      "bugs": {
+        "url": "https://github.com/roots/bud/issues"
+      },
+      "funding": {
+        "type": "github sponsors",
+        "url": "https://github.com/sponsors/roots"
+      },
+      "keywords": [
+        "bud",
+        "roots",
+        "webpack"
+      ],
+      "engines": {
+        "node": ">=14"
+      },
+      "bin": "./bin/bud.js",
+      "files": [
+        "assets/",
+        "bin/",
+        "lib/",
+        "types/",
+        "vendor/"
+      ],
+      "main": "./lib/cjs/index.js",
+      "module": "./lib/esm/index.js",
+      "exports": {
+        ".": {
+          "require": "./lib/cjs/index.js",
+          "import": "./lib/esm/index.js"
+        }
+      },
+      "types": "./types/index.d.ts",
+      "devDependencies": {
+        "@skypack/package-check": "0.2.2",
+        "@types/braces": "3.0.1",
+        "@types/fs-extra": "9.0.13",
+        "@types/lodash": "4.14.180",
+        "@types/mini-css-extract-plugin": "2.5.0",
+        "@types/node": "16.11.26",
+        "@types/node-notifier": "8.0.2"
+      },
+      "dependencies": {
+        "@roots/bud-api": "5.7.3",
+        "@roots/bud-build": "5.7.3",
+        "@roots/bud-cache": "5.7.3",
+        "@roots/bud-compiler": "5.7.3",
+        "@roots/bud-dashboard": "5.7.3",
+        "@roots/bud-extensions": "5.7.3",
+        "@roots/bud-framework": "5.7.3",
+        "@roots/bud-hooks": "5.7.3",
+        "@roots/bud-server": "5.7.3",
+        "@roots/bud-support": "5.7.3",
+        "@roots/container": "5.7.3",
+        "@roots/dependencies": "5.7.3",
+        "clean-webpack-plugin": "^4.0.0",
+        "clipanion": "3.2.0-rc.10",
+        "copy-webpack-plugin": "^10.0.0",
+        "html-webpack-plugin": "^5.5.0",
+        "mini-css-extract-plugin": "^2.4.5",
+        "node-notifier": "10.0.1",
+        "schema-utils": "4.0.0",
+        "tslib": "^2.3.1",
+        "typanion": "3.7.1",
+        "type-fest": "^2.5.4",
+        "webpack": "5.70.0",
+        "webpack-cli": "^4.9.1",
+        "webpack-manifest-plugin": "^5.0.0"
+      }
+    },
+    "env": {
+      "NVM_INC": "/Users/minemindmedia/.nvm/versions/node/v16.9.1/include/node",
+      "TERM_PROGRAM": "vscode",
+      "NODE": "/Users/minemindmedia/.nvm/versions/node/v16.9.1/bin/node",
+      "INIT_CWD": "/Users/minemindmedia/Development/trellis.clients.clearcom.build/site/web/app/themes/clearcomcrm",
+      "NVM_CD_FLAGS": "-q",
+      "npm_config_version_git_tag": "true",
+      "SHELL": "/usr/local/bin/zsh",
+      "TERM": "xterm-256color",
+      "TMPDIR": "/var/folders/pm/w6f1kqrn2yd65p5w85l3y8x00000gn/T/",
+      "npm_package_scripts_translate": "npm run translate:pot && npm run translate:js",
+      "npm_config_init_license": "MIT",
+      "TERM_PROGRAM_VERSION": "1.60.1",
+      "npm_package_scripts_dev": "bud dev",
+      "ORIGINAL_XDG_CURRENT_DESKTOP": "undefined",
+      "npm_package_scripts_translate_js": "wp i18n make-json ./resources/lang --pretty-print",
+      "npm_package_private": "true",
+      "npm_config_registry": "https://registry.yarnpkg.com",
+      "ZSH": "/Users/minemindmedia/.oh-my-zsh",
+      "npm_package_readmeFilename": "README.md",
+      "USER": "minemindmedia",
+      "NVM_DIR": "/Users/minemindmedia/.nvm",
+      "npm_package_description": "**Sage** is an open source project and completely free to use.",
+      "npm_package_devDependencies__roots_sage": "5.6.2",
+      "npm_package_license": "MIT",
+      "COMMAND_MODE": "unix2003",
+      "SSH_AUTH_SOCK": "/private/tmp/com.apple.launchd.FKPz4UJ9KW/Listeners",
+      "__CF_USER_TEXT_ENCODING": "0x1F5:0x0:0x0",
+      "npm_execpath": "/Users/minemindmedia/.nvm/versions/node/v16.9.1/lib/node_modules/yarn/bin/yarn.js",
+      "PAGER": "less",
+      "LSCOLORS": "Gxfxcxdxbxegedabagacad",
+      "PATH": "/var/folders/pm/w6f1kqrn2yd65p5w85l3y8x00000gn/T/yarn--1652474374072-0.9050571836610983:/Users/minemindmedia/Development/trellis.clients.clearcom.build/site/web/app/themes/clearcomcrm/node_modules/.bin:/Users/minemindmedia/.config/yarn/link/node_modules/.bin:/Users/minemindmedia/.nvm/versions/node/v16.9.1/libexec/lib/node_modules/npm/bin/node-gyp-bin:/Users/minemindmedia/.nvm/versions/node/v16.9.1/lib/node_modules/npm/bin/node-gyp-bin:/Users/minemindmedia/.nvm/versions/node/v16.9.1/bin/node_modules/npm/bin/node-gyp-bin:/Users/minemindmedia/.nvm/versions/node/v16.9.1/bin:/usr/local/opt/ansible@2.9/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/minemindmedia/.nvm/versions/node/v16.9.1/bin:/usr/local/opt/ansible@2.9/bin",
+      "npm_config_argv": "{\"remain\":[],\"cooked\":[\"run\",\"bud\"],\"original\":[\"bud\",\"build\"]}",
+      "LaunchInstanceID": "542DC419-536A-40ED-951C-FF37BC0F9717",
+      "_": "/Users/minemindmedia/Development/trellis.clients.clearcom.build/site/web/app/themes/clearcomcrm/node_modules/.bin/bud",
+      "__CFBundleIdentifier": "com.microsoft.VSCode",
+      "PWD": "/Users/minemindmedia/Development/trellis.clients.clearcom.build/site/web/app/themes/clearcomcrm",
+      "npm_lifecycle_event": "bud",
+      "LANG": "en_US.UTF-8",
+      "npm_package_name": "sage",
+      "npm_package_scripts_build": "bud build",
+      "npm_config_version_commit_hooks": "true",
+      "XPC_FLAGS": "0x0",
+      "npm_package_devDependencies__tailwindcss_forms": "^0.5.1",
+      "npm_config_bin_links": "true",
+      "npm_package_dependencies_alpinejs": "^3.10.2",
+      "npm_package_engines_node": ">=16.0.0",
+      "XPC_SERVICE_NAME": "0",
+      "npm_package_version": "",
+      "HOME": "/Users/minemindmedia",
+      "SHLVL": "2",
+      "VSCODE_GIT_ASKPASS_MAIN": "/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/git/dist/askpass-main.js",
+      "npm_package_devDependencies__roots_bud": "5.7.3",
+      "npm_config_save_prefix": "^",
+      "npm_config_strict_ssl": "true",
+      "npm_config_version_git_message": "v%s",
+      "npm_package_dependencies_tablefilter": "^0.7.2",
+      "LOGNAME": "minemindmedia",
+      "LESS": "-R",
+      "YARN_WRAP_OUTPUT": "false",
+      "npm_package_browserslist_0": "extends @wordpress/browserslist-config",
+      "npm_package_scripts_translate_pot": "wp i18n make-pot . ./resources/lang/sage.pot --ignore-domain --include=\"app,resources\"",
+      "VSCODE_GIT_IPC_HANDLE": "/var/folders/pm/w6f1kqrn2yd65p5w85l3y8x00000gn/T/vscode-git-839c005d4d.sock",
+      "NVM_BIN": "/Users/minemindmedia/.nvm/versions/node/v16.9.1/bin",
+      "npm_config_version_git_sign": "",
+      "npm_config_ignore_scripts": "",
+      "npm_config_user_agent": "yarn/1.22.17 npm/? node/v16.9.1 darwin x64",
+      "GIT_ASKPASS": "/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/git/dist/askpass.sh",
+      "VSCODE_GIT_ASKPASS_NODE": "/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper (Renderer).app/Contents/MacOS/Code Helper (Renderer)",
+      "npm_config_init_version": "1.0.0",
+      "npm_config_ignore_optional": "",
+      "SECURITYSESSIONID": "186a6",
+      "npm_package_devDependencies__roots_bud_tailwindcss": "5.6.2",
+      "COLORTERM": "truecolor",
+      "npm_node_execpath": "/Users/minemindmedia/.nvm/versions/node/v16.9.1/bin/node",
+      "npm_config_version_tag_prefix": "v",
+      "AUTH_KEY": "qyA3PSIgbQU5gsJjvtj7yunkA5yTmZc8lrgEmDlAoHD2IMmMdbuPGC1rI22aV9iM",
+      "AUTH_SALT": "Wc8CbfYDyd5TqHM7jZezZsDt81AdE5xssmd9XhqqChJhAPgGbY8UbiMFhZdOSDK1",
+      "DB_HOST": "localhost",
+      "DB_NAME": "clients_clearcomkeys_build_development",
+      "DB_PASSWORD": "RuPsAQmuHTTZ89NfJKxvruPtCP7hDpyWtDxfbNObLlSuwMbangBLNfGv2zdSgIFJ",
+      "DB_USER": "clients_clearcomkeys_build",
+      "DB_USER_HOST": "localhost",
+      "DISABLE_WP_CRON": "True",
+      "DOMAIN_CURRENT_SITE": "trellis.clients.clearcomkeys.build",
+      "LOGGED_IN_KEY": "Va6784YenhVlOk6qh9Z96JBt7OMN1UUMQ5Wyv7liyY8skx1o1UNhCy40FrGgAz2R",
+      "LOGGED_IN_SALT": "9eV3oUTiaeSltJhcZADrvoEFB822tyLnguG7tZKHQJkchvTPs8LXIJpRLeszBCH6",
+      "NONCE_KEY": "MAxykOzdBa4I4c3y4ZpJNSqCk3tiiGqgXnCFW8xbUc8DQYWZrkSKpAUzYwHzKX7Z",
+      "NONCE_SALT": "c1REFEAItRLNl9DUdKUdoaG3CLO4jL9mJpBRY2hefcjbzLHiiXoAb6l7OhKCq8hA",
+      "SECURE_AUTH_KEY": "3Au0AaGKcpHtTfgNm3QWbj7p2ArmhJA2L15m8x99WrC97mudhHlNmoyVfpFXYfwI",
+      "SECURE_AUTH_SALT": "ELZYGWnuQhybuZNyks4b9is0bVYQh7lF49qWKSbiIwGDMYUiScIiiyr60EJb71xj",
+      "WP_DEBUG_LOG": "/srv/www/clients.clearcomkeys.build/logs/debug.log",
+      "WP_ENV": "development",
+      "WP_HOME": "http://trellis.clients.clearcomkeys.build",
+      "WP_SITEURL": "http://trellis.clients.clearcomkeys.build/wp",
+      "ACF_PRO_KEY": "b3JkZXJfaWQ9NjQxOTh8dHlwZT1kZXZlbG9wZXJ8ZGF0ZT0yMDE1LTA5LTE1IDAwOjMzOjIz"
+    },
+    "colorDepth": 256,
+    "args": {
+      "debug": false,
+      "indicator": true,
+      "mode": "production",
+      "notify": true,
+      "overlay": true,
+      "verbose": false
+    }
+  },
+  "publicEnv": {},
+  "modules": {
+    "root": {
+      "name": "root",
+      "private": true,
+      "browserslist": [
+        "extends @wordpress/browserslist-config"
+      ],
+      "engines": {
+        "node": ">=16.0.0"
+      },
+      "scripts": {
+        "dev": "bud dev",
+        "build": "bud build",
+        "translate": "npm run translate:pot && npm run translate:js",
+        "translate:pot": "wp i18n make-pot . ./resources/lang/sage.pot --ignore-domain --include=\"app,resources\"",
+        "translate:js": "wp i18n make-json ./resources/lang --pretty-print"
+      },
+      "devDependencies": {
+        "@roots/bud": "5.7.3",
+        "@roots/bud-tailwindcss": "5.6.2",
+        "@roots/sage": "5.6.2",
+        "@tailwindcss/forms": "^0.5.1"
+      },
+      "dependencies": {
+        "alpinejs": "^3.10.2",
+        "tablefilter": "^0.7.2"
+      },
+      "version": "0.0.0",
+      "bud": null,
+      "resolvable": true,
+      "requires": [
+        [
+          "@roots/bud",
+          "5.7.3"
+        ],
+        [
+          "@roots/bud-tailwindcss",
+          "5.6.2"
+        ],
+        [
+          "@roots/sage",
+          "5.6.2"
+        ],
+        [
+          "@tailwindcss/forms",
+          "^0.5.1"
+        ],
+        [
+          "alpinejs",
+          "^3.10.2"
+        ],
+        [
+          "tablefilter",
+          "^0.7.2"
+        ]
+      ]
+    },
+    "@roots/bud-tailwindcss": {
+      "name": "@roots/bud-tailwindcss",
+      "version": "5.6.2",
+      "bud": {
+        "type": "extension",
+        "peers": [
+          "@roots/bud-postcss"
+        ]
+      },
+      "resolvable": true,
+      "peerDependencies": {
+        "tailwindcss": "^3.0.8"
+      },
+      "requires": [
+        [
+          "@roots/bud-postcss",
+          "5.6.2"
+        ]
+      ]
+    },
+    "@roots/sage": {
+      "name": "@roots/sage",
+      "version": "5.6.2",
+      "bud": {
+        "type": "extension",
+        "peers": [
+          "@roots/bud-preset-wordpress"
+        ]
+      },
+      "resolvable": true,
+      "peerDependencies": {},
+      "requires": [
+        [
+          "@roots/bud-preset-wordpress",
+          "5.6.2"
+        ]
+      ]
+    },
+    "@roots/bud-postcss": {
+      "name": "@roots/bud-postcss",
+      "version": "5.6.2",
+      "bud": {
+        "type": "extension"
+      },
+      "resolvable": true,
+      "peerDependencies": {
+        "postcss": "^8.4.5",
+        "postcss-import": "^14.0.2",
+        "postcss-nested": "^5.0.6",
+        "postcss-preset-env": "^7.1.0"
+      },
+      "requires": []
+    },
+    "@roots/bud-preset-wordpress": {
+      "name": "@roots/bud-preset-wordpress",
+      "version": "5.6.2",
+      "bud": {
+        "type": "extension",
+        "peers": [
+          "@roots/bud-babel",
+          "@roots/bud-entrypoints",
+          "@roots/bud-postcss",
+          "@roots/bud-preset-recommend",
+          "@roots/bud-react",
+          "@roots/bud-wordpress-externals",
+          "@roots/bud-wordpress-dependencies",
+          "@roots/bud-wordpress-manifests"
+        ]
+      },
+      "resolvable": true,
+      "peerDependencies": {
+        "@wordpress/browserslist-config": "^4.1.0"
+      },
+      "requires": [
+        [
+          "@roots/bud-babel",
+          "5.6.2"
+        ],
+        [
+          "@roots/bud-entrypoints",
+          "5.6.2"
+        ],
+        [
+          "@roots/bud-postcss",
+          "5.6.2"
+        ],
+        [
+          "@roots/bud-preset-recommend",
+          "5.6.2"
+        ],
+        [
+          "@roots/bud-react",
+          "5.6.2"
+        ],
+        [
+          "@roots/bud-wordpress-externals",
+          "5.6.2"
+        ],
+        [
+          "@roots/bud-wordpress-dependencies",
+          "5.6.2"
+        ],
+        [
+          "@roots/bud-wordpress-manifests",
+          "5.6.2"
+        ]
+      ]
+    },
+    "@roots/bud-entrypoints": {
+      "name": "@roots/bud-entrypoints",
+      "version": "5.6.2",
+      "bud": {
+        "type": "extension"
+      },
+      "resolvable": true,
+      "peerDependencies": {},
+      "requires": []
+    },
+    "@roots/bud-babel": {
+      "name": "@roots/bud-babel",
+      "version": "5.6.2",
+      "bud": {
+        "type": "extension"
+      },
+      "resolvable": true,
+      "peerDependencies": {
+        "@babel/core": "^7.16.10",
+        "@babel/plugin-proposal-class-properties": "^7.16.0",
+        "@babel/plugin-proposal-object-rest-spread": "^7.16.0",
+        "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+        "@babel/plugin-transform-runtime": "^7.16.4",
+        "@babel/preset-env": "^7.16.4",
+        "babel-loader": "^8.2.3",
+        "babel-plugin-add-module-exports": "^1.0.4"
+      },
+      "requires": []
+    },
+    "@roots/bud-preset-recommend": {
+      "name": "@roots/bud-preset-recommend",
+      "version": "5.6.2",
+      "bud": {
+        "type": "extension",
+        "peers": [
+          "@roots/bud-babel",
+          "@roots/bud-entrypoints",
+          "@roots/bud-postcss"
+        ]
+      },
+      "resolvable": true,
+      "peerDependencies": {},
+      "requires": [
+        [
+          "@roots/bud-babel",
+          "5.6.2"
+        ],
+        [
+          "@roots/bud-entrypoints",
+          "5.6.2"
+        ],
+        [
+          "@roots/bud-postcss",
+          "5.6.2"
+        ]
+      ]
+    },
+    "@roots/bud-react": {
+      "name": "@roots/bud-react",
+      "version": "5.6.2",
+      "bud": {
+        "type": "extension",
+        "peers": [
+          "@roots/bud-babel"
+        ]
+      },
+      "resolvable": true,
+      "peerDependencies": {
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2"
+      },
+      "requires": [
+        [
+          "@roots/bud-babel",
+          "5.6.2"
+        ]
+      ]
+    },
+    "@roots/bud-wordpress-externals": {
+      "name": "@roots/bud-wordpress-externals",
+      "version": "5.6.2",
+      "bud": {
+        "type": "extension"
+      },
+      "resolvable": true,
+      "peerDependencies": {},
+      "requires": []
+    },
+    "@roots/bud-wordpress-dependencies": {
+      "name": "@roots/bud-wordpress-dependencies",
+      "version": "5.6.2",
+      "bud": {
+        "type": "extension"
+      },
+      "resolvable": true,
+      "peerDependencies": {},
+      "requires": []
+    },
+    "@roots/bud-wordpress-manifests": {
+      "name": "@roots/bud-wordpress-manifests",
+      "version": "5.6.2",
+      "bud": {
+        "type": "extension"
+      },
+      "resolvable": true,
+      "peerDependencies": {},
+      "requires": []
+    }
+  },
+  "adjacents": [
+    {
+      "name": "@roots/bud-wordpress-manifests",
+      "version": "5.6.2",
+      "bud": {
+        "type": "extension"
+      },
+      "resolvable": true,
+      "peerDependencies": {},
+      "requires": []
+    },
+    {
+      "name": "@roots/bud-wordpress-dependencies",
+      "version": "5.6.2",
+      "bud": {
+        "type": "extension"
+      },
+      "resolvable": true,
+      "peerDependencies": {},
+      "requires": []
+    },
+    {
+      "name": "@roots/bud-wordpress-externals",
+      "version": "5.6.2",
+      "bud": {
+        "type": "extension"
+      },
+      "resolvable": true,
+      "peerDependencies": {},
+      "requires": []
+    },
+    {
+      "name": "@roots/bud-react",
+      "version": "5.6.2",
+      "bud": {
+        "type": "extension",
+        "peers": [
+          "@roots/bud-babel"
+        ]
+      },
+      "resolvable": true,
+      "peerDependencies": {
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2"
+      },
+      "requires": [
+        [
+          "@roots/bud-babel",
+          "5.6.2"
+        ]
+      ]
+    },
+    {
+      "name": "@roots/bud-preset-recommend",
+      "version": "5.6.2",
+      "bud": {
+        "type": "extension",
+        "peers": [
+          "@roots/bud-babel",
+          "@roots/bud-entrypoints",
+          "@roots/bud-postcss"
+        ]
+      },
+      "resolvable": true,
+      "peerDependencies": {},
+      "requires": [
+        [
+          "@roots/bud-babel",
+          "5.6.2"
+        ],
+        [
+          "@roots/bud-entrypoints",
+          "5.6.2"
+        ],
+        [
+          "@roots/bud-postcss",
+          "5.6.2"
+        ]
+      ]
+    },
+    {
+      "name": "@roots/bud-entrypoints",
+      "version": "5.6.2",
+      "bud": {
+        "type": "extension"
+      },
+      "resolvable": true,
+      "peerDependencies": {},
+      "requires": []
+    },
+    {
+      "name": "@roots/bud-babel",
+      "version": "5.6.2",
+      "bud": {
+        "type": "extension"
+      },
+      "resolvable": true,
+      "peerDependencies": {
+        "@babel/core": "^7.16.10",
+        "@babel/plugin-proposal-class-properties": "^7.16.0",
+        "@babel/plugin-proposal-object-rest-spread": "^7.16.0",
+        "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+        "@babel/plugin-transform-runtime": "^7.16.4",
+        "@babel/preset-env": "^7.16.4",
+        "babel-loader": "^8.2.3",
+        "babel-plugin-add-module-exports": "^1.0.4"
+      },
+      "requires": []
+    },
+    {
+      "name": "@roots/bud-preset-wordpress",
+      "version": "5.6.2",
+      "bud": {
+        "type": "extension",
+        "peers": [
+          "@roots/bud-babel",
+          "@roots/bud-entrypoints",
+          "@roots/bud-postcss",
+          "@roots/bud-preset-recommend",
+          "@roots/bud-react",
+          "@roots/bud-wordpress-externals",
+          "@roots/bud-wordpress-dependencies",
+          "@roots/bud-wordpress-manifests"
+        ]
+      },
+      "resolvable": true,
+      "peerDependencies": {
+        "@wordpress/browserslist-config": "^4.1.0"
+      },
+      "requires": [
+        [
+          "@roots/bud-babel",
+          "5.6.2"
+        ],
+        [
+          "@roots/bud-entrypoints",
+          "5.6.2"
+        ],
+        [
+          "@roots/bud-postcss",
+          "5.6.2"
+        ],
+        [
+          "@roots/bud-preset-recommend",
+          "5.6.2"
+        ],
+        [
+          "@roots/bud-react",
+          "5.6.2"
+        ],
+        [
+          "@roots/bud-wordpress-externals",
+          "5.6.2"
+        ],
+        [
+          "@roots/bud-wordpress-dependencies",
+          "5.6.2"
+        ],
+        [
+          "@roots/bud-wordpress-manifests",
+          "5.6.2"
+        ]
+      ]
+    },
+    {
+      "name": "@roots/bud-postcss",
+      "version": "5.6.2",
+      "bud": {
+        "type": "extension"
+      },
+      "resolvable": true,
+      "peerDependencies": {
+        "postcss": "^8.4.5",
+        "postcss-import": "^14.0.2",
+        "postcss-nested": "^5.0.6",
+        "postcss-preset-env": "^7.1.0"
+      },
+      "requires": []
+    },
+    {
+      "name": "@roots/sage",
+      "version": "5.6.2",
+      "bud": {
+        "type": "extension",
+        "peers": [
+          "@roots/bud-preset-wordpress"
+        ]
+      },
+      "resolvable": true,
+      "peerDependencies": {},
+      "requires": [
+        [
+          "@roots/bud-preset-wordpress",
+          "5.6.2"
+        ]
+      ]
+    },
+    {
+      "name": "@roots/bud-tailwindcss",
+      "version": "5.6.2",
+      "bud": {
+        "type": "extension",
+        "peers": [
+          "@roots/bud-postcss"
+        ]
+      },
+      "resolvable": true,
+      "peerDependencies": {
+        "tailwindcss": "^3.0.8"
+      },
+      "requires": [
+        [
+          "@roots/bud-postcss",
+          "5.6.2"
+        ]
+      ]
+    }
+  ]
+}

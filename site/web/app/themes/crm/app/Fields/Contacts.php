@@ -21,6 +21,96 @@ class Contacts extends Field
             ->setLocation('post_type', '==', 'contacts');
 
         $contacts
+            ->addGroup('contact_details', [
+                'label' => 'Contact Details',
+                'instructions' => '',
+                'wrapper' => [
+                'width' => '',
+                'class' => '',
+                'id' => '',
+                ],
+                'layout' => 'block',
+                'sub_fields' => [],
+            ])
+
+                ->addText('first_name', [
+                    'label' => 'First Name',
+                    'required' => 0,
+                    'wrapper' => [
+                    'width' => '50%',
+                    'class' => '',
+                    'id' => '',
+                    ],
+                ])
+                ->addText('last_name', [
+                    'label' => 'Last Name',
+                    'required' => 0,
+                    'wrapper' => [
+                    'width' => '50%',
+                    'class' => '',
+                    'id' => '',
+                    ],
+                ])
+                ->addRepeater('phone_numbers', [
+                    'label' => 'Phone Numbers',
+                    'instructions' => 'Add phone numbers.',
+                    'required' => 0,
+                    'conditional_logic' => [],
+                    'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                    ],
+                    'min' => 0,
+                    'max' => 0,
+                    'layout' => 'block',
+                    'button_label' => 'Add Phone Number',
+                    'sub_fields' => [],
+                ])
+                    ->addSelect('phone_type', [
+                        'label' => 'Phone Type',
+                        'instructions' => '',
+                        'required' => 0,
+                        'conditional_logic' => [],
+                        'wrapper' => [
+                            'width' => '50%',
+                            'class' => '',
+                            'id' => '',
+                        ],
+                        'choices' => ['Cell', 'Home', 'Office'],
+                        'default_value' => [],
+                        'allow_null' => 0,
+                        'multiple' => 0,
+                        'ui' => 0,
+                        'ajax' => 0,
+                        'return_format' => 'value',
+                        'placeholder' => '',
+                    ])
+                    ->addField('phone', 'phone_number', [
+                        'national' => 1,
+                        'return_format' => 'array',
+                    ])
+                        ->setConfig('default_country', 'us')
+                ->endRepeater()
+                ->addText('email', [
+                    'label' => 'Email Address',
+                    'required' => 0,
+                    'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                    ],
+                ])
+                ->addText('position_title', [
+                    'label' => 'Position/Title',
+                    'required' => 0,
+                    'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                    ],
+                ])
+            ->endGroup()
             ->addGroup('location_relationship', [
                 'label' => 'Location',
                 'instructions' => '',
@@ -123,69 +213,7 @@ class Contacts extends Field
                 ])
                 ->conditional('assign_company', '==', 1)
             ->endGroup()
-            ->addGroup('contact_details', [
-                'label' => 'Contact Details',
-                'instructions' => '',
-                'wrapper' => [
-                'width' => '',
-                'class' => '',
-                'id' => '',
-                ],
-                'layout' => 'table',
-                'sub_fields' => [],
-            ])
-
-                ->addText('first_name', [
-                    'label' => 'First Name',
-                    'required' => 0,
-                    'wrapper' => [
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                    ],
-                ])
-                ->addText('last_name', [
-                    'label' => 'Last Name',
-                    'required' => 0,
-                    'wrapper' => [
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                    ],
-                ])
-                ->addField('phone', 'acfe_phone_number', [
-                    'required' => 0,
-                    'label' => 'Phone Number',
-                    'default_country' => 'us',
-                        'countries' => array(
-                            'us',
-                            'ca'
-                        ),
-                    'wrapper' => [
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                    ],
-                ])
-                ->addText('email', [
-                    'label' => 'Email Address',
-                    'required' => 0,
-                    'wrapper' => [
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                    ],
-                ])
-                ->addText('position_title', [
-                    'label' => 'Position/Title',
-                    'required' => 0,
-                    'wrapper' => [
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                    ],
-                ])
-            ->endGroup()
+            
 
             ->addTrueFalse('add_access_details', [
                 'label' => 'Add Access Details?',

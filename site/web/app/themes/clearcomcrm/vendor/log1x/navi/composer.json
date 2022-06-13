@@ -1,0 +1,46 @@
+{
+  "name": "log1x/navi",
+  "type": "package",
+  "license": "MIT",
+  "description": "A developer-friendly alternative to the WordPress NavWalker.",
+  "authors": [
+    {
+      "name": "Brandon Nifong",
+      "email": "brandon@tendency.me"
+    }
+  ],
+  "keywords": [
+    "wordpress",
+    "wordpress-plugin",
+    "navwalker"
+  ],
+  "support": {
+    "issues": "https://github.com/log1x/navi/issues"
+  },
+  "autoload": {
+    "psr-4": {
+      "Log1x\\Navi\\": "src/"
+    }
+  },
+  "require": {
+    "php": "^7.0|^8.0"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^3.4"
+  },
+  "extra": {
+    "acorn": {
+      "providers": [
+        "Log1x\\Navi\\Providers\\NaviServiceProvider"
+      ],
+      "aliases": {
+        "Navi": "Log1x\\Navi\\Facades\\Navi"
+      }
+    }
+  },
+  "scripts": {
+    "lint": [
+      "phpcs --ignore=vendor,examples --extensions=php --standard=PSR12 ."
+    ]
+  }
+}

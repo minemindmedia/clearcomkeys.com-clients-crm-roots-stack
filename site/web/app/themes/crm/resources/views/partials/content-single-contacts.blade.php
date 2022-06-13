@@ -127,8 +127,29 @@
                 <div class="sm:col-span-1">
                   <dt class="text-sm font-medium text-gray-500">Phone</dt>
                   <dd class="mt-1 text-sm text-gray-900">
-                    @if( $contact['phone'] )
-                      {{ $contact['phone'] }}
+                    @if( have_rows('contact_details') )
+                      @while( have_rows('contact_details') )
+                        @php
+                          the_row();
+                        @endphp
+
+                        @if( have_rows('phone_numbers') )
+                        <ul>
+                          @while( have_rows('phone_numbers') )
+                            @php
+                              the_row();
+                              $phone = get_sub_field('phone');
+                              $type = get_sub_field('phone_type');
+                            @endphp
+                            <li>
+                              {{ $type }}: {{ $phone->national }}
+                            </li>
+                          @endwhile
+                        </ul>
+                        @endif
+
+                        {{ $phone }}
+                      @endwhile
                     @endif
                   </dd>
                 </div>
