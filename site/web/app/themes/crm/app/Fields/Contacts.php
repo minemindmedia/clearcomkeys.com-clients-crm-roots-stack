@@ -120,6 +120,22 @@ class Contacts extends Field
                     'return_format' => 'value',
                     'placeholder' => '',
                 ])
+                ->addTrueFalse('main_key_tech', [
+                    'label' => 'Main Key Tech?',
+                    'required' => 0,
+                    'conditional_logic' => [],
+                    'wrapper' => [
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ],
+                    'message' => '',
+                    'default_value' => 0,
+                    'ui' => 1,
+                    'ui_on_text' => '',
+                    'ui_off_text' => '',
+                ])
+                    ->conditional('position_title', '==', 'Key Tech')
             ->endGroup()
             ->addGroup('location_relationship', [
                 'label' => 'Location',
