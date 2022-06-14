@@ -1,6 +1,7 @@
 @php
   $company = get_field('company');
   $addBilling = get_field('add_billing');
+  $location = get_field('location');
 
   if( have_rows('shipping_address') ):
     while( have_rows('shipping_address') ): the_row(); 
@@ -140,7 +141,28 @@
 
   </div>
 </div>
+@if ($location)
+    <div class="flex-1 mt-4 overflow-hidden bg-white shadow sm:rounded-lg">
+        <div class="px-4 py-5 sm:px-6">
+            <h3 class="text-lg font-medium leading-6 text-gray-900">Location</h3>
+            <p class="max-w-2xl mt-1 text-sm text-gray-500">
+            </p>
+        </div>
+        <div class="border-t border-gray-200">
+            @foreach ($location as $l)
+                @php
+                    $permalink = get_permalink($l->ID);
+                    $title = get_the_title($l->ID);
+                @endphp
 
+                <div class="px-4 py-5 bg-gray-50 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-sm font-medium text-gray-500">{{ $title }}</dt>
+
+                </div>
+            @endforeach
+        </div>
+    </div>
+@endif
 <div class="flex-1 mt-4 overflow-hidden bg-white shadow sm:rounded-lg">
   <div class="px-4 py-5 sm:px-6">
     <h3 class="text-lg font-medium leading-6 text-gray-900">Notes</h3>
