@@ -111,7 +111,7 @@ class Contacts extends Field
                         'class' => '',
                         'id' => '',
                     ],
-                    'choices' => ['Store Manager', 'Key Tech'],
+                    'choices' => ['Technician', 'Store Manager', 'Key Tech'],
                     'default_value' => [],
                     'allow_null' => 1,
                     'multiple' => 0,
