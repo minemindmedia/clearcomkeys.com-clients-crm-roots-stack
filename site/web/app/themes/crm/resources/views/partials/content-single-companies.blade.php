@@ -1,5 +1,6 @@
 @php
   $company = get_field('company');
+  $addBilling = get_field('add_billing');
 
   if( have_rows('shipping_address') ):
     while( have_rows('shipping_address') ): the_row(); 
@@ -27,7 +28,15 @@
     endwhile;
   endif;
 
+  if( have_rows('website_details') ):
+    while( have_rows('website_details') ): the_row(); 
 
+        $login = get_sub_field('login');
+        $password = get_sub_field('password');
+        $website = get_sub_field('website');
+
+    endwhile;
+  endif;
 
 
 @endphp
@@ -72,6 +81,7 @@
      
     </p>
   </div>
+  @if( $addBilling == '1' )
   <div class="border-t border-gray-200">
     <dl>
       <div class="px-4 py-5 bg-gray-50 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -92,11 +102,44 @@
       </div>
     </dl>
   </div>
+  @else
+  <div class="border-t border-gray-200">
+    <dl>
+      <div class="px-4 py-5 bg-gray-50 sm:grid sm:grid-cols-1 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">Billing address is the same as the shipping address.</dt>
+      </div>
+
+    </dl>
+  </div>
+  @endif
 </div>
 @include('components.modal-edit-company')
 </div>
 
+<div class="flex-1 mt-4 overflow-hidden bg-white shadow sm:rounded-lg">
+  <div class="px-4 py-5 sm:px-6">
+    <h3 class="text-lg font-medium leading-6 text-gray-900">Website Details</h3>
+    <p class="max-w-2xl mt-1 text-sm text-gray-500">
+     
+    </p>
+  </div>
+  <div class="border-t border-gray-200">
 
+
+
+
+
+        <div class="px-4 py-5 bg-gray-50 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">Website: <span class="text-sm text-gray-900">{{ $website }}</span></dt>
+          <dt class="text-sm font-medium text-gray-500">Login: <span class="text-sm text-gray-900">{{ $login }}</span></dt>
+        <dt class="text-sm font-medium text-gray-500">Password: <span class="text-sm text-gray-900">{{ $password }}</dt>
+        
+      </div>
+
+
+
+  </div>
+</div>
 
 <div class="flex-1 mt-4 overflow-hidden bg-white shadow sm:rounded-lg">
   <div class="px-4 py-5 sm:px-6">

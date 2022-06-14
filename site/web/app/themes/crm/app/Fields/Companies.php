@@ -117,7 +117,22 @@ class Companies extends Field
                     ],
                 ])
             ->endGroup()
-
+            ->addTrueFalse('add_billing', [
+                'label' => 'Billing Address Different?',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => [],
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+                'message' => '',
+                'default_value' => 0,
+                'ui' => 1,
+                'ui_on_text' => 'Yes',
+                'ui_off_text' => 'No',
+            ])
             ->addGroup('billing_address', [
                 'wrapper' => [
                 'width' => '100%',
@@ -125,6 +140,7 @@ class Companies extends Field
                 'id' => '',
                 ],
             ])
+                ->conditional('add_billing', '==', '1')
                 ->addText('street_address', [
                     'label' => 'Street Address',
                     'wrapper' => [
@@ -181,6 +197,40 @@ class Companies extends Field
                         ),
                     'wrapper' => [
                     'width' => '50%',
+                    'class' => '',
+                    'id' => '',
+                    ],
+                ])
+            ->endGroup()
+                
+            ->addGroup('website_details', [
+                'label' => 'Website Details',
+                'wrapper' => [
+                'width' => '100%',
+                'class' => '',
+                'id' => '',
+                ],
+            ])
+                ->addText('website', [
+                    'label' => 'Website',
+                    'wrapper' => [
+                    'width' => '33.3%',
+                    'class' => '',
+                    'id' => '',
+                    ],
+                ])
+                ->addText('login', [
+                    'label' => 'Login',
+                    'wrapper' => [
+                    'width' => '33.3%',
+                    'class' => '',
+                    'id' => '',
+                    ],
+                ])
+                ->addText('password', [
+                    'label' => 'Password',
+                    'wrapper' => [
+                    'width' => '33.3%',
                     'class' => '',
                     'id' => '',
                     ],
