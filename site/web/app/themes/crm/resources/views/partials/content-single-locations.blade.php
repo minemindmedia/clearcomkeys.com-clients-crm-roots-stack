@@ -53,7 +53,7 @@
 				<?php endif; ?>
 				<div class="flex-1 mt-4 overflow-hidden bg-white shadow sm:rounded-lg">
 					<div class="px-4 py-5 sm:px-6">
-						<h3 class="text-lg font-medium leading-6 text-gray-900">Contact list associated with this location</h3>
+						<h3 class="text-lg font-medium leading-6 text-gray-900">Contacts</h3>
 						<p class="max-w-2xl mt-1 text-sm text-gray-500">
 						</p>
 					</div>
@@ -71,23 +71,14 @@
 										@php
 											the_row();
 											$position_title = get_sub_field('position_title', $contact->ID);
-										@endphp
-				
-										@if( have_rows('phone_numbers', $contact->ID) )
-											@while( have_rows('phone_numbers', $contact->ID) )
-				
-											@php
-												the_row();
-												$phone = get_sub_field('phone', $contact->ID);
-												$type = get_sub_field('phone_type', $contact->ID);
+											$first_name = get_sub_field('first_name', $contact->ID);
+											$last_name = get_sub_field('last_name', $contact->ID);
 											@endphp
 											@if($position_title != 'Key Tech')
 												<div class="px-4 py-5 bg-gray-50 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-													<dt class="text-sm font-medium text-gray-500">{{ $type }}: {{ $phone->national }}</dt>
+													<dt class="text-sm font-medium text-gray-500"><a href="<?php echo get_permalink($contact->ID); ?>">{{ $first_name . ' ' . $last_name }}</a></dt>
 												</div>
 											@endif
-											@endwhile
-										@endif
 										@endwhile
 									@endif
 									<?php
