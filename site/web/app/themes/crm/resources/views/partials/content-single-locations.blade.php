@@ -9,10 +9,13 @@
 						$companies = $wpdb->get_results("SELECT * FROM $wpdb->posts WHERE post_type='companies' AND post_status='publish'");
 						$locationArray = [];
 						if($companies) {
+							$counter = 0;
 							foreach ($companies as $company) {
 								$location = get_field('location', $company->ID);
 								if(!empty($location) && isset($location[0]->post_title) && $location[0]->post_title == $locations) {
-									$locationArray[] = $company->post_title;
+									$locationArray[$counter]['id'] = $company->ID;
+									$locationArray[$counter]['title'] = $company->post_title;
+									$counter++;
 								}
 							}
 						}
@@ -44,7 +47,7 @@
 							
 						<?php foreach($locationArray as $singleLocation): ?>
 								<div class="px-4 py-5 bg-gray-50 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-									<dt class="text-sm font-medium text-gray-500"><?php echo $singleLocation ?></dt>
+									<dt class="text-sm font-medium text-gray-500"><a href="<?php echo get_permalink($singleLocation['id']); ?>"><?php echo $singleLocation['title'] ?></a></dt>
 				
 								</div>
 						<?php endforeach ?>
