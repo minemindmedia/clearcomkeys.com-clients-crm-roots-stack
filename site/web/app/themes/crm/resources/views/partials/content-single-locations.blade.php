@@ -44,8 +44,9 @@
 							
 						<?php foreach($locationArray as $singleLocation): ?>
 								<div class="px-4 py-5 bg-gray-50 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+									<a href="<?php echo get_permalink($company->ID); ?>">
 									<dt class="text-sm font-medium text-gray-500"><?php echo $singleLocation ?></dt>
-				
+								</a>
 								</div>
 						<?php endforeach ?>
 						</div>
