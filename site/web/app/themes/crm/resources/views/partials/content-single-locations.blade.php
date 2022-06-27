@@ -74,7 +74,6 @@
 										@php
 											the_row();
 											$position_title = get_sub_field('position_title', $contact->ID);
-											$main_tech = get_sub_field('main_key_tech', $contact->ID);
 											$first_name = get_sub_field('first_name', $contact->ID);
 											$last_name = get_sub_field('last_name', $contact->ID);
 											$email = get_sub_field('email', $contact->ID);
@@ -133,9 +132,7 @@
 																		<dt class="text-sm font-medium text-gray-500">Title</dt>
 																		<dd class="mt-1 text-sm text-gray-900">
 																			{{ $position_title }}
-																			@if($main_tech == 1)
-																			main 
-																			@endif
+																
 																		</dd>
 																	</div>
 																	@endif
