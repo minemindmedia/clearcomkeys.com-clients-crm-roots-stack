@@ -74,23 +74,20 @@
 										@php
 											the_row();
 											$position_title = get_sub_field('position_title', $contact->ID);
+											$main_tech = get_sub_field('main_key_tech', $contact->ID);
 											$first_name = get_sub_field('first_name', $contact->ID);
 											$last_name = get_sub_field('last_name', $contact->ID);
 											$email = get_sub_field('email', $contact->ID);
 											@endphp
 											@if($position_title != 'Key Tech')
-												<div class="px-4 py-5 bg-gray-50 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-													<dt class="text-sm font-medium text-gray-500"><a href="<?php echo get_permalink($contact->ID); ?>">{{ $first_name . ' ' . $last_name }}</a></dt>
-												</div>
-												<div class="space-y-6 lg:col-start-1 lg:col-span-2">
+												<div class="space-y-6 lg:col-start-1 lg:col-span-2 p-4">
 													<section aria-labelledby="applicant-information-title">
 														<div class="bg-white shadow sm:rounded-lg">
-															<div class="px-4 py-5 sm:px-6">
-																<p class="max-w-2xl mt-1 text-sm text-gray-500">Contact Information
-																</p>
+															<div class="px-4 py-5 sm:px-6 bg-gray-100 sm:rounded-t-lg">
+																<a href="<?php echo get_permalink($contact->ID); ?>" class="hover:underline text-indigo-600">{{ $first_name . ' ' . $last_name }}</a>
 															</div>
 															<div class="px-4 py-5 border-t border-gray-200 sm:px-6">
-																<dl class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
+																<dl class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-4">
 																	<div class="sm:col-span-1">
 																		<dt class="text-sm font-medium text-gray-500">Location</dt>
 																		<dd class="mt-1 text-sm text-gray-900">
@@ -136,6 +133,9 @@
 																		<dt class="text-sm font-medium text-gray-500">Title</dt>
 																		<dd class="mt-1 text-sm text-gray-900">
 																			{{ $position_title }}
+																			@if($main_tech == 1)
+																			main 
+																			@endif
 																		</dd>
 																	</div>
 																	@endif
