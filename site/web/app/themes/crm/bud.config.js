@@ -32,7 +32,7 @@ module.exports = async (app) => {
      *
      * This should be the URL you use to visit your local development server.
      */
-    .proxy('http://trellis.clients.clearcomkeys.build')
+    .proxy('http://trellis.customers.clearcomkeys.build')
 
     /**
      * Development URL to be used in the browser.
