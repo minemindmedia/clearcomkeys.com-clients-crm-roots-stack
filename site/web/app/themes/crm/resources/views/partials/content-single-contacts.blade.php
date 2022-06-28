@@ -105,6 +105,9 @@
                   <dt class="text-sm font-medium text-gray-500">Title</dt>
                   <dd class="mt-1 text-sm text-gray-900">
                     @if( $contact['position_title'] )
+                      @if( $contact['position_title'] == 'Key Tech')
+                        <span>&#42;</span>
+                      @endif 
                       {{ $contact['position_title'] }}
                     @endif
                   </dd>
