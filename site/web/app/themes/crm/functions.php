@@ -95,8 +95,8 @@ function save_contacts_title($post_id){
   if( get_post_type($post_id) == 'contacts' ) {
 
     // Get the data from a field
-     if( have_rows('contact_details') ):
-        while( have_rows('contact_details') ): the_row(); 
+    if( have_rows('contact_details', $post_id) ):
+        while( have_rows('contact_details', $post_id) ): the_row(); 
 
             $first_name = get_sub_field('first_name', $post_id);
             $last_name = get_sub_field('last_name', $post_id);
