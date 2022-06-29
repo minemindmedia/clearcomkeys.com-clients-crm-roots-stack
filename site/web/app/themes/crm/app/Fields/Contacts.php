@@ -37,7 +37,7 @@ class Contacts extends Field
                     'label' => 'First Name',
                     'required' => 0,
                     'wrapper' => [
-                    'width' => '50%',
+                    'width' => '',
                     'class' => '',
                     'id' => '',
                     ],
@@ -46,7 +46,7 @@ class Contacts extends Field
                     'label' => 'Last Name',
                     'required' => 0,
                     'wrapper' => [
-                    'width' => '50%',
+                    'width' => '',
                     'class' => '',
                     'id' => '',
                     ],
@@ -73,7 +73,7 @@ class Contacts extends Field
                         'required' => 0,
                         'conditional_logic' => [],
                         'wrapper' => [
-                            'width' => '50%',
+                            'width' => '',
                             'class' => '',
                             'id' => '',
                         ],
