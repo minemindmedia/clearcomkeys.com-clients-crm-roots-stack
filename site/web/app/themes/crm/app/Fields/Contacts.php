@@ -25,19 +25,17 @@ class Contacts extends Field
                 'label' => 'Contact Details',
                 'instructions' => '',
                 'wrapper' => [
-                'width' => '',
+                'width' => '100%',
                 'class' => '',
                 'id' => '',
                 ],
-                'layout' => 'block',
-                'sub_fields' => [],
             ])
 
                 ->addText('first_name', [
                     'label' => 'First Name',
                     'required' => 0,
                     'wrapper' => [
-                    'width' => '',
+                    'width' => '50%',
                     'class' => '',
                     'id' => '',
                     ],
@@ -46,14 +44,13 @@ class Contacts extends Field
                     'label' => 'Last Name',
                     'required' => 0,
                     'wrapper' => [
-                    'width' => '',
+                    'width' => '50%',
                     'class' => '',
                     'id' => '',
                     ],
                 ])
                 ->addRepeater('phone_numbers', [
                     'label' => 'Phone Numbers',
-                    'instructions' => 'Add phone numbers.',
                     'required' => 0,
                     'conditional_logic' => [],
                     'wrapper' => [
@@ -63,8 +60,8 @@ class Contacts extends Field
                     ],
                     'min' => 0,
                     'max' => 0,
-                    'layout' => 'block',
-                    'button_label' => 'Add Phone Number',
+                    'layout' => 'table',
+                    'button_label' => 'Add Phone Number(s)',
                     'sub_fields' => [],
                 ])
                     ->addSelect('phone_type', [
@@ -96,7 +93,7 @@ class Contacts extends Field
                     'label' => 'Email Address',
                     'required' => 0,
                     'wrapper' => [
-                    'width' => '',
+                    'width' => '50%',
                     'class' => '',
                     'id' => '',
                     ],
@@ -107,7 +104,7 @@ class Contacts extends Field
                     'required' => 0,
                     'conditional_logic' => [],
                     'wrapper' => [
-                        'width' => '',
+                        'width' => '50%',
                         'class' => '',
                         'id' => '',
                     ],
@@ -143,7 +140,7 @@ class Contacts extends Field
                 'required' => 0,
                 'conditional_logic' => [],
                 'wrapper' => [
-                'width' => '',
+                'width' => '50%',
                 'class' => '',
                 'id' => '',
                 ],
@@ -194,7 +191,7 @@ class Contacts extends Field
                 'required' => 0,
                 'conditional_logic' => [],
                 'wrapper' => [
-                'width' => '',
+                'width' => '50%',
                 'class' => '',
                 'id' => '',
                 ],
@@ -248,7 +245,7 @@ class Contacts extends Field
                 'instructions' => '',
                 'required' => 0,
                 'wrapper' => [
-                'width' => '',
+                'width' => '50%',
                 'class' => '',
                 'id' => '',
                 ],
@@ -275,7 +272,7 @@ class Contacts extends Field
             ])
 
                 ->addText('login', [
-                    'instructions' => 'Enter the users website login.',
+                    'instructions' => 'Enter the users forum login.',
                     'required' => 0,
                     'wrapper' => [
                     'width' => '',
@@ -283,8 +280,9 @@ class Contacts extends Field
                     'id' => '',
                     ],
                 ])
+                ->conditional('forum_access', '==', 1)
                 ->addText('password', [
-                    'instructions' => 'Enter the users website password.',
+                    'instructions' => 'Enter the users forum password.',
                     'required' => 0,
                     'type' => 'text',
                     'wrapper' => [
@@ -296,77 +294,90 @@ class Contacts extends Field
                 ->conditional('forum_access', '==', 1)
             ->endGroup()
 
-            ->addTrueFalse('add_training_dates', [
-                'label' => 'Add Training Dates?',
-                'instructions' => 'Would you like to add any training dates for this contact?',
+            ->addGroup('training', [
+                'label' => 'Training',
+                'instructions' => '',
                 'required' => 0,
-                'conditional_logic' => [],
                 'wrapper' => [
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
+                'width' => '50%',
+                'class' => '',
+                'id' => '',
                 ],
-                'message' => '',
-                'default_value' => 0,
-                'ui' => 1,
-                'ui_on_text' => 'Yes',
-                'ui_off_text' => 'No',
+                'layout' => 'block',
+                'sub_fields' => [],
             ])
-            ->addRepeater('training_dates', [
-                    'label' => 'Training Dates',
-                    'instructions' => 'To add training dates, click the button.',
+                ->addTrueFalse('add_training_dates', [
+                    'label' => 'Add Training Dates?',
+                    'instructions' => 'Would you like to add any training dates for this contact?',
                     'required' => 0,
                     'conditional_logic' => [],
                     'wrapper' => [
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
+                        'width' => '100%',
+                        'class' => '',
+                        'id' => '',
                     ],
-                    'min' => 0,
-                    'max' => 0,
-                    'layout' => 'table',
-                    'button_label' => 'Add Training Date',
-                    'sub_fields' => [],
+                    'message' => '',
+                    'default_value' => 0,
+                    'ui' => 1,
+                    'ui_on_text' => 'Yes',
+                    'ui_off_text' => 'No',
                 ])
-                ->conditional('add_training_dates', '==', 1)
-                    ->addDatePicker('training_date', [
-                        'label' => 'Training Date',
-                        'instructions' => '',
+                ->addRepeater('training_dates', [
+                        'label' => 'Training Dates',
+                        'instructions' => 'To add training dates, click the button.',
                         'required' => 0,
                         'conditional_logic' => [],
-                        'wrapper' => [
-                            'width' => '',
-                            'class' => '',
-                            'id' => '',
-                        ],
-                        'display_format' => 'F j, Y',
-                        'return_format' => 'Y-m-d',
-                    ])
-                    ->addTimePicker('training_time', [
-                        'label' => 'Training Time',
-                        'instructions' => '',
-                        'required' => 0,
-                        'conditional_logic' => [],
-                        'wrapper' => [
-                            'width' => '',
-                            'class' => '',
-                            'id' => '',
-                        ],
-                        'display_format' => 'g:i a',
-                        'return_format' => 'g:i a',
-                        'default_value' => '',
-                    ])
-                    ->addText('training_note', [
-                        'instructions' => 'Enter a note for this training date.',
-                        'required' => 0,
-                        'type' => 'text',
                         'wrapper' => [
                         'width' => '',
                         'class' => '',
                         'id' => '',
                         ],
+                        'min' => 0,
+                        'max' => 0,
+                        'layout' => 'block',
+                        'button_label' => 'Add Training Date',
+                        'sub_fields' => [],
                     ])
-            ->endRepeater()
+                    ->conditional('add_training_dates', '==', 1)
+                        ->addDatePicker('training_date', [
+                            'label' => 'Training Date',
+                            'instructions' => '',
+                            'required' => 0,
+                            'conditional_logic' => [],
+                            'wrapper' => [
+                                'width' => '50%',
+                                'class' => '',
+                                'id' => '',
+                            ],
+                            'display_format' => 'F j, Y',
+                            'return_format' => 'Y-m-d',
+                        ])
+                        ->addTimePicker('training_time', [
+                            'label' => 'Training Time',
+                            'instructions' => '',
+                            'required' => 0,
+                            'conditional_logic' => [],
+                            'wrapper' => [
+                                'width' => '50%',
+                                'class' => '',
+                                'id' => '',
+                            ],
+                            'display_format' => 'g:i a',
+                            'return_format' => 'g:i a',
+                            'default_value' => '',
+                        ])
+                        ->addText('training_note', [
+                            'instructions' => 'Enter a note for this training date.',
+                            'required' => 0,
+                            'type' => 'text',
+                            'wrapper' => [
+                            'width' => '100%',
+                            'class' => '',
+                            'id' => '',
+                            ],
+                        ])
+                ->endRepeater()
+            ->endGroup()
                 
             ->addTrueFalse('add_notes', [
                 'label' => 'Add Notes?',

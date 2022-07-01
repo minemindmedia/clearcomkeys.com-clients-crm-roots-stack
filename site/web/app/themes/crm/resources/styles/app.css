@@ -3,69 +3,52 @@
 @import 'tailwindcss/utilities';
 
 form#new-contact {
-  .acf-field {
+
+  .acf-fields.-border {
     @apply
-    mb-8
+    border-indigo-600
+}
+
+  .acf-field-group {
+    .acf-label {
+      @apply
+      text-indigo-600
+      text-xl
+    }
   }
 
-  .acf-field .acf-label {
-    @apply
-    mb-4
+  .acf-input {
+    .acf-label {
+      @apply
+      text-base
+      text-slate-600
+    }
   }
 
-  .acf-repeater .acf-field {
+  .acf-label {
     @apply
-    mb-0
+    text-slate-600
+  }
+  .acf-button {
+    @apply
+    inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto
   }
 
-  .acf-repeater .acf-label {
+  .acf-switch.-on {
     @apply
-    mb-0
+    bg-indigo-600
+    border-indigo-600
   }
 
-    .acf-field .acf-label label {
+  .acf-form-submit {
     @apply
-    uppercase
-    text-indigo-700
+    float-right
+    mr-3
   }
+
+  .acf-field[data-width] + .acf-field[data-width] {
+    @apply
+    border-none
 }
 
-form#new-contact [data-name="contact_details"] {
-  @apply
-  p-4
-  border
-  border-indigo-700
-}
-
-form#new-contact [data-name="contact_details"] .acf-fields {
-  @apply
-  grid
-  grid-cols-4
-  gap-4
-}
-
-form#new-contact [data-name="access_details"] {
-  @apply
-  p-4
-  border
-  border-indigo-700
-}
-
-form#new-contact [data-name="access_details"] .acf-fields {
-  @apply
-  grid
-  grid-cols-3
-  gap-4
-}
-
-form#new-contact [data-name="contact_details"] .acf-fields .acf-field label,
-form#new-contact [data-name="contact_details"] .acf-fields .acf-field input { 
-  @apply
-  w-full
-}
-
-form#new-contact .acf-actions .acf-button,
-form#new-contact .acf-form-submit input {
-  @apply
-  inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto cursor-pointer
 }
