@@ -2,7 +2,8 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-form#new-contact {
+form#new-contact,
+form#edit-contact {
 
   .acf-fields.-border {
     @apply
@@ -49,6 +50,11 @@ form#new-contact {
   .acf-field[data-width] + .acf-field[data-width] {
     @apply
     border-none
-}
+  }
+
+  .acf-fields > .acf-field {
+    @apply
+    border-none
+  }
 
 }

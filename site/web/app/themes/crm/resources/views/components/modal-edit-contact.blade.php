@@ -44,6 +44,7 @@
                 @php
                   acf_form(array(
                     'return' => '%post_url%',
+                    'id' => 'edit-contact',
                   ));
                 @endphp
               
