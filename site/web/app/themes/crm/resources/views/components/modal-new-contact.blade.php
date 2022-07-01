@@ -1,4 +1,4 @@
-<div x-data="{ open: true }" class="flex justify-center" id="newcontact">
+<div x-data="{ open: false }" class="flex justify-center" id="newcontact">
     
     <span x-on:click="open = true">
         <button type="button" class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">
@@ -9,7 +9,7 @@
     <div
         x-show="open"
         style="display: none"
-        x-on:keydown.escape.prevent.stop="open = true"
+        x-on:keydown.escape.prevent.stop="open = false"
         role="dialog"
         aria-modal="true"
         x-id="['modal-title']"
@@ -22,7 +22,7 @@
         
         <div
             x-show="open" x-transition
-            x-on:click="open = true"
+            x-on:click="open = false"
             class="relative flex items-center justify-center min-h-screen p-4"
         >
             <div
