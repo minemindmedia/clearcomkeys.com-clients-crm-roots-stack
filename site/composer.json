@@ -52,6 +52,10 @@
     {
       "type": "composer",
       "url": "https://composer.admincolumns.com"
+    },
+    {
+      "type": "vcs",
+      "url": "git@github.com:minemindmedia/clearcomkeys.com-clients-login-with-ajax.git"
     }
   ],
   "require": {
@@ -70,7 +74,9 @@
     "admin-columns/admin-columns-pro": "*",
     "admin-columns/ac-addon-acf": "*",
     "roots/acorn": "^2.0",
-    "log1x/acf-phone-number": "^1.1"
+    "log1x/acf-phone-number": "^1.1",
+    "wpackagist-plugin/wp-force-login":"5.6.3",
+    "minemindmedia/clearcomkeys.com-clients-login-with-ajax": "@dev"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.6.2",
