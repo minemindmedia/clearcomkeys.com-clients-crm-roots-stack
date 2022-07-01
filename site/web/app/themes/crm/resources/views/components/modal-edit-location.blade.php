@@ -1,7 +1,7 @@
-<div x-data="{ open: false }" class="z-[9999999999999] flex justify-center" id="editlocation">
+<div x-data="{ open: false }" class="z-[9999999999999] flex w-full justify-right" id="formmodal editlocation">
     
-    <span x-on:click="open = true">
-        <button type="button" class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">
+    <span x-on:click="open = true" class="w-full">
+        <button type="button" class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto float-right">
             Edit Location
         </button>
     </span>
@@ -30,7 +30,7 @@
                 x-trap.noscroll.inert="open"
                 class="relative w-full max-w-[75%] p-12 overflow-y-auto bg-white shadow-lg rounded-xl"
             >
-                <div class="flex">
+                <div class="flex" id="header">
                   <div class="flex-1">
                     <h2 class="text-3xl font-bold" :id="$id('modal-title')">Edit Location</h2>
                   </div>
@@ -44,6 +44,7 @@
                 @php
                   acf_form(array(
                     'return' => '%post_url%',
+                    'id' => 'edit-location'
                   ));
                 @endphp
               

@@ -1,4 +1,4 @@
-<div x-data="{ open: false }" class="flex justify-center" id="editcompany">
+<div x-data="{ open: false }" class="flex justify-center" id="formmodal editcompany">
     
     <span x-on:click="open = true">
         <button type="button" class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">
@@ -30,7 +30,7 @@
                 x-trap.noscroll.inert="open"
                 class="relative w-full max-w-[75%] p-12 overflow-y-auto bg-white shadow-lg rounded-xl"
             >
-                <div class="flex">
+                <div class="flex" id="header">
                   <div class="flex-1">
                     <h2 class="text-3xl font-bold" :id="$id('modal-title')">Add Company</h2>
                   </div>
