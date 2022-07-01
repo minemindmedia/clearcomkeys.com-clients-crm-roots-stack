@@ -17,7 +17,7 @@
   <div class="px-4">
     <div class="sm:flex sm:items-center">
       <div class="sm:flex-auto">
-        <p class="mt-2 text-sm text-gray-700">A list of all the users in your account including their name, title, email and role.</p>
+        <h1 class="text-3xl font-bold text-indigo-600">All Contacts</h1>
       </div>
       <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
         @include('components.modal-new-contact')
