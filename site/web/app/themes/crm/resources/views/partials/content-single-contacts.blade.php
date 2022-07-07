@@ -197,7 +197,13 @@
       <section aria-labelledby="timeline-title" class="lg:col-start-3 lg:col-span-1">
         <div class="px-4 py-5 bg-white shadow sm:rounded-lg sm:px-6">
           <h2 id="timeline-title" class="text-lg font-medium text-gray-900">Training Dates</h2>
-							
+					@if( have_rows('training') )
+          @while( have_rows('training') )
+                      
+                      @php
+                        the_row();
+                
+                      @endphp
             @if( have_rows('training_dates') )
               <div class="flow-root mt-6">
                 <ul role="list" class="-mb-8">
@@ -238,7 +244,8 @@
                 </ul>
               </div>
             @endif
-      
+            @endwhile
+          @endif
         </div>
       </section>
 

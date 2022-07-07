@@ -88,7 +88,7 @@ class Companies extends Field
                     'id' => '',
                     ],
                 ])
-                ->addField('phone', 'acfe_phone_number', [
+                ->addField('phone', 'phone_number', [
                     'required' => 0,
                     'label' => 'Phone Number',
                     'default_country' => 'us',
@@ -102,7 +102,7 @@ class Companies extends Field
                     'id' => '',
                     ],
                 ])
-                ->addField('fax', 'acfe_phone_number', [
+                ->addField('fax', 'phone_number', [
                     'required' => 0,
                     'label' => 'Fax Number',
                     'default_country' => 'us',
