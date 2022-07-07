@@ -272,3 +272,93 @@ function logout_without_confirm($action, $result)
     }
 }
 
+/* start add new positon/title to contacts post_type*/
+add_action('admin_footer', 'my_admin_footer_function');
+add_action('wp_footer', 'my_admin_footer_function');
+function my_admin_footer_function() {
+    $admin_url = admin_url('admin-ajax.php');
+    ?>
+    <script>
+    jQuery('.ct_position_title .acf-label').remove();
+    jQuery('.ct_position_title .acf-input').remove();
+    // jQuery('.acf-field-contacts-contact-details-position-title').after('<div id="ct-position-title" class="acf-field" style="border:unset;">'
+    jQuery('.ct_position_title').append('<div id="ct-position-title" class="acf-field" style="border:unset;">'
+    +'<div class="acf-label">'
+    +'<label for="acf-field_contacts_contact_details-field_contacts_contact_details_email">New Position/Title</label></div>'
+    +'<div class="acf-input">'
+    +'<div class="acf-input-wrap"><input type="text" name="positionTitle" style="width:60%;">'
+    +'<a class="acf-button button button-primary" id="savePositionTitle" style="margin-left:20px;" href="#">Add New Position</a><span class="spinner" style="display: inline-block;"></span></div></div></div>');
+    jQuery('#savePositionTitle').on('click', function (e) {
+        e.preventDefault();
+        jQuery('#ct-position-title .spinner').addClass('is-active');
+        jQuery('#savePositionTitle').addClass('disabled');
+        var position = jQuery("input[name='positionTitle']").val();
+        var data = {
+            action: 'save_contact_position',
+            position: position,
+        };
+        var ajaxurl = "<?php echo $admin_url; ?>";
+        jQuery.post(ajaxurl, data, function (response) {
+            var response = jQuery.parseJSON(response);
+            jQuery('#ct-position-title .spinner').removeClass('is-active');
+            jQuery('#savePositionTitle').removeClass('disabled');
+            jQuery("input[name='positionTitle']").val('')
+            if(response.success) {
+                jQuery('#acf-field_contacts_contact_details-field_contacts_contact_details_position_title').append('<option value="'+response.post_title+'" data-select2-id="'+response.post_id+'">'+response.post_title+'</option>');
+                
+                /*if(response.delete) {
+                    jQuery('#acf-field_contacts_contact_details-field_contacts_contact_details_position_title').empty();
+                }*/
+            } else {
+                alert('Something went wrong.')
+            }
+        });
+    });
+    </script>
+    <?php 
+}
+
+add_action('wp_ajax_nopriv_save_contact_position', 'save_contact_position');
+add_action('wp_ajax_save_contact_position', 'save_contact_position');
+function save_contact_position()
+{
+    $response['success'] = false;
+    global $user_ID;
+    global $wpdb;
+    if(isset($_POST['action']) && isset($_POST['position']) && !empty($_POST['position'])) {
+        $args = array(
+            'post_title' => $_POST['position'],
+            'post_content' => '',
+            'post_status' => 'publish',
+            'post_author' => $user_ID,
+            'post_type' => 'ct_position_title',
+            );
+        $insert = wp_insert_post($args);
+        if($insert) {
+            $post_id = $wpdb->insert_id;
+            $response['success'] = true;
+            $posts = get_posts([
+                'post_type' => 'ct_position_title',
+                'post_status' => 'publish',
+                'numberposts' => -1,
+                'order'    => 'ASC'
+              ]);
+            /* 
+            // if value is delete then delete add post with ct_position_title posty_type
+            if($_POST['position'] == 'delete') {
+                foreach ($posts as $eachpost) {
+                    wp_delete_post( $eachpost->ID, true );
+                    $response['delete'][] = $eachpost->ID;
+                }
+            }
+            */
+            $new_post = get_post($post_id);
+            // $response['result'] = $posts;
+            // $response['post'] = get_post($post_id);
+            $response['post_id'] = $new_post->ID;
+            $response['post_title'] = $new_post->post_title;
+        }
+	}
+    exit(json_encode($response));
+}
+/* end add new positon/title to contacts post_type*/
