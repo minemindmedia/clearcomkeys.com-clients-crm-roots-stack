@@ -16,21 +16,6 @@ class Contacts extends Field
     {
         $contacts = new FieldsBuilder('contacts');
         $todaysDate = date("F j, Y, g:i a");
-
-        /* start get position_title choices */
-        $postTitle = ['Add New'];
-        $posts = get_posts([
-            'post_type' => 'ct_position_title',
-            'post_status' => 'publish',
-            'numberposts' => -1,
-            'order'    => 'ASC'
-            ]);
-        if($posts) {
-            foreach($posts as $singlePost) {
-                $postTitle[] = $singlePost->post_title;
-            }
-        }
-        /* end get position_title choices */
         $contacts
             ->setLocation('post_type', '==', 'contacts');
 
