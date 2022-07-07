@@ -16,21 +16,6 @@ class Contacts extends Field
     {
         $contacts = new FieldsBuilder('contacts');
         $todaysDate = date("F j, Y, g:i a");
-
-        /* start get position_title choices */
-        $postTitle = ['Add New'];
-        $posts = get_posts([
-            'post_type' => 'ct_position_title',
-            'post_status' => 'publish',
-            'numberposts' => -1,
-            'order'    => 'ASC'
-            ]);
-        if($posts) {
-            foreach($posts as $singlePost) {
-                $postTitle[] = $singlePost->post_title;
-            }
-        };
-        /* end get position_title choices */
         $contacts
             ->setLocation('post_type', '==', 'contacts');
 
@@ -122,7 +107,6 @@ class Contacts extends Field
                         'class' => '',
                         'id' => '',
                     ],
-                    'choices' => $postTitle,
                     'default_value' => [],
                     'allow_null' => 1,
                     'multiple' => 0,
@@ -147,15 +131,7 @@ class Contacts extends Field
                     'ui_off_text' => '',
                 ])
                     ->conditional('position_title', '==', 'Key Tech')
-                ->addText('hidden_position', [
-                    'label' => 'Hidden Position',
-                    'required' => 0,
-                    'wrapper' => [
-                    'width' => '100%',
-                    'class' => 'ct_position_title',
-                    'id' => '',
-                    ],
-                ])
+
                 ->conditional('position_title', '==', 'Add New')
             ->endGroup()
             ->addGroup('location_relationship', [
